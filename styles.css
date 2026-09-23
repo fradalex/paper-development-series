@@ -33,3 +33,10 @@
   .menu-toggle{gap:4px;font-size:.68rem}
 }
 @media(max-width:350px){.menu-toggle{font-size:0;gap:0}.menu-toggle span{font-size:1.25rem}}
+
+/* Match the footer identity to the header. */
+.footer-brand{display:inline-flex;align-items:center;gap:12px;color:#fff}
+.footer-brand img{display:block;width:30px;height:30px;flex:none;filter:brightness(0) invert(1)}
+.footer-brand-name{border-left:1px solid #829096;padding-left:12px;font-family:var(--serif);font-size:1.15rem;line-height:1;white-space:nowrap}
+@media(max-width:680px){.footer-inner{flex-direction:column;gap:26px}.footer-inner>div:last-child{align-items:start;text-align:left}}
+@media(max-width:390px){.footer-brand{gap:9px}.footer-brand-name{font-size:1rem;padding-left:9px}}
