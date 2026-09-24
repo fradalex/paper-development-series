@@ -1,6 +1,6 @@
 # Paper Development Series website
 
-A free, static website for GitHub Pages. No paid domain, build tool, package installation, or ongoing subscription is required. The site uses a single page, an editable programme file, and automatic upcoming/archive grouping.
+A static website for GitHub Pages. The weekly research card is built remotely in GitHub Actions. AI drafting is optional and requires a separately billed OpenAI API key. The site uses a single page, an editable programme file, and automatic upcoming/archive grouping.
 
 ## Before publishing
 
@@ -29,11 +29,19 @@ To change the introductory wording, edit `index.html`. To change colours or layo
 
 1. Create a free GitHub account or an organisation account shared by the organisers. A dedicated organisation makes handover easier.
 2. Create a **public** repository called `paper-development-series` and upload the contents of this folder to the repository root. Upload the files themselves, not the enclosing folder or ZIP. The file `index.html` must be at the root. Keep `.nojekyll` if your upload method includes hidden files.
-3. In the repository, open **Settings → Pages**. Under **Build and deployment**, choose **Deploy from a branch**, then select `main` and `/(root)`. Save.
+3. In the repository, open **Settings → Pages**. Under **Build and deployment**, choose **GitHub Actions** as the source. Save. The `Publish research pulse` workflow now publishes both site edits and scheduled research updates.
 4. The address will be `https://ACCOUNT.github.io/paper-development-series/` (replace `ACCOUNT` with your username or organisation name). GitHub may take several minutes to publish the first time.
-5. To update a session, open `site-data.js` on GitHub, click the pencil icon, edit it, and commit the change to `main`. The website will republish automatically. Give other organisers repository access under **Settings → Collaborators and teams** (the exact menu name depends on account type).
+5. To update a session, open `site-data.js` on GitHub, click the pencil icon, edit it, and commit the change to `main`. The website will republish automatically through the same workflow. Give other organisers repository access under **Settings → Collaborators and teams** (the exact menu name depends on account type).
 
 For a shorter `https://ACCOUNT.github.io/` address, name the repository exactly `ACCOUNT.github.io` instead. The included relative links work with either repository name.
+
+## Automatic research pulse
+
+The workflow in `.github/workflows/research-pulse.yml` runs every Tuesday at 08:17 UTC, and you can start it at any time under **Actions → Publish research pulse → Run workflow**. It queries recent articles from OpenAlex and Crossref, keeps source links, and publishes three discussion questions. The issue is archived in `research-pulse.json` (up to 12 previous issues). A failed literature query keeps the last published issue. Visitors only download the published JSON; they never call a model.
+
+With no additional setup the prompts are generated automatically from a small fixed set of topic questions and freshly retrieved papers. To enable **AI-written** questions, create an OpenAI API key with its own billing account, then put it in **Settings → Secrets and variables → Actions → New repository secret** under exactly `OPENAI_API_KEY`. Do not paste the key into repository files. The script makes at most one AI request per scheduled run; if the model call fails, it publishes the source-linked prompts. Model usage is billed by OpenAI separately from ChatGPT. If you want a higher OpenAlex query allowance, optionally add a free `OPENALEX_API_KEY` repository secret. The keyless OpenAlex endpoint and Crossref are the default sources.
+
+After switching the Pages source to GitHub Actions, run the workflow once to publish the first dated issue. Future scheduled runs deploy automatically. The questions are **discussion prompts drawn from recent papers**, not claims that a topic is statistically trending across all research. The references are research leads and should be read before citing findings. Repository owners can turn the workflow off from Actions if desired.
 
 ## Preview locally
 
@@ -44,7 +52,10 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` from this f
 - `index.html`: page content and structure
 - `styles.css`: responsive visual design
 - `site-data.js`: organisers, contact details, and sessions
-- `script.js`: automatic session display and mobile navigation
+- `script.js`: automatic session display, research card, and mobile navigation
+- `research-pulse.json`: current research questions and archive
+- `tools/update_research_pulse.py`: weekly literature retrieval and question drafting
+- `.github/workflows/research-pulse.yml`: weekly refresh and Pages publication
 - `favicon.svg`: browser icon
 - `.nojekyll`: publish static files without Jekyll processing
 
