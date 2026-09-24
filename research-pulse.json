@@ -1,62 +1,18 @@
 {
   "updated": "2026-09-24",
-  "mode": "source-linked",
+  "mode": "curated",
   "questions": [
     {
       "topic": "AI and discovery",
-      "question": "How might recent AI research change the way scientific discoveries are made and evaluated?",
-      "context": "A discussion prompt inspired by recent publications on AI and scientific discovery.",
-      "sources": [
-        {
-          "title": "Self-revising discovery systems for science: A categorical framework for agentic artificial intelligence",
-          "date": "2026-09-08",
-          "url": "https://doi.org/10.1016/j.eml.2026.102518",
-          "source": "OpenAlex",
-          "doi": "10.1016/j.eml.2026.102518"
-        },
-        {
-          "title": "Transforming Science with Large Language Models: A Survey on AI-assisted Scientific Discovery, Experimentation, Content Generation, and Evaluation",
-          "date": "2026-09-05",
-          "url": "https://doi.org/10.1145/3845596",
-          "source": "OpenAlex",
-          "doi": "10.1145/3845596"
-        }
-      ]
+      "question": "How should we evaluate discoveries when AI helps generate the hypotheses?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "What helps emerging technologies become useful innovations across different kinds of firms?",
-      "context": "A discussion prompt inspired by recent publications on technology and entrepreneurship.",
-      "sources": [
-        {
-          "title": "From entrepreneurial resilience to dual performance: how disruptive innovation matters through the support of institutions",
-          "date": "2026-09-24",
-          "url": "https://doi.org/10.1108/jeim-05-2026-0938",
-          "source": "Crossref",
-          "doi": "10.1108/jeim-05-2026-0938"
-        },
-        {
-          "title": "Do climate shocks induce technological change? Firm-level evidence from wildfire exposure and robot adoption",
-          "date": "2026-09-24",
-          "url": "https://doi.org/10.1108/jes-07-2026-0713",
-          "source": "Crossref",
-          "doi": "10.1108/jes-07-2026-0713"
-        }
-      ]
+      "question": "When do new technologies open opportunities for young firms rather than reinforce incumbents?"
     },
     {
       "topic": "Science and society",
-      "question": "How can research and policy shape the wider benefits of technological change?",
-      "context": "A discussion prompt inspired by recent publications on science policy and diffusion.",
-      "sources": [
-        {
-          "title": "Building the Full AI Stack as the Core of Contemporary U.S. Science, Technology, and Innovation Policy",
-          "date": "2026-08-06",
-          "url": "https://doi.org/10.15407/scine22.04.003",
-          "source": "OpenAlex",
-          "doi": "10.15407/scine22.04.003"
-        }
-      ]
+      "question": "Which innovation policies help the benefits of research reach more regions?"
     }
   ],
   "archive": []

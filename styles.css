@@ -49,3 +49,23 @@
 .pulse-bottom{border-top:1px solid #d9d7cd;justify-content:space-between;margin-top:auto;color:#53666a;font-size:.61rem;line-height:1.4}.pulse-controls{display:flex;gap:7px}.pulse-controls button{background:transparent;border:1px solid #a8b7b1;color:var(--ink);min-width:30px;height:30px;cursor:pointer;font-size:.7rem}.pulse-controls button[aria-pressed="true"]{background:var(--ink);color:white}.pulse-controls button:hover{border-color:var(--accent)}
 @media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);gap:25px}.pulse{margin-right:20px}}
 @media(max-width:680px){.pulse{margin:10px 14px 65px 0;max-width:calc(100% - 18px);min-height:360px}.pulse-body{padding:26px 22px}.pulse-top,.pulse-bottom{padding:16px 22px}.pulse h2{font-size:2.15rem}}
+
+/* Quiet page-turn motion for the question-only card. */
+.pulse{perspective:1100px;min-height:425px}
+.pulse-body{display:flex;perspective:1000px;overflow:hidden;padding:18px 16px 12px;min-height:310px}
+.pulse-page{position:relative;flex:1;padding:31px 20px 23px 25px;display:flex;flex-direction:column;background:#f8f3e9;border-left:1px solid #d5cbbc;box-shadow:-7px 0 13px -14px #172d35;transform-origin:left center;backface-visibility:hidden;will-change:transform}
+.pulse-page::before{content:"";position:absolute;top:0;bottom:0;left:5px;border-left:1px solid #e1d8c8}
+.pulse-page::after{content:"";position:absolute;right:0;bottom:0;border-width:0 0 24px 24px;border-style:solid;border-color:transparent transparent #e8dbc9 transparent;filter:drop-shadow(-2px -2px 2px #172d3512)}
+.pulse-page.turn-out{animation:pulse-turn-out .42s cubic-bezier(.65,.08,.85,.6) both}
+.pulse-page.turn-in{animation:pulse-turn-in .42s cubic-bezier(.15,.4,.35,1) both}
+@keyframes pulse-turn-out{from{transform:rotateY(0);filter:brightness(1)}to{transform:rotateY(-86deg);filter:brightness(.82)}}
+@keyframes pulse-turn-in{from{transform:rotateY(86deg);filter:brightness(.84)}to{transform:rotateY(0);filter:brightness(1)}}
+.pulse h2{font-size:clamp(1.85rem,2.7vw,2.7rem);line-height:1.23;max-width:410px;margin-bottom:20px}
+.pulse-page-number{margin-top:auto;align-self:flex-end;font-family:var(--serif);font-size:.88rem;color:#a7533d;letter-spacing:.12em}
+.pulse-navigation{display:flex;gap:13px;align-items:center}.pulse-pause{background:transparent;border:1px solid #a8b7b1;color:var(--ink);min-width:30px;height:30px;cursor:pointer;font-size:.8rem}.pulse-pause:hover{border-color:var(--accent)}
+.pulse-progress{height:3px;background:#e4d9c8}.pulse-progress-bar,.pulse-progress span{display:block;width:100%;height:100%;background:#bd7156;transform-origin:left center;transform:scaleX(0)}
+.pulse-progress span.is-running{animation:pulse-progress 12s linear forwards}
+@keyframes pulse-progress{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.pulse.is-paused .pulse-progress span{animation-play-state:paused}
+@media(max-width:680px){.pulse-body{min-height:290px;padding:12px}.pulse-page{padding:26px 14px 18px 21px}.pulse h2{font-size:2.1rem}.pulse-bottom{gap:10px}.pulse-navigation{gap:8px}}
+@media(prefers-reduced-motion:reduce){.pulse-page.turn-out,.pulse-page.turn-in{animation:none}.pulse-progress span.is-running{animation:none}}

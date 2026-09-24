@@ -68,55 +68,103 @@
 })();
 
 
-// The weekly result is a published JSON file, never a per-visitor AI request.
+// Published questions advance locally; visitors never call research services.
 (() => {
   'use strict';
+  const card = document.querySelector('.pulse');
+  const page = document.getElementById('pulse-page');
   const title = document.getElementById('pulse-title');
-  const context = document.getElementById('pulse-context');
   const date = document.getElementById('pulse-date');
-  const sources = document.getElementById('pulse-sources');
+  const pageNumber = document.getElementById('pulse-page-number');
   const controls = document.getElementById('pulse-controls');
-  if (!title || !context || !date || !sources || !controls) return;
-  function show(entries, index) {
-    const entry = entries[index];
-    title.textContent = entry.question;
-    context.textContent = entry.context || 'A question prompted by recently published research.';
-    sources.replaceChildren();
-    (entry.sources || []).slice(0, 2).forEach((paper, number) => {
-      try {
-        const url = new URL(paper.url);
-        if (url.protocol !== 'https:') return;
-        const link = document.createElement('a');
-        link.href = url.href;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.textContent = 'Paper ' + (number + 1) + ' ↗';
-        link.title = paper.title || 'View research paper';
-        sources.append(link);
-      } catch { /* Ignore invalid links. */ }
-    });
+  const pause = document.getElementById('pulse-pause');
+  const progress = document.getElementById('pulse-progress-bar');
+  if (!card || !page || !title || !date || !pageNumber || !controls || !pause || !progress) return;
+
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let entries = [];
+  let index = 0;
+  let timer;
+  let turning = false;
+  let paused = motion;
+
+  function render(next) {
+    index = next;
+    title.textContent = entries[index].question;
+    pageNumber.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(entries.length).padStart(2, '0');
     [...controls.children].forEach((button, n) => button.setAttribute('aria-pressed', String(n === index)));
   }
+  function schedule() {
+    clearTimeout(timer);
+    progress.classList.remove('is-running');
+    card.classList.toggle('is-paused', paused);
+    if (paused || document.hidden || entries.length < 2) return;
+    // Restart the visual timer at the beginning of each page.
+    void progress.offsetWidth;
+    progress.classList.add('is-running');
+    timer = setTimeout(() => turn((index + 1) % entries.length), 12000);
+  }
+  function turn(next) {
+    if (turning || next === index || next < 0 || next >= entries.length) return;
+    clearTimeout(timer);
+    if (motion) {
+      render(next);
+      schedule();
+      return;
+    }
+    turning = true;
+    page.classList.remove('turn-in');
+    page.classList.add('turn-out');
+    setTimeout(() => {
+      render(next);
+      page.classList.remove('turn-out');
+      page.classList.add('turn-in');
+      setTimeout(() => {
+        page.classList.remove('turn-in');
+        turning = false;
+        schedule();
+      }, 420);
+    }, 420);
+  }
+
+  pause.addEventListener('click', () => {
+    paused = !paused;
+    pause.setAttribute('aria-pressed', String(paused));
+    pause.setAttribute('aria-label', paused ? 'Resume automatic questions' : 'Pause automatic questions');
+    pause.title = paused ? 'Resume automatic questions' : 'Pause automatic questions';
+    pause.textContent = paused ? '▶' : 'Ⅱ';
+    schedule();
+  });
+  document.addEventListener('visibilitychange', schedule);
+
   fetch('research-pulse.json', { cache: 'no-cache' })
     .then(response => { if (!response.ok) throw Error('Unavailable'); return response.json(); })
     .then(issue => {
-      const entries = Array.isArray(issue.questions) ? issue.questions.filter(
-        item => item && typeof item.question === 'string' && typeof item.context === 'string'
+      entries = Array.isArray(issue.questions) ? issue.questions.filter(
+        item => item && typeof item.question === 'string' && item.question.trim()
       ).slice(0, 3) : [];
       if (!entries.length) return;
       const parsed = new Date(issue.updated + 'T12:00:00Z');
       if (!Number.isNaN(parsed.getTime())) date.textContent = 'Updated ' +
         new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(parsed);
       controls.replaceChildren();
-      entries.forEach((entry, index) => {
+      entries.forEach((entry, n) => {
         const button = document.createElement('button');
         button.type = 'button';
-        button.textContent = String(index + 1).padStart(2, '0');
-        button.setAttribute('aria-label', 'Show ' + entry.topic + ' question');
-        button.addEventListener('click', () => show(entries, index));
+        button.textContent = String(n + 1).padStart(2, '0');
+        button.setAttribute('aria-label', 'Show ' + (entry.topic || 'research') + ' question');
+        button.addEventListener('click', () => turn(n));
         controls.append(button);
       });
-      show(entries, 0);
+      render(0);
+      pause.hidden = entries.length < 2;
+      if (motion) {
+        pause.setAttribute('aria-pressed', 'true');
+        pause.setAttribute('aria-label', 'Resume automatic questions');
+        pause.title = 'Resume automatic questions';
+        pause.textContent = '▶';
+      }
+      schedule();
     })
-    .catch(() => { context.textContent = 'The latest literature scan is temporarily unavailable. Please check back soon.'; });
+    .catch(() => { date.textContent = 'New questions coming soon'; });
 })();
