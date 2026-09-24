@@ -23,9 +23,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Gather papers and generate questions
         if: github.event_name != 'push' || hashFiles('research-pulse.json') == ''
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
         run: python3 tools/update_research_pulse.py
       - name: Save the dated issue and archive
         if: github.event_name != 'push' || hashFiles('research-pulse.json') == ''
