@@ -16,7 +16,7 @@ SINCE = (TODAY - dt.timedelta(days=120)).isoformat()
 TOPICS = [
     ('AI and discovery', 'artificial intelligence scientific discovery', 'AI scientific discovery'),
     ('Innovation and firms', 'technology innovation entrepreneurship', 'technological innovation entrepreneurship'),
-    ('Science and society', 'science policy technology diffusion', 'science policy technology diffusion'),
+    ('Science and society', 'science technology innovation policy', 'technology innovation policy'),
 ]
 
 
@@ -29,8 +29,8 @@ def matches_topic(topic, title):
             'scien', 'discover', 'research', 'laborator', 'scholar')
     if topic == 'Innovation and firms':
         return has('innovat', 'technolog') and has('firm', 'entrepreneu', 'start-up', 'startup', 'business', 'industr')
-    return has('scien', 'research', 'innovat', 'technolog') and has(
-        'policy', 'diffus', 'societ', 'social', 'governance', 'public')
+    return has('technolog', 'scientific', 'science', 'research and development', 'r&d', 'digital',
+               'artificial intelligence') and has('policy', 'diffus', 'societ', 'social', 'governance', 'public')
 
 
 def request_json(url, *, data=None, headers=None):
@@ -184,7 +184,8 @@ def main():
     drafted = generated_questions(groups)
     questions = drafted or fallback_questions(groups)
     archive = previous.get('archive', []) if isinstance(previous.get('archive'), list) else []
-    if previous.get('updated') and previous.get('questions'):
+    archive = [item for item in archive if item.get('updated') != TODAY.isoformat()]
+    if previous.get('updated') and previous.get('updated') != TODAY.isoformat() and previous.get('questions'):
         archive.insert(0, {'updated': previous['updated'], 'questions': previous['questions']})
     issue = {'updated': TODAY.isoformat(), 'mode': 'ai' if drafted else 'source-linked',
              'questions': questions, 'archive': archive[:12]}
