@@ -104,8 +104,7 @@ def gather():
             if identity not in seen:
                 seen.add(identity)
                 unique.append(paper)
-        if unique:
-            groups.append((label, unique[:6]))
+        groups.append((label, unique[:6]))
     return groups
 
 
@@ -115,31 +114,64 @@ QUESTION_BANK = {
         (('discover', 'hypothes'), 'How should we evaluate discoveries when AI helps generate the hypotheses?'),
         (('open', 'data', 'access'), 'Can AI broaden access to scientific discovery without concentrating its resources?'),
         (('experiment', 'automat'), 'What changes when AI systems design and conduct parts of the research process?'),
+        (('interdisciplin', 'recombin'), 'Which AI tools help researchers combine knowledge across disciplines?'),
+        (('quality', 'productiv'), 'When does faster AI-assisted research improve quality rather than just output?'),
+        (('valid', 'responsib'), 'Who should be accountable for errors in AI-assisted scientific work?'),
+        (('open', 'dataset'), 'Can open scientific data reduce barriers to AI-enabled discovery?'),
+        (('team', 'collabor'), 'How do research teams change when AI performs part of the scientific workflow?'),
+        (('limit', 'experiment'), 'What kinds of experiments remain difficult for AI to propose or interpret?'),
+        (('measur', 'impact'), 'How can we measure AI’s contribution to new scientific knowledge?'),
+        (('explor', 'question'), 'Does AI expand the range of questions scientists can investigate?'),
     ],
     'Innovation and firms': [
         (('firm', 'entrepreneu'), 'When do new technologies open opportunities for young firms rather than reinforce incumbents?'),
         (('region', 'local'), 'What turns new technological knowledge into innovative ventures across regions?'),
         (('artificial intelligence', ' ai '), 'How does AI change the way firms search for and develop new ideas?'),
         (('adopt', 'diffus'), 'What helps promising inventions become innovations that firms actually adopt?'),
+        (('region', 'startup'), 'Why do some regions turn technological opportunities into startups more readily than others?'),
+        (('ai', 'capabilit'), 'Do AI capabilities help firms innovate beyond their existing technological strengths?'),
+        (('spillover', 'entry'), 'When do research spillovers lead to new firms rather than growth in incumbents?'),
+        (('universit', 'collabor'), 'What makes university–firm collaboration productive for innovation?'),
+        (('financ', 'small firm'), 'How do financial constraints affect smaller firms’ adoption of emerging technologies?'),
+        (('data', 'compute'), 'Does access to data and compute change who can innovate with AI?'),
+        (('skill', 'scientific'), 'Which skills help firms turn scientific advances into products?'),
+        (('related', 'diversif'), 'How can firms pursue distant technological opportunities while building on existing strengths?'),
     ],
     'Science and society': [
         (('region', 'place'), 'Which innovation policies help the benefits of research reach more regions?'),
         (('diffus', 'inequal'), 'How can policy respond when new technologies spread unevenly?'),
         (('public', 'invest'), 'Who benefits from public investment in emerging technologies?'),
         (('ai', 'artificial intelligence'), 'How should governments evaluate the social effects of AI research and innovation?'),
+        (('fund', 'explor'), 'How should science policy support exploratory research with uncertain returns?'),
+        (('small firm', 'ai'), 'Which policies help smaller firms access AI capabilities?'),
+        (('skill', 'institution'), 'How can regions build the skills and institutions needed to benefit from new technologies?'),
+        (('public', 'private'), 'When does public research funding stimulate private innovation?'),
+        (('regulat', 'direction'), 'How do regulations shape the direction of technological change?'),
+        (('concentrat', 'regional'), 'What can policymakers do when technological benefits concentrate in a few places?'),
+        (('evaluat', 'patent'), 'How should we assess the public value of research beyond patents and publications?'),
+        (('open', 'intellectual property'), 'Which policies support knowledge sharing while preserving incentives to innovate?'),
     ],
 }
 
 
-def choose_questions(groups):
-    """Select open discussion questions from a curated bank using recent title themes."""
+def choose_questions(groups, previous):
+    """Choose three questions, avoiding every question used in the previous 12 weeks."""
+    history = {}
+    for issue in [previous] + previous.get('archive', [])[:11]:
+        for item in issue.get('questions', []):
+            history.setdefault(item.get('topic'), set()).add(item.get('question'))
+    current = {item.get('topic'): item.get('question') for item in previous.get('questions', [])}
+    week_number = (TODAY - dt.date(2024, 1, 1)).days // 7
     selected = []
     for topic, papers in groups:
         titles = [paper['title'].casefold() for paper in papers]
         bank = QUESTION_BANK[topic]
         scores = [sum(any(word in title for word in cues) for title in titles) for cues, _ in bank]
-        tied = [i for i, score in enumerate(scores) if score == max(scores)]
-        question = bank[tied[TODAY.isocalendar().week % len(tied)]][1]
+        ranked = sorted(range(len(bank)), key=lambda i: (-scores[i], (i - week_number) % len(bank)))
+        eligible = [i for i in ranked if bank[i][1] not in history.get(topic, set())]
+        if not eligible:
+            eligible = [i for i in ranked if bank[i][1] != current.get(topic)]
+        question = bank[(eligible or ranked)[0]][1]
         selected.append({'topic': topic, 'question': question})
     return selected
 
@@ -147,16 +179,22 @@ def choose_questions(groups):
 def main():
     previous = json.loads(OUTPUT.read_text()) if OUTPUT.exists() else {}
     groups = gather()
-    if not groups:
-        raise RuntimeError('No dated, linkable papers were retrieved; keeping the last published issue.')
-    questions = choose_questions(groups)
+    last_date = previous.get('updated')
+    try:
+        same_week = dt.date.fromisoformat(last_date).isocalendar()[:2] == TODAY.isocalendar()[:2]
+    except (TypeError, ValueError):
+        same_week = False
+    if same_week and len(previous.get('questions', [])) == len(TOPICS):
+        questions = [{'topic': q['topic'], 'question': q['question']} for q in previous['questions']]
+    else:
+        questions = choose_questions(groups, previous)
     archive = previous.get('archive', []) if isinstance(previous.get('archive'), list) else []
     archive = [{'updated': item['updated'],
                 'questions': [{'topic': q['topic'], 'question': q['question']}
                               for q in item.get('questions', []) if 'topic' in q and 'question' in q]}
-               for item in archive if isinstance(item, dict) and item.get('updated') != TODAY.isoformat()]
-    if previous.get('updated') and previous.get('updated') != TODAY.isoformat() and previous.get('questions'):
-        archive.insert(0, {'updated': previous['updated'],
+               for item in archive if isinstance(item, dict)]
+    if not same_week and last_date and previous.get('questions'):
+        archive.insert(0, {'updated': last_date,
                            'questions': [{'topic': q['topic'], 'question': q['question']}
                                          for q in previous['questions']]})
     issue = {'updated': TODAY.isoformat(), 'mode': 'curated',
