@@ -20,6 +20,19 @@ TOPICS = [
 ]
 
 
+def matches_topic(topic, title):
+    text = title.casefold()
+    def has(*terms):
+        return any(term in text for term in terms)
+    if topic == 'AI and discovery':
+        return (has('artificial intelligence', 'machine learning') or re.search(r'(?<!\w)ai(?!\w)', text)) and has(
+            'scien', 'discover', 'research', 'laborator', 'scholar')
+    if topic == 'Innovation and firms':
+        return has('innovat', 'technolog') and has('firm', 'entrepreneu', 'start-up', 'startup', 'business', 'industr')
+    return has('scien', 'research', 'innovat', 'technolog') and has(
+        'policy', 'diffus', 'societ', 'social', 'governance', 'public')
+
+
 def request_json(url, *, data=None, headers=None):
     req = urllib.request.Request(url, data=data, headers={
         'User-Agent': 'PaperDevelopmentSeries/1.0 (research-pulse; https://github.com/fradalex/paper-development-series)',
@@ -89,6 +102,8 @@ def gather():
         seen = set()
         unique = []
         for paper in sorted(papers, key=lambda p: p['date'], reverse=True):
+            if not matches_topic(label, paper['title']):
+                continue
             identity = paper['doi'] or paper['title'].casefold()
             if identity not in seen:
                 seen.add(identity)
