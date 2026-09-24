@@ -1,6 +1,6 @@
 # Paper Development Series website
 
-A static website for GitHub Pages. The weekly research card is built remotely in GitHub Actions. AI drafting is optional and requires a separately billed OpenAI API key. The site uses a single page, an editable programme file, and automatic upcoming/archive grouping.
+A static website for GitHub Pages. The weekly question card is built remotely in GitHub Actions. It does not need an AI API key or paid model calls. The site uses a single page, an editable programme file, and automatic upcoming/archive grouping.
 
 ## Before publishing
 
@@ -37,11 +37,11 @@ For a shorter `https://ACCOUNT.github.io/` address, name the repository exactly 
 
 ## Automatic research pulse
 
-The workflow in `.github/workflows/research-pulse.yml` runs every Tuesday at 08:17 UTC, and you can start it at any time under **Actions → Publish research pulse → Run workflow**. It queries recent articles from OpenAlex and Crossref, keeps source links, and publishes three discussion questions. The issue is archived in `research-pulse.json` (up to 12 previous issues). A failed literature query keeps the last published issue. Visitors only download the published JSON; they never call a model.
+The workflow in `.github/workflows/research-pulse.yml` checks recent OpenAlex and Crossref metadata every Tuesday at 08:17 UTC. It uses that metadata to choose three open discussion questions from a curated question bank on science, technology and innovation. It republishes the page automatically; previous issues are retained for up to 12 weeks in `research-pulse.json`. Visitors only download the questions and do not see article links. The site never calls an AI model, so no API key or AI tokens are needed.
 
-With no additional setup the prompts are generated automatically from a small fixed set of topic questions and freshly retrieved papers. To enable **AI-written** questions, create an OpenAI API key with its own billing account, then put it in **Settings → Secrets and variables → Actions → New repository secret** under exactly `OPENAI_API_KEY`. Do not paste the key into repository files. The script makes at most one AI request per scheduled run; if the model call fails, it publishes the source-linked prompts. Model usage is billed by OpenAI separately from ChatGPT. If you want a higher OpenAlex query allowance, optionally add a free `OPENALEX_API_KEY` repository secret. The keyless OpenAlex endpoint and Crossref are the default sources.
+The landing card shows one question at a time and advances every 12 seconds with a page-turn animation. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic turning. If the literature sources are unavailable, the last published questions remain live. These are discussion prompts, not measured claims about which topics are statistically trending.
 
-After switching the Pages source to GitHub Actions, run the workflow once to publish the first dated issue. Future scheduled runs deploy automatically. The questions are **discussion prompts drawn from recent papers**, not claims that a topic is statistically trending across all research. The references are research leads and should be read before citing findings. Repository owners can turn the workflow off from Actions if desired.
+To refresh immediately, open **Actions → Publish research pulse → Run workflow**. The repository's **Settings → Pages** source must be **GitHub Actions** for scheduled updates to publish.
 
 ## Preview locally
 
@@ -52,9 +52,9 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` from this f
 - `index.html`: page content and structure
 - `styles.css`: responsive visual design
 - `site-data.js`: organisers, contact details, and sessions
-- `script.js`: automatic session display, research card, and mobile navigation
+- `script.js`: automatic session display, rotating question card, and mobile navigation
 - `research-pulse.json`: current research questions and archive
-- `tools/update_research_pulse.py`: weekly literature retrieval and question drafting
+- `tools/update_research_pulse.py`: weekly literature scan and question selection
 - `.github/workflows/research-pulse.yml`: weekly refresh and Pages publication
 - `favicon.svg`: browser icon
 - `.nojekyll`: publish static files without Jekyll processing
