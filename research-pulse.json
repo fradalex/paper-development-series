@@ -1,6 +1,70 @@
 {
-  "updated": null,
-  "mode": "pending",
-  "questions": [],
+  "updated": "2026-09-24",
+  "mode": "source-linked",
+  "questions": [
+    {
+      "topic": "AI and discovery",
+      "question": "How might recent AI research change the way scientific discoveries are made and evaluated?",
+      "context": "A discussion prompt inspired by recent publications on AI and scientific discovery.",
+      "sources": [
+        {
+          "title": "PERSONALITY IS A TRAINING TARGET: DATA CURATION AND SFT FOR AN ENTERTAINING, AGENTIC AI STREAMER",
+          "date": "2026-09-24",
+          "url": "https://doi.org/10.61784/adsj3041",
+          "source": "Crossref",
+          "doi": "10.61784/adsj3041"
+        },
+        {
+          "title": "AI Agents and Agentic AI in plant breeding: new frontiers, opportunities and challenges",
+          "date": "2026-09-24",
+          "url": "https://doi.org/10.3389/fgene.2026.1958764",
+          "source": "Crossref",
+          "doi": "10.3389/fgene.2026.1958764"
+        }
+      ]
+    },
+    {
+      "topic": "Innovation and firms",
+      "question": "What helps emerging technologies become useful innovations across different kinds of firms?",
+      "context": "A discussion prompt inspired by recent publications on technology and entrepreneurship.",
+      "sources": [
+        {
+          "title": "From entrepreneurial resilience to dual performance: how disruptive innovation matters through the support of institutions",
+          "date": "2026-09-24",
+          "url": "https://doi.org/10.1108/jeim-05-2026-0938",
+          "source": "Crossref",
+          "doi": "10.1108/jeim-05-2026-0938"
+        },
+        {
+          "title": "Green technological development and energy transition for climate sustainability in India",
+          "date": "2026-09-24",
+          "url": "https://doi.org/10.1007/s43621-026-04790-6",
+          "source": "Crossref",
+          "doi": "10.1007/s43621-026-04790-6"
+        }
+      ]
+    },
+    {
+      "topic": "Science and society",
+      "question": "How can research and policy shape the wider benefits of technological change?",
+      "context": "A discussion prompt inspired by recent publications on science policy and diffusion.",
+      "sources": [
+        {
+          "title": "Process analytical technology (PAT) and real-time control in chemical manufacturing",
+          "date": "2026-09-24",
+          "url": "https://doi.org/10.59400/adecp3800",
+          "source": "Crossref",
+          "doi": "10.59400/adecp3800"
+        },
+        {
+          "title": "Project-based learning through the technology acceptance model framework: its impact on self-regulated learning of university students",
+          "date": "2026-09-24",
+          "url": "https://doi.org/10.3389/feduc.2026.1879893",
+          "source": "Crossref",
+          "doi": "10.3389/feduc.2026.1879893"
+        }
+      ]
+    }
+  ],
   "archive": []
 }
