@@ -69,3 +69,10 @@
 .pulse.is-paused .pulse-progress span{animation-play-state:paused}
 @media(max-width:680px){.pulse-body{min-height:290px;padding:12px}.pulse-page{padding:26px 14px 18px 21px}.pulse-page.is-incoming{inset:12px}.pulse h2{font-size:2.1rem}.pulse-bottom{gap:10px}.pulse-navigation{gap:8px}}
 @media(prefers-reduced-motion:reduce){.pulse-page.is-fading-out,.pulse-page.is-fading-in{animation:none}.pulse-progress span.is-running{animation:none}}
+
+/* Keep the research card the same size for every question. */
+.pulse{height:490px;min-height:0;min-width:0;box-sizing:border-box}
+.pulse-body{min-height:0;min-width:0}
+.pulse-page{min-width:0;min-height:0}
+@media(max-width:900px) and (min-width:681px){.pulse h2{font-size:clamp(1.7rem,2.4vw,2.1rem)}}
+@media(max-width:680px){.pulse{height:510px;min-height:0}.pulse-body{min-height:0}.pulse h2{font-size:clamp(1.7rem,7vw,2.1rem)}}

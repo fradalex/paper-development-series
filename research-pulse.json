@@ -4,15 +4,15 @@
   "questions": [
     {
       "topic": "AI and discovery",
-      "question": "How should we evaluate discoveries when AI helps generate the hypotheses?"
+      "question": "How should we evaluate discoveries when AI helps generate hypotheses?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "When do new technologies open opportunities for young firms rather than reinforce incumbents?"
+      "question": "When do new technologies help young firms compete with established firms?"
     },
     {
       "topic": "Science and society",
-      "question": "Which innovation policies help the benefits of research reach more regions?"
+      "question": "Which innovation policies help spread the benefits of research across regions?"
     }
   ],
   "archive": []
