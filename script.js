@@ -75,11 +75,10 @@
   const page = document.getElementById('pulse-page');
   const title = document.getElementById('pulse-title');
   const date = document.getElementById('pulse-date');
-  const pageNumber = document.getElementById('pulse-page-number');
   const controls = document.getElementById('pulse-controls');
   const pause = document.getElementById('pulse-pause');
   const progress = document.getElementById('pulse-progress-bar');
-  if (!card || !page || !title || !date || !pageNumber || !controls || !pause || !progress) return;
+  if (!card || !page || !title || !date || !controls || !pause || !progress) return;
 
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let entries = [];
@@ -91,7 +90,6 @@
   function render(next) {
     index = next;
     title.textContent = entries[index].question;
-    pageNumber.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(entries.length).padStart(2, '0');
     [...controls.children].forEach((button, n) => button.setAttribute('aria-pressed', String(n === index)));
   }
   function schedule() {
@@ -117,8 +115,6 @@
     incoming.removeAttribute('id');
     incoming.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
     incoming.querySelector('h2').textContent = entries[next].question;
-    incoming.querySelector('.pulse-page-number').textContent =
-      String(next + 1).padStart(2, '0') + ' / ' + String(entries.length).padStart(2, '0');
     incoming.setAttribute('aria-hidden', 'true');
     incoming.classList.add('is-incoming', 'is-fading-in');
     page.parentElement.append(incoming);
