@@ -132,7 +132,6 @@
     pause.setAttribute('aria-pressed', String(paused));
     pause.setAttribute('aria-label', paused ? 'Resume automatic questions' : 'Pause automatic questions');
     pause.title = paused ? 'Resume automatic questions' : 'Pause automatic questions';
-    pause.textContent = paused ? '▶' : 'Ⅱ';
     schedule();
   });
   document.addEventListener('visibilitychange', schedule);
@@ -148,7 +147,7 @@
       entries.forEach((entry, n) => {
         const button = document.createElement('button');
         button.type = 'button';
-        button.textContent = String(n + 1).padStart(2, '0');
+        button.textContent = String(n + 1);
         button.setAttribute('aria-label', 'Show ' + (entry.topic || 'research') + ' question');
         button.addEventListener('click', () => turn(n));
         controls.append(button);
@@ -159,7 +158,6 @@
         pause.setAttribute('aria-pressed', 'true');
         pause.setAttribute('aria-label', 'Resume automatic questions');
         pause.title = 'Resume automatic questions';
-        pause.textContent = '▶';
       }
       schedule();
     })
