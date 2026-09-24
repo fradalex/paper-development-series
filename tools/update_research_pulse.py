@@ -29,7 +29,7 @@ def matches_topic(topic, title):
             'scien', 'discover', 'research', 'laborator', 'scholar')
     if topic == 'Innovation and firms':
         return has('innovat', 'technolog') and has('firm', 'entrepreneu', 'start-up', 'startup', 'business', 'industr')
-    return has('technolog', 'scientific', 'science', 'research and development', 'r&d', 'digital',
+    return has('technolog', 'scientific', 'science', 'research and development', 'r&d',
                'artificial intelligence') and has('policy', 'diffus', 'societ', 'social', 'governance', 'public')
 
 
