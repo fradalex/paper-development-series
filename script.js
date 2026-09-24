@@ -113,18 +113,23 @@
       return;
     }
     turning = true;
-    page.classList.remove('turn-in');
-    page.classList.add('turn-out');
+    const incoming = page.cloneNode(true);
+    incoming.removeAttribute('id');
+    incoming.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+    incoming.querySelector('h2').textContent = entries[next].question;
+    incoming.querySelector('.pulse-page-number').textContent =
+      String(next + 1).padStart(2, '0') + ' / ' + String(entries.length).padStart(2, '0');
+    incoming.setAttribute('aria-hidden', 'true');
+    incoming.classList.add('is-incoming', 'is-fading-in');
+    page.parentElement.append(incoming);
+    page.classList.add('is-fading-out');
     setTimeout(() => {
       render(next);
-      page.classList.remove('turn-out');
-      page.classList.add('turn-in');
-      setTimeout(() => {
-        page.classList.remove('turn-in');
-        turning = false;
-        schedule();
-      }, 420);
-    }, 420);
+      page.classList.remove('is-fading-out');
+      incoming.remove();
+      turning = false;
+      schedule();
+    }, 820);
   }
 
   pause.addEventListener('click', () => {

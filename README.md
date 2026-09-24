@@ -37,9 +37,9 @@ For a shorter `https://ACCOUNT.github.io/` address, name the repository exactly 
 
 ## Automatic research pulse
 
-The workflow in `.github/workflows/research-pulse.yml` checks recent OpenAlex and Crossref metadata every Tuesday at 08:17 UTC. It uses that metadata to choose three open discussion questions from a curated question bank on science, technology and innovation. It republishes the page automatically; previous issues are retained for up to 12 weeks in `research-pulse.json`. Visitors only download the questions and do not see article links. The site never calls an AI model, so no API key or AI tokens are needed.
+The workflow in `.github/workflows/research-pulse.yml` checks recent OpenAlex and Crossref metadata every Tuesday at 08:17 UTC. It uses that metadata to choose three open discussion questions from a curated 36-question bank on science, technology and innovation. Each topic gets a different question every week; an earlier question can return after the 12-question set for that topic has been used. It republishes the page automatically; previous issues are retained for up to 12 weeks in `research-pulse.json`. Visitors only download the questions and do not see article links. The site never calls an AI model, so no API key or AI tokens are needed.
 
-The landing card shows one question at a time and advances every 12 seconds with a page-turn animation. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic turning. If the literature sources are unavailable, the last published questions remain live. These are discussion prompts, not measured claims about which topics are statistically trending.
+The landing card shows one question at a time and advances every 12 seconds with a soft dissolve. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic transitions. If the literature sources are unavailable, the weekly rotation still selects questions from the curated bank. These are discussion prompts, not measured claims about which topics are statistically trending.
 
 To refresh immediately, open **Actions → Publish research pulse → Run workflow**. The repository's **Settings → Pages** source must be **GitHub Actions** for scheduled updates to publish.
 
