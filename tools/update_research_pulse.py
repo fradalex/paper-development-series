@@ -1,4 +1,4 @@
-"""Publish a weekly, source-linked research prompt. Standard library only."""
+"""Publish literature-informed research questions every three days. Standard library only."""
 import datetime as dt
 import json
 import pathlib
@@ -122,6 +122,18 @@ QUESTION_BANK = {
         (('limit', 'experiment'), 'What kinds of experiments remain difficult for AI to propose or interpret?'),
         (('measur', 'impact'), 'How can we measure AI’s contribution to new scientific knowledge?'),
         (('explor', 'question'), 'Does AI expand the range of questions scientists can investigate?'),
+        (('literature', 'review'), 'How can AI help researchers navigate a growing scientific literature?'),
+        (('replicat', 'reproduc'), 'Can AI tools make scientific findings easier to reproduce?'),
+        (('bias', 'dataset'), 'How do biased datasets shape the discoveries AI systems propose?'),
+        (('causal', 'inference'), 'When can AI help researchers identify causal relationships?'),
+        (('benchmark', 'evaluat'), 'Which benchmarks reveal whether AI actually advances scientific discovery?'),
+        (('explain', 'interpret'), 'How much explanation should an AI system provide for a scientific claim?'),
+        (('laborator', 'automat'), 'How do automated laboratories change the pace of scientific experimentation?'),
+        (('hypothes', 'divers'), 'Does AI widen or narrow the range of hypotheses researchers consider?'),
+        (('comput', 'access'), 'Who gains access to discovery when research depends on computing resources?'),
+        (('skill', 'train'), 'Which skills do scientists need to work effectively with AI?'),
+        (('scientific', 'novel'), 'Does AI lead scientists toward novel ideas or familiar patterns?'),
+        (('collabor', 'interdisciplin'), 'Can AI help researchers collaborate across disciplinary boundaries?'),
     ],
     'Innovation and firms': [
         (('firm', 'entrepreneu'), 'When do new technologies help young firms compete with established firms?'),
@@ -136,6 +148,18 @@ QUESTION_BANK = {
         (('data', 'compute'), 'Does access to data and computing resources shape who can innovate with AI?'),
         (('skill', 'scientific'), 'Which skills help firms turn scientific advances into products?'),
         (('related', 'diversif'), 'How can firms explore new technologies while building on their existing strengths?'),
+        (('absorpt', 'capabilit'), 'What helps firms turn external research into new products?'),
+        (('supply chain', 'diffus'), 'How do supply chains spread new technologies among firms?'),
+        (('startup', 'financ'), 'How does access to finance shape technology-based entrepreneurship?'),
+        (('incumbent', 'complement'), 'Which complementary assets help established firms adopt AI?'),
+        (('patent', 'adopt'), 'When does patenting translate into the adoption of new technologies?'),
+        (('region', 'network'), 'How do regional networks support the formation of innovative firms?'),
+        (('skill', 'productiv'), 'Which skills help firms turn AI adoption into productivity gains?'),
+        (('open source', 'software'), 'Does open-source software lower barriers for innovative startups?'),
+        (('collabor', 'universit'), 'When do university partnerships help smaller firms innovate?'),
+        (('related', 'diversif'), 'Can firms enter distant fields by combining existing technologies in new ways?'),
+        (('ai', 'spillover'), 'Do AI knowledge spillovers benefit startups and established firms equally?'),
+        (('data', 'competition'), 'Does unequal access to data shape competition among innovative firms?'),
     ],
     'Science and society': [
         (('region', 'place'), 'Which innovation policies help spread the benefits of research across regions?'),
@@ -150,24 +174,36 @@ QUESTION_BANK = {
         (('concentrat', 'regional'), 'How can policymakers spread the benefits of technology beyond a few places?'),
         (('evaluat', 'patent'), 'How should we assess the public value of research beyond patents and publications?'),
         (('open', 'intellectual property'), 'Which policies support knowledge sharing while preserving incentives to innovate?'),
+        (('place', 'investment'), 'How should public research investment account for regional differences?'),
+        (('concentrat', 'ai'), 'Who benefits when AI research is concentrated in a few institutions?'),
+        (('standard', 'governance'), 'How do technical standards influence the direction of innovation?'),
+        (('mission', 'policy'), 'When do mission-oriented policies accelerate useful innovation?'),
+        (('climate', 'technolog'), 'How can science policy support the development of cleaner technologies?'),
+        (('international', 'collabor'), 'What helps international research partnerships share knowledge fairly?'),
+        (('career', 'research'), 'How do research careers shape the questions scientists pursue?'),
+        (('equity', 'diffus'), 'Which policies make the diffusion of new technologies more inclusive?'),
+        (('evaluat', 'impact'), 'How should public agencies measure the wider benefits of research?'),
+        (('public', 'private'), 'When does collaboration between public and private researchers benefit society?'),
+        (('responsib', 'ai'), 'How can AI governance protect research quality without slowing discovery?'),
+        (('region', 'transition'), 'How can regions adapt when technological change reshapes local jobs?'),
     ],
 }
 
 
 def choose_questions(groups, previous):
-    """Choose three questions, avoiding every question used in the previous 12 weeks."""
+    """Choose three questions, avoiding those used in the previous 24 issues."""
     history = {}
-    for issue in [previous] + previous.get('archive', [])[:11]:
+    for issue in [previous] + previous.get('archive', [])[:23]:
         for item in issue.get('questions', []):
             history.setdefault(item.get('topic'), set()).add(item.get('question'))
     current = {item.get('topic'): item.get('question') for item in previous.get('questions', [])}
-    week_number = (TODAY - dt.date(2024, 1, 1)).days // 7
+    issue_number = (TODAY - dt.date(2024, 1, 1)).days // 3
     selected = []
     for topic, papers in groups:
         titles = [paper['title'].casefold() for paper in papers]
         bank = QUESTION_BANK[topic]
         scores = [sum(any(word in title for word in cues) for title in titles) for cues, _ in bank]
-        ranked = sorted(range(len(bank)), key=lambda i: (-scores[i], (i - week_number) % len(bank)))
+        ranked = sorted(range(len(bank)), key=lambda i: (-scores[i], (i - issue_number) % len(bank)))
         eligible = [i for i in ranked if bank[i][1] not in history.get(topic, set())]
         if not eligible:
             eligible = [i for i in ranked if bank[i][1] != current.get(topic)]
@@ -178,30 +214,30 @@ def choose_questions(groups, previous):
 
 def main():
     previous = json.loads(OUTPUT.read_text()) if OUTPUT.exists() else {}
-    groups = gather()
     last_date = previous.get('updated')
     try:
-        same_week = dt.date.fromisoformat(last_date).isocalendar()[:2] == TODAY.isocalendar()[:2]
+        age = (TODAY - dt.date.fromisoformat(last_date)).days
     except (TypeError, ValueError):
-        same_week = False
-    if same_week and len(previous.get('questions', [])) == len(TOPICS):
-        questions = [{'topic': q['topic'], 'question': q['question']} for q in previous['questions']]
-    else:
-        questions = choose_questions(groups, previous)
+        age = None
+    if age is not None and 0 <= age < 3 and len(previous.get('questions', [])) == len(TOPICS):
+        print('Current research questions are less than three days old.')
+        return
+
+    groups = gather()
+    questions = choose_questions(groups, previous)
     archive = previous.get('archive', []) if isinstance(previous.get('archive'), list) else []
     archive = [{'updated': item['updated'],
                 'questions': [{'topic': q['topic'], 'question': q['question']}
                               for q in item.get('questions', []) if 'topic' in q and 'question' in q]}
                for item in archive if isinstance(item, dict)]
-    if not same_week and last_date and previous.get('questions'):
+    if last_date and previous.get('questions'):
         archive.insert(0, {'updated': last_date,
                            'questions': [{'topic': q['topic'], 'question': q['question']}
                                          for q in previous['questions']]})
     issue = {'updated': TODAY.isoformat(), 'mode': 'curated',
-             'questions': questions, 'archive': archive[:12]}
+             'questions': questions, 'archive': archive[:23]}
     OUTPUT.write_text(json.dumps(issue, indent=2, ensure_ascii=False) + '\n')
     print(f'Published {len(questions)} questions from {sum(len(p) for _, p in groups)} retrieved papers.')
-
 
 if __name__ == '__main__':
     main()

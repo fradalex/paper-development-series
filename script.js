@@ -74,11 +74,10 @@
   const card = document.querySelector('.pulse');
   const page = document.getElementById('pulse-page');
   const title = document.getElementById('pulse-title');
-  const date = document.getElementById('pulse-date');
   const controls = document.getElementById('pulse-controls');
   const pause = document.getElementById('pulse-pause');
   const progress = document.getElementById('pulse-progress-bar');
-  if (!card || !page || !title || !date || !controls || !pause || !progress) return;
+  if (!card || !page || !title || !controls || !pause || !progress) return;
 
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let entries = [];
@@ -145,9 +144,6 @@
         item => item && typeof item.question === 'string' && item.question.trim()
       ).slice(0, 3) : [];
       if (!entries.length) return;
-      const parsed = new Date(issue.updated + 'T12:00:00Z');
-      if (!Number.isNaN(parsed.getTime())) date.textContent = 'Updated ' +
-        new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(parsed);
       controls.replaceChildren();
       entries.forEach((entry, n) => {
         const button = document.createElement('button');
@@ -167,5 +163,5 @@
       }
       schedule();
     })
-    .catch(() => { date.textContent = 'New questions coming soon'; });
+    .catch(() => { title.textContent = 'New questions coming soon'; });
 })();
