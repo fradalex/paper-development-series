@@ -66,3 +66,57 @@
   toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); nav.classList.toggle('is-open', open); });
   nav.addEventListener('click', event => { if (event.target.closest('a')) { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); } });
 })();
+
+
+// The weekly result is a published JSON file, never a per-visitor AI request.
+(() => {
+  'use strict';
+  const title = document.getElementById('pulse-title');
+  const context = document.getElementById('pulse-context');
+  const date = document.getElementById('pulse-date');
+  const sources = document.getElementById('pulse-sources');
+  const controls = document.getElementById('pulse-controls');
+  if (!title || !context || !date || !sources || !controls) return;
+  function show(entries, index) {
+    const entry = entries[index];
+    title.textContent = entry.question;
+    context.textContent = entry.context || 'A question prompted by recently published research.';
+    sources.replaceChildren();
+    (entry.sources || []).slice(0, 2).forEach((paper, number) => {
+      try {
+        const url = new URL(paper.url);
+        if (url.protocol !== 'https:') return;
+        const link = document.createElement('a');
+        link.href = url.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'Paper ' + (number + 1) + ' ↗';
+        link.title = paper.title || 'View research paper';
+        sources.append(link);
+      } catch { /* Ignore invalid links. */ }
+    });
+    [...controls.children].forEach((button, n) => button.setAttribute('aria-pressed', String(n === index)));
+  }
+  fetch('research-pulse.json', { cache: 'no-cache' })
+    .then(response => { if (!response.ok) throw Error('Unavailable'); return response.json(); })
+    .then(issue => {
+      const entries = Array.isArray(issue.questions) ? issue.questions.filter(
+        item => item && typeof item.question === 'string' && typeof item.context === 'string'
+      ).slice(0, 3) : [];
+      if (!entries.length) return;
+      const parsed = new Date(issue.updated + 'T12:00:00Z');
+      if (!Number.isNaN(parsed.getTime())) date.textContent = 'Updated ' +
+        new Intl.DateTimeFormat('en', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(parsed);
+      controls.replaceChildren();
+      entries.forEach((entry, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = String(index + 1).padStart(2, '0');
+        button.setAttribute('aria-label', 'Show ' + entry.topic + ' question');
+        button.addEventListener('click', () => show(entries, index));
+        controls.append(button);
+      });
+      show(entries, 0);
+    })
+    .catch(() => { context.textContent = 'The latest literature scan is temporarily unavailable. Please check back soon.'; });
+})();
