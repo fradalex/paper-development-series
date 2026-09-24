@@ -37,3 +37,15 @@
 /* Footer emblem matches the header symbol. */
 .footer-logo-mark{display:block;width:42px;height:42px}
 @media(max-width:680px){.footer-inner{flex-direction:column;gap:26px}.footer-inner>div:last-child{align-items:start;text-align:left}}
+
+/* A live editorial card generated once per week, with linked research behind each prompt. */
+.pulse{width:100%;max-width:490px;margin:55px auto 55px 0;background:#f8f3e9;color:var(--ink);border:1px solid #dfd8c9;box-shadow:20px 23px 0 #2c4950,0 28px 62px #081b2380;min-height:425px;display:flex;flex-direction:column}
+.pulse-top,.pulse-bottom{display:flex;align-items:center;gap:10px;padding:18px 27px;font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.pulse-top{border-bottom:1px solid #d9d7cd}.pulse-date{margin-left:auto;color:#607177;font-size:.61rem;white-space:nowrap}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #c873531f}
+.pulse-body{padding:31px 30px 24px;flex:1}.pulse-kicker{color:#9d503b;font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;margin-bottom:20px}
+.pulse h2{font-size:clamp(1.75rem,2.6vw,2.65rem);line-height:1.2;margin-bottom:16px;letter-spacing:-.035em}.pulse-context{font-size:.85rem;color:#53666a;line-height:1.7;margin-bottom:20px}
+.pulse-sources{display:flex;flex-wrap:wrap;gap:9px}.pulse-sources a{font-size:.68rem;font-weight:700;color:#984b34;text-decoration:none;border-bottom:1px solid currentColor}.pulse-sources a:hover{text-decoration:underline}
+.pulse-bottom{border-top:1px solid #d9d7cd;justify-content:space-between;margin-top:auto;color:#53666a;font-size:.61rem;line-height:1.4}.pulse-controls{display:flex;gap:7px}.pulse-controls button{background:transparent;border:1px solid #a8b7b1;color:var(--ink);min-width:30px;height:30px;cursor:pointer;font-size:.7rem}.pulse-controls button[aria-pressed="true"]{background:var(--ink);color:white}.pulse-controls button:hover{border-color:var(--accent)}
+@media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);gap:25px}.pulse{margin-right:20px}}
+@media(max-width:680px){.pulse{margin:10px 14px 65px 0;max-width:calc(100% - 18px);min-height:360px}.pulse-body{padding:26px 22px}.pulse-top,.pulse-bottom{padding:16px 22px}.pulse h2{font-size:2.15rem}}
