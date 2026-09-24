@@ -50,18 +50,18 @@
       "context": "A discussion prompt inspired by recent publications on science policy and diffusion.",
       "sources": [
         {
-          "title": "Digital Policy in Mali: A Systematic Review on Integration of ICT for the Basic Education System",
-          "date": "2026-09-24",
-          "url": "https://doi.org/10.54536/ijsrd.v3i1.8456",
-          "source": "Crossref",
-          "doi": "10.54536/ijsrd.v3i1.8456"
-        },
-        {
           "title": "Building the Full AI Stack as the Core of Contemporary U.S. Science, Technology, and Innovation Policy",
           "date": "2026-08-06",
           "url": "https://doi.org/10.15407/scine22.04.003",
           "source": "OpenAlex",
           "doi": "10.15407/scine22.04.003"
+        },
+        {
+          "title": "Turning policy implications into policy impact: Lessons from behavioral science in financial markets",
+          "date": "2026-07-06",
+          "url": "https://doi.org/10.1073/pnas.2525990123",
+          "source": "OpenAlex",
+          "doi": "10.1073/pnas.2525990123"
         }
       ]
     }
