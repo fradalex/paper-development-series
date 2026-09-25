@@ -117,15 +117,6 @@
     $('organisers').querySelector('.organisers-grid > div:last-child > p').textContent = 'The Paper Development Series is organised collaboratively by:';
   }
   if (email) { const a = el('a', 'contact-link', 'Contact the organisers ↗'); a.href = 'mailto:' + email; $('contact-action').append(a); }
-  const mailingUrl = validLink(data.mailingListFormUrl);
-  if (mailingUrl) {
-    const frame = el('iframe');
-    frame.title = 'Subscribe to the Paper Development Series mailing list';
-    frame.src = mailingUrl;
-    frame.loading = 'lazy';
-    frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    $('mailing-signup').replaceChildren(frame);
-  }
   $('year').textContent = today.getFullYear();
 
   const toggle = document.querySelector('.menu-toggle');
