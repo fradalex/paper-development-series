@@ -34,7 +34,7 @@ window.PDS_DATA = {
       title: "A working paper title",
       description: "One or two sentences about the research question and discussion.",
       location: "Online",  // Optional; or a room and address
-      link: ""             // Optional full https:// URL for details or registration
+      link: ""             // Optional full https:// URL; for online sessions, use the meeting link
     }
     */
     {
