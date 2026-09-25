@@ -181,7 +181,16 @@
             <p class="lead">Be there for the next discussion.</p>
             <p>Join the mailing list for updates about upcoming paper discussions and idea incubation sessions. You can unsubscribe at any time.</p>
             <div id="mailing-signup" class="mailing-signup">
-              <script async data-uid="35fecaf418" src="https://paper-development-series.kit.com/35fecaf418/index.js"></script>
+              <script>
+                // Ask Kit for the current published form on each page load.
+                (() => {
+                  const formScript = document.createElement('script');
+                  formScript.async = true;
+                  formScript.dataset.uid = '35fecaf418';
+                  formScript.src = 'https://paper-development-series.kit.com/35fecaf418/index.js?fresh=' + Date.now();
+                  document.currentScript.parentElement.appendChild(formScript);
+                })();
+              </script>
             </div>
           </div>
         </div>
