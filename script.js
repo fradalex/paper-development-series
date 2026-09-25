@@ -19,29 +19,18 @@
   const dialog = $('session-dialog');
   const dialogContent = $('session-dialog-content');
   const archiveScroll = $('archive-scroll');
+  const upcomingScroll = $('upcoming-scroll');
+  const upcomingList = $('upcoming-list');
   const archiveList = $('past-list');
-  let lastArchiveTrigger;
+  let lastSessionTrigger;
 
-  function sessionCard(session) {
-    const article = el('article', 'session-card');
-    const date = el('div', 'session-date', formatDate(session.date));
-    if (session.time) date.append(el('span', 'session-time', session.time));
-    const body = el('div', 'session-body');
-    body.append(el('h4', '', session.title), el('p', 'session-speaker', session.speaker + (session.affiliation ? ' · ' + session.affiliation : '')));
-    if (session.description) body.append(el('p', 'session-description', session.description));
-    if (session.location) body.append(el('p', 'session-location', session.location));
-    const url = validLink(session.link);
-    if (url) { const link = el('a', 'session-link', 'Details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; body.append(link); }
-    article.append(date, body);
-    return article;
-  }
-
-  function openArchiveCard(session, trigger) {
-    lastArchiveTrigger = trigger;
+  function openSessionCard(session, trigger) {
+    lastSessionTrigger = trigger;
     const title = el('h3', 'session-dialog-title', session.title);
     title.id = 'session-dialog-title';
     dialogContent.replaceChildren(el('p', 'session-dialog-date', formatDate(session.date)), title);
     dialogContent.append(el('p', 'session-dialog-speaker', session.speaker));
+    if (session.placeholder) dialogContent.append(el('p', 'session-dialog-abstract', 'Speaker and paper details will be announced.'));
     if (session.affiliation) dialogContent.append(el('p', 'session-dialog-affiliation', session.affiliation));
     if (Array.isArray(session.coauthors) && session.coauthors.length) {
       const names = session.coauthors.filter(Boolean).join(', ');
@@ -67,20 +56,39 @@
     row.append(el('span', 'archive-row-date', formatDate(session.date)),
                el('span', 'archive-row-speaker', session.speaker),
                el('span', 'archive-row-title', session.title));
-    row.setAttribute('aria-label', formatDate(session.date) + ': ' + session.speaker + ', ' + session.title + '. View paper details');
-    row.addEventListener('click', () => openArchiveCard(session, row));
+    row.setAttribute('aria-label', formatDate(session.date) + ': ' + session.speaker + ', ' + session.title + '. View session details');
+    row.addEventListener('click', () => openSessionCard(session, row));
     return row;
   }
 
-  function updateArchiveFade() {
-    archiveScroll.classList.toggle('is-at-end', archiveList.scrollTop + archiveList.clientHeight >= archiveList.scrollHeight - 2);
+  function updateListFades() {
+    for (const [container, list] of [[archiveScroll, archiveList], [upcomingScroll, upcomingList]]) {
+      container.classList.toggle('is-at-end', list.scrollTop + list.clientHeight >= list.scrollHeight - 2);
+    }
+  }
+
+  function nextPlaceholders(day) {
+    const start = new Date(2026, 10, 1);
+    const current = new Date(day + 'T12:00:00');
+    const month = new Date(current.getFullYear(), current.getMonth(), 1);
+    if (month < start) month.setTime(start.getTime());
+    const result = [];
+    for (let i = 0; i < 14 && result.length < 12; i++) {
+      const year = month.getFullYear();
+      const mon = month.getMonth();
+      const firstWednesday = 1 + (3 - new Date(year, mon, 1).getDay() + 7) % 7;
+      const date = [year, String(mon + 1).padStart(2, '0'), String(firstWednesday + 7).padStart(2, '0')].join('-');
+      if (date >= day && !sessions.some(s => s.date === date)) result.push({ date, speaker: 'TBD', title: 'TBD', placeholder: true });
+      month.setMonth(month.getMonth() + 1);
+    }
+    return result;
   }
 
   function renderProgramme() {
     const day = localDay();
-    const upcoming = sessions.filter(s => s.date >= day).sort((a, b) => a.date.localeCompare(b.date));
+    const upcoming = [...sessions.filter(s => s.date >= day), ...nextPlaceholders(day)].sort((a, b) => a.date.localeCompare(b.date));
     const past = sessions.filter(s => s.date < day).sort((a, b) => b.date.localeCompare(a.date));
-    $('upcoming-list').replaceChildren(...(upcoming.length ? upcoming.map(sessionCard) : [el('p', 'empty-state', 'Dates and speakers will appear here as they are confirmed.')]));
+    upcomingList.replaceChildren(...(upcoming.length ? upcoming.map(archiveRow) : [el('p', 'empty-state', 'Dates and speakers will appear here as they are confirmed.')]));
     archiveList.replaceChildren(...(past.length ? past.map(archiveRow) : [el('p', 'empty-state', 'Past sessions will be collected here.')]));
     $('upcoming-count').textContent = String(upcoming.length).padStart(2, '0');
     $('past-count').textContent = String(past.length).padStart(2, '0');
@@ -94,14 +102,15 @@
     } else {
       content.replaceChildren(el('h3', '', 'Next session to be announced'), el('p', '', 'We are putting the programme together. Check back soon for the next discussion.'));
     }
-    requestAnimationFrame(updateArchiveFade);
+    requestAnimationFrame(updateListFades);
   }
 
   $('session-dialog-close').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('close', () => lastArchiveTrigger?.focus());
+  dialog.addEventListener('close', () => lastSessionTrigger?.focus());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  archiveList.addEventListener('scroll', updateArchiveFade, { passive: true });
-  window.addEventListener('resize', updateArchiveFade);
+  archiveList.addEventListener('scroll', updateListFades, { passive: true });
+  upcomingList.addEventListener('scroll', updateListFades, { passive: true });
+  window.addEventListener('resize', updateListFades);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) renderProgramme(); });
   function scheduleNextDay() {
     const midnight = new Date();

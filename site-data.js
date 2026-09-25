@@ -1,4 +1,4 @@
-/* Add sessions here. Once a date has passed, its session appears in the archive automatically. */
+/* Add confirmed sessions here. The site fills second Wednesdays from November 2026 with TBD placeholders. A confirmed session on the same date replaces the placeholder. Confirmed sessions move to the archive after their date; unconfirmed placeholders expire. */
 window.PDS_DATA = {
   email: "", // Public contact address, e.g. "pds@example.org"
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
