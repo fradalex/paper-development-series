@@ -15,7 +15,7 @@
         dataScript.src = 'site-data.js?fresh=' + Date.now();
         dataScript.onload = () => {
           const appScript = document.createElement('script');
-          appScript.src = 'script.js?v=11';
+          appScript.src = 'script.js?v=12';
           document.body.append(appScript);
         };
         document.body.append(dataScript);
