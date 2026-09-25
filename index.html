@@ -7,9 +7,9 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=16">
-    <script defer src="site-data.js?v=2"></script>
-    <script defer src="script.js?v=7"></script>
+    <link rel="stylesheet" href="styles.css?v=17">
+    <script defer src="site-data.js?v=3"></script>
+    <script defer src="script.js?v=8"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -117,7 +117,7 @@
           <div class="session-columns">
             <div class="upcoming-panel">
               <div class="list-heading"><h3>Upcoming</h3><span id="upcoming-count" class="count">00</span></div>
-              <div id="upcoming-list" class="session-list"><p class="empty-state">Dates and speakers will appear here as they are confirmed.</p></div>
+              <div class="archive-scroll is-at-end" id="upcoming-scroll"><div id="upcoming-list" class="archive-list"><p class="empty-state">Dates and speakers will appear here as they are confirmed.</p></div></div>
             </div>
             <div class="archive-panel">
               <div class="list-heading"><h3>Archive</h3><span id="past-count" class="count">00</span></div>
@@ -128,7 +128,7 @@
           </div>
         </div>
         <dialog id="session-dialog" class="session-dialog" aria-labelledby="session-dialog-title">
-          <div class="session-dialog-top"><span>Paper Development Series / Archive</span><button id="session-dialog-close" type="button" class="session-dialog-close" aria-label="Close paper details">Close <span aria-hidden="true">×</span></button></div>
+          <div class="session-dialog-top"><span>Paper Development Series / Sessions</span><button id="session-dialog-close" type="button" class="session-dialog-close" aria-label="Close session details">Close <span aria-hidden="true">×</span></button></div>
           <div id="session-dialog-content" class="session-dialog-content"></div>
         </dialog>
       </section>
