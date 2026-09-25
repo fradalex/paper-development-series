@@ -2,6 +2,7 @@
 window.PDS_DATA = {
   email: "paperdevelopmentseries@gmail.com", // Public contact address and contact form destination
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
+  mailingListFormUrl: "", // Paste the HTTPS iframe src from Brevo > Marketing > Forms > Share
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
   sessions: [
     {
