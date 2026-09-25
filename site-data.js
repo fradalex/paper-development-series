@@ -5,6 +5,12 @@ window.PDS_DATA = {
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
   excludedDates: ["2027-08-11", "2027-09-08", "2027-10-13"], // Skip a TBD slot, e.g. ["2026-12-09"]. Confirmed sessions are managed below.
   sessions: [
+    {
+    date: "2026-10-15",
+    speaker: "TBD",
+    title: "TBD",
+    description: "Speaker and paper details will be announced."
+    },
     /*
     {
       date: "2026-10-15", // YYYY-MM-DD
