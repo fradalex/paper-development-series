@@ -4,12 +4,7 @@ window.PDS_DATA = {
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
   sessions: [
-    {
-      date: "2026-10-15",
-      speaker: "TBD",
-      title: "TBD",
-      description: "Speaker and paper details will be announced."
-    },
+    { date: "2026-10-15", speaker: "TBD", title: "TBD" },
     { date: "2026-11-11", speaker: "TBD", title: "TBD" },
     { date: "2026-12-09", speaker: "TBD", title: "TBD" },
     { date: "2027-01-13", speaker: "TBD", title: "TBD" },
