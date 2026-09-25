@@ -74,7 +74,7 @@
     const month = new Date(current.getFullYear(), current.getMonth(), 1);
     if (month < start) month.setTime(start.getTime());
     const result = [];
-    for (let i = 0; i < 14 && result.length < 12; i++) {
+    for (let i = 0; i < 12; i++) {
       const year = month.getFullYear();
       const mon = month.getMonth();
       const firstWednesday = 1 + (3 - new Date(year, mon, 1).getDay() + 7) % 7;
