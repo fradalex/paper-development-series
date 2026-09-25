@@ -46,7 +46,7 @@
       dialogContent.append(el('p', 'session-dialog-location', [session.time, session.location].filter(Boolean).join(' · ')));
     }
     const url = validLink(session.link);
-    if (url) { const link = el('a', 'session-link', 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; dialogContent.append(link); }
+    if (url) { const link = el('a', 'session-link', session.date >= localDay() && /\bonline\b/i.test(session.location || '') ? 'Join the online meeting ↗' : 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; dialogContent.append(link); }
     dialog.showModal();
     $('session-dialog-close').focus();
   }
@@ -82,7 +82,7 @@
       content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', next.speaker + (next.affiliation ? ' · ' + next.affiliation : '')));
       if (next.location) content.append(el('p', 'featured-location', next.location));
       const url = validLink(next.link);
-      if (url) { const link = el('a', 'featured-link', 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; content.append(link); }
+      if (url) { const link = el('a', 'featured-link', /\bonline\b/i.test(next.location || '') ? 'Join the online meeting ↗' : 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; content.append(link); }
     } else {
       content.replaceChildren(el('h3', '', 'Next session to be announced'), el('p', '', 'We are putting the programme together. Check back soon for the next discussion.'));
     }
