@@ -104,14 +104,14 @@
   renderProgramme();
   scheduleNextDay();
 
-  const proposalUrl = validLink(data.proposalUrl);
   const email = typeof data.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ? data.email : '';
-  if (proposalUrl || email) {
-    const a = el('a', 'button button-light', proposalUrl ? 'Propose a session ↗' : 'Get in touch ↗');
-    a.href = proposalUrl || 'mailto:' + email;
-    if (proposalUrl) { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
-    $('participate-action').replaceChildren(a);
-  }
+  const contactDialog = $('contact-dialog');
+  const contactOpen = $('contact-form-open');
+  contactOpen.addEventListener('click', () => { contactDialog.showModal(); $('contact-name').focus(); });
+  $('contact-dialog-close').addEventListener('click', () => contactDialog.close());
+  contactDialog.addEventListener('close', () => contactOpen.focus());
+  contactDialog.addEventListener('click', event => { if (event.target === contactDialog) contactDialog.close(); });
+  if (email) $('contact-form').action = 'https://formsubmit.co/' + encodeURIComponent(email);
   if (Array.isArray(data.organisers) && data.organisers.length) {
     $('organiser-list').replaceChildren(...data.organisers.filter(Boolean).map(name => el('span', 'organiser-name', name)));
     $('organisers').querySelector('.organisers-grid > div:last-child > p').textContent = 'The Paper Development Series is organised collaboratively by:';
