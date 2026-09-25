@@ -111,7 +111,7 @@
   $('contact-dialog-close').addEventListener('click', () => contactDialog.close());
   contactDialog.addEventListener('close', () => contactOpen.focus());
   contactDialog.addEventListener('click', event => { if (event.target === contactDialog) contactDialog.close(); });
-  if (email) $('contact-form').action = 'https://formsubmit.co/' + encodeURIComponent(email);
+  if (email) $('contact-form').setAttribute('action', 'https://formsubmit.co/' + email);
   if (Array.isArray(data.organisers) && data.organisers.length) {
     $('organiser-list').replaceChildren(...data.organisers.filter(Boolean).map(name => el('span', 'organiser-name', name)));
     $('organisers').querySelector('.organisers-grid > div:last-child > p').textContent = 'The Paper Development Series is organised collaboratively by:';
