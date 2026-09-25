@@ -3,7 +3,7 @@ window.PDS_DATA = {
   email: "", // Public contact address, e.g. "pds@example.org"
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
-  excludedDates: [], // Skip a TBD slot, e.g. ["2026-12-09"]. Confirmed sessions are managed below.
+  excludedDates: ["2026-08-11", "2026-09-8", "2026-10-13"], // Skip a TBD slot, e.g. ["2026-12-09"]. Confirmed sessions are managed below.
   sessions: [
     /*
     {
