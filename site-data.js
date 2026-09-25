@@ -1,6 +1,6 @@
 /* Edit or delete any session below. Add new ones as { date: "YYYY-MM-DD", speaker: "Name", title: "Paper title" }. Entries with TBD details expire after their date; completed sessions move to the archive. */
 window.PDS_DATA = {
-  email: "", // Public contact address, e.g. "pds@example.org"
+  email: "paperdevelopmentseries@gmail.com", // Public contact address and contact form destination
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
   sessions: [

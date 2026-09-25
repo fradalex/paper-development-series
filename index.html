@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=17">
+    <link rel="stylesheet" href="styles.css?v=18">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@
         dataScript.src = 'site-data.js?fresh=' + Date.now();
         dataScript.onload = () => {
           const appScript = document.createElement('script');
-          appScript.src = 'script.js?v=12';
+          appScript.src = 'script.js?v=13';
           document.body.append(appScript);
         };
         document.body.append(dataScript);
@@ -144,7 +144,32 @@
         </dialog>
       </section>
 
-      <section class="section participate-section" id="participate" aria-labelledby="participate-title"><div class="shell participate-grid"><div><p class="eyebrow light">Join the conversation</p><h2 id="participate-title">Your work belongs<br>in the <em>discussion.</em></h2></div><div><p>Have a paper draft or a research idea you would like to discuss? We welcome contributions from early-career researchers and value thoughtful feedback from everyone who attends.</p><div id="participate-action" class="participate-action"><span class="pending-note">Details on how to propose a session will be posted here soon.</span></div></div></div></section>
+      <section class="section participate-section" id="participate" aria-labelledby="participate-title"><div class="shell participate-grid"><div><p class="eyebrow light">Join the conversation</p><h2 id="participate-title">Your work belongs<br>in the <em>discussion.</em></h2></div><div><p>Have a paper draft or a research idea you would like to discuss? We welcome contributions from early-career researchers and value thoughtful feedback from everyone who attends.</p><div class="participate-action"><button id="contact-form-open" class="contact-form-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-dialog">Contact form <span aria-hidden="true">↗</span></button></div></div></div></section>
+
+
+    <dialog id="contact-dialog" class="session-dialog contact-dialog" aria-labelledby="contact-dialog-title">
+      <div class="session-dialog-top"><span>Paper Development Series / Get in touch</span><button id="contact-dialog-close" type="button" class="session-dialog-close" aria-label="Close contact form">Close <span aria-hidden="true">×</span></button></div>
+      <div class="session-dialog-content">
+        <p class="eyebrow">Join the conversation</p>
+        <h3 id="contact-dialog-title" class="contact-dialog-title">Tell us about your work.</h3>
+        <p class="contact-dialog-intro">Interested in presenting a paper, sharing an early idea, or asking a question? Send us a message.</p>
+        <form id="contact-form" action="https://formsubmit.co/paperdevelopmentseries@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Paper Development Series message">
+          <input type="hidden" name="_next" value="https://fradalex.github.io/paper-development-series/thanks.html">
+          <input type="hidden" name="_url" value="https://fradalex.github.io/paper-development-series/#participate">
+          <div class="contact-honey" aria-hidden="true"><label for="contact-website">Leave this field empty</label><input id="contact-website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="contact-form-grid">
+            <div class="contact-field"><label for="contact-name">Your name <span aria-hidden="true">*</span></label><input id="contact-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+            <div class="contact-field"><label for="contact-email">Your email <span aria-hidden="true">*</span></label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+            <div class="contact-field"><label for="contact-affiliation">Affiliation <span class="field-optional">(optional)</span></label><input id="contact-affiliation" name="affiliation" type="text" autocomplete="organization" maxlength="160"></div>
+            <div class="contact-field"><label for="contact-topic">I’m writing about <span aria-hidden="true">*</span></label><select id="contact-topic" name="topic" required><option value="" disabled selected>Choose a topic</option><option value="Paper discussion">Paper discussion</option><option value="Idea incubation">Idea incubation</option><option value="General enquiry">General enquiry</option></select></div>
+            <div class="contact-field contact-field-wide"><label for="contact-title">Working title <span class="field-optional">(optional)</span></label><input id="contact-title" name="working_title" type="text" maxlength="220"></div>
+            <div class="contact-field contact-field-wide"><label for="contact-message">Your message <span aria-hidden="true">*</span></label><textarea id="contact-message" name="message" rows="6" maxlength="6000" placeholder="Tell us what you are working on, what stage it is at, and what kind of feedback you would find useful." required></textarea></div>
+          </div>
+          <div class="contact-form-bottom"><button class="button contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button><p>Messages are delivered through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a> to the organisers’ inbox.</p></div>
+        </form>
+      </div>
+    </dialog>
 
       <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title"><div class="shell organisers-grid"><div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div><div><p>The Paper Development Series is organised collaboratively by a group of researchers. We will share the organisers’ names and contact details here once the programme is ready.</p><div id="organiser-list" class="organiser-list" aria-label="Organisers"></div><div id="contact-action"></div></div></div></section>
     </main>
