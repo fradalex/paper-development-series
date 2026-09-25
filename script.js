@@ -9,12 +9,18 @@
   };
   const sessions = Array.isArray(data.sessions) ? data.sessions.filter(s => s && isValidDate(s.date) && s.title && s.speaker) : [];
   const today = new Date();
-  const currentDay = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
-  const upcoming = sessions.filter(s => s.date >= currentDay).sort((a, b) => a.date.localeCompare(b.date));
-  const past = sessions.filter(s => s.date < currentDay).sort((a, b) => b.date.localeCompare(a.date));
+  const localDay = () => {
+    const date = new Date();
+    return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');
+  };
   const formatDate = value => new Intl.DateTimeFormat('en', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(value + 'T12:00:00'));
   const el = (tag, className, value) => { const node = document.createElement(tag); if (className) node.className = className; if (value != null) node.textContent = value; return node; };
   const validLink = value => { try { const url = new URL(value); return url.protocol === 'https:' ? url.href : null; } catch { return null; } };
+  const dialog = $('session-dialog');
+  const dialogContent = $('session-dialog-content');
+  const archiveScroll = $('archive-scroll');
+  const archiveList = $('past-list');
+  let lastArchiveTrigger;
 
   function sessionCard(session) {
     const article = el('article', 'session-card');
@@ -25,26 +31,85 @@
     if (session.description) body.append(el('p', 'session-description', session.description));
     if (session.location) body.append(el('p', 'session-location', session.location));
     const url = validLink(session.link);
-    if (url) { const a = el('a', 'session-link', 'Details ↗'); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; body.append(a); }
+    if (url) { const link = el('a', 'session-link', 'Details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; body.append(link); }
     article.append(date, body);
     return article;
   }
-  function renderList(id, items) {
-    if (!items.length) return;
-    const list = $(id); list.replaceChildren(...items.map(sessionCard));
+
+  function openArchiveCard(session, trigger) {
+    lastArchiveTrigger = trigger;
+    const title = el('h3', 'session-dialog-title', session.title);
+    title.id = 'session-dialog-title';
+    dialogContent.replaceChildren(el('p', 'session-dialog-date', formatDate(session.date)), title);
+    dialogContent.append(el('p', 'session-dialog-speaker', session.speaker));
+    if (session.affiliation) dialogContent.append(el('p', 'session-dialog-affiliation', session.affiliation));
+    if (Array.isArray(session.coauthors) && session.coauthors.length) {
+      const names = session.coauthors.filter(Boolean).join(', ');
+      if (names) dialogContent.append(el('p', 'session-dialog-coauthors', (session.coauthors.length === 1 ? 'Coauthor: ' : 'Coauthors: ') + names));
+    }
+    const summary = session.abstract || session.description;
+    if (summary) {
+      dialogContent.append(el('h4', 'session-dialog-subheading', session.abstract ? 'Abstract' : 'About the session'));
+      dialogContent.append(el('p', 'session-dialog-abstract', summary));
+    }
+    if (session.time || session.location) {
+      dialogContent.append(el('p', 'session-dialog-location', [session.time, session.location].filter(Boolean).join(' · ')));
+    }
+    const url = validLink(session.link);
+    if (url) { const link = el('a', 'session-link', 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; dialogContent.append(link); }
+    dialog.showModal();
+    $('session-dialog-close').focus();
   }
-  renderList('upcoming-list', upcoming);
-  renderList('past-list', past);
-  $('upcoming-count').textContent = String(upcoming.length).padStart(2, '0');
-  $('past-count').textContent = String(past.length).padStart(2, '0');
-  if (upcoming.length) {
-    const next = upcoming[0];
+
+  function archiveRow(session) {
+    const row = el('button', 'archive-row');
+    row.type = 'button';
+    row.append(el('span', 'archive-row-date', formatDate(session.date)),
+               el('span', 'archive-row-speaker', session.speaker),
+               el('span', 'archive-row-title', session.title));
+    row.setAttribute('aria-label', formatDate(session.date) + ': ' + session.speaker + ', ' + session.title + '. View paper details');
+    row.addEventListener('click', () => openArchiveCard(session, row));
+    return row;
+  }
+
+  function updateArchiveFade() {
+    archiveScroll.classList.toggle('is-at-end', archiveList.scrollTop + archiveList.clientHeight >= archiveList.scrollHeight - 2);
+  }
+
+  function renderProgramme() {
+    const day = localDay();
+    const upcoming = sessions.filter(s => s.date >= day).sort((a, b) => a.date.localeCompare(b.date));
+    const past = sessions.filter(s => s.date < day).sort((a, b) => b.date.localeCompare(a.date));
+    $('upcoming-list').replaceChildren(...(upcoming.length ? upcoming.map(sessionCard) : [el('p', 'empty-state', 'Dates and speakers will appear here as they are confirmed.')]));
+    archiveList.replaceChildren(...(past.length ? past.map(archiveRow) : [el('p', 'empty-state', 'Past sessions will be collected here.')]));
+    $('upcoming-count').textContent = String(upcoming.length).padStart(2, '0');
+    $('past-count').textContent = String(past.length).padStart(2, '0');
     const content = $('next-session').querySelector('.featured-content');
-    content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', next.speaker + (next.affiliation ? ' · ' + next.affiliation : '')));
-    if (next.location) content.append(el('p', 'featured-location', next.location));
-    const url = validLink(next.link);
-    if (url) { const a = el('a', 'featured-link', 'Session details ↗'); a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer'; content.append(a); }
+    if (upcoming.length) {
+      const next = upcoming[0];
+      content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', next.speaker + (next.affiliation ? ' · ' + next.affiliation : '')));
+      if (next.location) content.append(el('p', 'featured-location', next.location));
+      const url = validLink(next.link);
+      if (url) { const link = el('a', 'featured-link', 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; content.append(link); }
+    } else {
+      content.replaceChildren(el('h3', '', 'Next session to be announced'), el('p', '', 'We are putting the programme together. Check back soon for the next discussion.'));
+    }
+    requestAnimationFrame(updateArchiveFade);
   }
+
+  $('session-dialog-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => lastArchiveTrigger?.focus());
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  archiveList.addEventListener('scroll', updateArchiveFade, { passive: true });
+  window.addEventListener('resize', updateArchiveFade);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) renderProgramme(); });
+  function scheduleNextDay() {
+    const midnight = new Date();
+    midnight.setHours(24, 0, 1, 0);
+    setTimeout(() => { renderProgramme(); scheduleNextDay(); }, midnight.getTime() - Date.now());
+  }
+  renderProgramme();
+  scheduleNextDay();
 
   const proposalUrl = validLink(data.proposalUrl);
   const email = typeof data.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ? data.email : '';
