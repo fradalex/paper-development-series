@@ -1,12 +1,12 @@
-# Connect the mailing list
+# Connect the mailing list with Google Forms
 
-The website's Mailing list section is prepared but should stay unpublished until the subscription form below is connected. No email addresses are stored in the website or its public GitHub repository.
+The website's Mailing list section is prepared but should stay unpublished until the signup form below is connected. Subscriber addresses will live in a private Google Sheet, not in the public GitHub repository.
 
-1. Create a free account at https://www.brevo.com/ using paperdevelopmentseries@gmail.com. Brevo's free plan stores contacts and includes 300 email sends per day.
-2. Under CRM > Contacts > Lists, create a list named **Paper Development Series — seminar reminders**.
-3. In Marketing > Forms > Sign-up, create a **Full page/embedded** form. Ask only for an email address. Enable the GDPR fields and describe the subscription as reminders for Paper Development Series sessions; use **Double confirmation email**. Select the list from step 2 as the destination. Use Brevo's default confirmation email unless you customize it.
-4. At the **Share** step, copy the **Iframe** code. Extract only the HTTPS URL inside its `src="..."` attribute; do not paste the full HTML into site-data.js.
-5. Paste that URL into `mailingListFormUrl` in `site-data.js`. The website will embed the Brevo-hosted form; contacts who confirm their addresses appear in Brevo under **CRM > Contacts > Lists**.
-6. Send a personal test subscription, click the confirmation link received by email, and check that the address appears in the list. Then merge and publish the draft pull request.
+1. Sign in to [Google Forms](https://forms.google.com/) with paperdevelopmentseries@gmail.com and create a blank form called **Paper Development Series — mailing list**.
+2. In **Settings > Responses**, set **Collect email addresses** to **Responder input**, so participants can enter an address without a Google Account. Do not enable **Limit to 1 response**, which would require Google sign-in. Do not enable **View results summary**, which could reveal responses to participants.
+3. Add a required checkbox question: **I agree to receive Paper Development Series email reminders one week before each session and on the day of the session. I can unsubscribe at any time by emailing paperdevelopmentseries@gmail.com.** Use the option **I agree**. Add a brief description that addresses will only be used for these reminders.
+4. In **Responses**, click **Link to Sheets** and create a new spreadsheet. Keep the spreadsheet private. This is where you can view, export, and later remove addresses. Since a person can submit twice, any future sender should deduplicate email addresses.
+5. **Publish** the form, with general responder access set to anyone with the link. Under **More > Embed HTML**, copy the iframe code. Extract only the HTTPS URL between `src="` and the next `"`.
+6. Paste that URL into `mailingListFormUrl` in `site-data.js`. Test a subscription from the website and confirm that the response appears in the linked Sheet. Then merge and publish the draft pull request.
 
-The scheduled reminders one week before and on the day of a session are a later task. Do not add an API key to the public repository.
+Google Forms and Sheets collect the list; they do not send the planned one-week and same-day reminders. A later Google Apps Script can read the Sheet and scheduled sessions, send the emails, and respect removals. Its sending quota for a personal Gmail account is currently 100 recipients per day. No API key belongs in the public repository.
