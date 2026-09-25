@@ -19,7 +19,7 @@ window.PDS_DATA = {
     {
         "date": "2026-01-15",
         "speaker": "Bastian Krieger",
-        "affiliation": "researcher at ZEW Leibniz and head of the Junior Research Group Co-Creation in ZEW’s Research Unit Economics of Innovation and Industrial Dynamics",
+        "affiliation": "Researcher at ZEW Leibniz and head of the Junior Research Group Co-Creation in ZEW’s Research Unit Economics of Innovation and Industrial Dynamics",
         "coauthors": [
             "Linus Strecke"
         ],
@@ -41,12 +41,12 @@ window.PDS_DATA = {
             "Catherine Schneider"
         ],
         "title": "Varieties of AI factories in the European Union",
-        "abstract": "The European Union’s AI factories are new institutions on the map of AI innovation in Europe: They are not only supposed to boost European compute capacity but are also to be \"dynamic innovation ecosystems.\" Their recent emergence and central role in the European Commission’s plan to advance European AI makes them important subjects for researchers and policymakers alike. This article draws on the literature on regional innovation systems and innovation intermediaries to provide a conceptualization of AI factories. It builds on this conceptualization to provide a first systematic description of the existing AI factories. The analysis shows that while most of the 13 European AI factories selected before autumn 2025 (note: to be extended to all 19) follow the logic of regional innovation systems, there is extensive variation among them with regard to their geographic location and scope, the regional innovation systems they operate in, the structure of their consortia, and the services they provide. Building on these findings, the article outlines avenues for future research on the topic."
+        "abstract": "The European Union’s AI factories are new institutions on the map of AI innovation in Europe: They are not only supposed to boost European compute capacity but are also to be \"dynamic innovation ecosystems.\" Their recent emergence and central role in the European Commission’s plan to advance European AI makes them important subjects for researchers and policymakers alike. This article draws on the literature on regional innovation systems and innovation intermediaries to provide a conceptualization of AI factories. It builds on this conceptualization to provide a first systematic description of the existing AI factories. The analysis shows that while most of the 13 European AI factories selected before autumn 2025 follow the logic of regional innovation systems, there is extensive variation among them with regard to their geographic location and scope, the regional innovation systems they operate in, the structure of their consortia, and the services they provide. Building on these findings, the article outlines avenues for future research on the topic."
     },
     {
         "date": "2026-04-09",
         "speaker": "Giacomo Lupi",
-        "affiliation": "postdoctoral researcher at University of Ferrara",
+        "affiliation": "Postdoctoral researcher at University of Ferrara",
         "coauthors": [
             "Ugo Rizzo",
             "Francesco Rentocchini"
@@ -57,7 +57,7 @@ window.PDS_DATA = {
     {
         "date": "2026-05-07",
         "speaker": "Francesco Lelli",
-        "affiliation": "research fellow at INGENIO (Valencia) and the University of Trento",
+        "affiliation": "Research fellow at INGENIO (Valencia) and the University of Trento",
         "coauthors": [
             "Alice Bertoletti"
         ],
