@@ -4,6 +4,17 @@ window.PDS_DATA = {
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
   sessions: [
+    {
+      date: "2026-09-25",
+      time: "14:30 CET",
+      speaker: "R. Maria del Rio-Chanona",
+      coauthors: ["Linus Strecke"],
+      affiliation: "Unibo",
+      title: "AI and jobs",
+      description: "Generative AI is altering work processes, task composition, and organizational design, yet its effects on employment and the macroeconomy remain unresolved. In this review, we synthesize theory and empirical evidence at three levels. First, we trace the evolution from aggregate production frameworks to task- and expertise-based models. Second, we quantitatively review and compare (ex-ante) AI exposure measures of occupations from multiple studies and find convergence towards high-wage jobs. Third, we assemble ex-post evidence of AI's impact on employment from randomized controlled trials (RCTs), field experiments, and digital trace data (e.g., online labor platforms, software repositories), complemented by partial coverage of surveys. Across the reviewed studies, productivity gains are sizable but context-dependent: on the order of 20 to 60 percent in controlled RCTs, and 15 to 30 percent in field experiments. Novice workers tend to benefit more from LLMs in simple tasks. Across complex tasks, evidence is mixed on whether low or high-skilled workers benefit more. Digital trace data show substitution between humans and machines in writing and translation alongside rising demand for AI, with mild evidence of declining demand for novice workers. A more substantial decrease in demand for novice jobs across AI complementary work emerges from recent studies using surveys, platform payment records, or administrative data. Research gaps include the focus on simple tasks in experiments, the limited diversity of LLMs studied, and technology-centric AI exposure measures that overlook adoption dynamics and whether exposure translates into substitution, productivity gains, erode or increase expertise.",
+      location: "Online",
+      link: "https://www.deepl.com/it/translator"
+    }
     { date: "2026-10-15", speaker: "TBD", title: "TBD" },
     { date: "2026-11-11", speaker: "TBD", title: "TBD" },
     { date: "2026-12-09", speaker: "TBD", title: "TBD" },
