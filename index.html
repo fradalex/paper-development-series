@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=19">
+    <link rel="stylesheet" href="styles.css?v=20">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@
         dataScript.src = 'site-data.js?fresh=' + Date.now();
         dataScript.onload = () => {
           const appScript = document.createElement('script');
-          appScript.src = 'script.js?v=14';
+          appScript.src = 'script.js?v=15';
           document.body.append(appScript);
         };
         document.body.append(dataScript);
@@ -29,7 +29,7 @@
         <a class="brand" href="#top" aria-label="Paper Development Series, home"><img class="brand-mark" src="brand-mark.svg" alt="" width="44" height="44"><span class="brand-name">Paper Development Series</span></a>
         <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
         <nav id="primary-nav" class="nav" aria-label="Main navigation">
-          <a href="#about">About</a><a href="#prepare">Prepare</a><a href="#sessions">Sessions</a><a href="#participate">Take part</a><a href="#organisers">Organisers</a>
+          <a href="#about">About</a><a href="#prepare">Prepare</a><a href="#sessions">Sessions</a><a href="#participate">Take part</a><a href="#mailing-list">Mailing list</a><a href="#organisers">Organisers</a>
         </nav>
       </div>
     </header>
@@ -170,6 +170,27 @@
         </form>
       </div>
     </dialog>
+
+      <section class="section mailing-section" id="mailing-list" aria-labelledby="mailing-title">
+        <div class="shell mailing-grid">
+          <div>
+            <p class="eyebrow">Mailing list</p>
+            <h2 id="mailing-title">Keep the<br><em>conversation going.</em></h2>
+          </div>
+          <div class="mailing-copy">
+            <p class="lead">Be there for the next discussion.</p>
+            <p>Join the mailing list to hear about upcoming paper discussions and idea incubation sessions. You can unsubscribe at any time.</p>
+            <div id="mailing-signup" class="mailing-signup">
+              <label for="mailing-preview-email">Your email</label>
+              <div class="mailing-preview">
+                <input id="mailing-preview-email" type="email" placeholder="name@university.edu" disabled>
+                <button class="button" type="button" disabled>Subscribe <span aria-hidden="true">↗</span></button>
+              </div>
+              <p class="mailing-preview-note">Signup will open once the mailing list is connected.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title"><div class="shell organisers-grid"><div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div><div><p>The Paper Development Series is organised collaboratively by a group of researchers. We will share the organisers’ names and contact details here once the programme is ready.</p><div id="organiser-list" class="organiser-list" aria-label="Organisers"></div><div id="contact-action"></div></div></div></section>
     </main>
