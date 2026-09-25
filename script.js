@@ -8,6 +8,7 @@
     return !Number.isNaN(date.getTime()) && [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-') === value;
   };
   const sessions = Array.isArray(data.sessions) ? data.sessions.filter(s => s && isValidDate(s.date) && s.title && s.speaker) : [];
+  const excludedDates = new Set(Array.isArray(data.excludedDates) ? data.excludedDates.filter(isValidDate) : []);
   const today = new Date();
   const localDay = () => {
     const date = new Date();
@@ -78,7 +79,7 @@
       const mon = month.getMonth();
       const firstWednesday = 1 + (3 - new Date(year, mon, 1).getDay() + 7) % 7;
       const date = [year, String(mon + 1).padStart(2, '0'), String(firstWednesday + 7).padStart(2, '0')].join('-');
-      if (date >= day && !sessions.some(s => s.date === date)) result.push({ date, speaker: 'TBD', title: 'TBD', placeholder: true });
+      if (date >= day && !excludedDates.has(date) && !sessions.some(s => s.date === date)) result.push({ date, speaker: 'TBD', title: 'TBD', placeholder: true });
       month.setMonth(month.getMonth() + 1);
     }
     return result;
