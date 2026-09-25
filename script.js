@@ -8,7 +8,7 @@
     return !Number.isNaN(date.getTime()) && [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-') === value;
   };
   const sessions = Array.isArray(data.sessions) ? data.sessions.filter(s => s && isValidDate(s.date) && s.title && s.speaker) : [];
-  const excludedDates = new Set(Array.isArray(data.excludedDates) ? data.excludedDates.filter(isValidDate) : []);
+  const isPlaceholder = session => session.speaker.trim().toUpperCase() === 'TBD' || session.title.trim().toUpperCase() === 'TBD';
   const today = new Date();
   const localDay = () => {
     const date = new Date();
@@ -31,7 +31,7 @@
     title.id = 'session-dialog-title';
     dialogContent.replaceChildren(el('p', 'session-dialog-date', formatDate(session.date)), title);
     dialogContent.append(el('p', 'session-dialog-speaker', session.speaker));
-    if (session.placeholder) dialogContent.append(el('p', 'session-dialog-abstract', 'Speaker and paper details will be announced.'));
+    if (isPlaceholder(session) && !session.description && !session.abstract) dialogContent.append(el('p', 'session-dialog-abstract', 'Speaker and paper details will be announced.'));
     if (session.affiliation) dialogContent.append(el('p', 'session-dialog-affiliation', session.affiliation));
     if (Array.isArray(session.coauthors) && session.coauthors.length) {
       const names = session.coauthors.filter(Boolean).join(', ');
@@ -68,27 +68,10 @@
     }
   }
 
-  function nextPlaceholders(day) {
-    const start = new Date(2026, 10, 1);
-    const current = new Date(day + 'T12:00:00');
-    const month = new Date(current.getFullYear(), current.getMonth(), 1);
-    if (month < start) month.setTime(start.getTime());
-    const result = [];
-    for (let i = 0; i < 12; i++) {
-      const year = month.getFullYear();
-      const mon = month.getMonth();
-      const firstWednesday = 1 + (3 - new Date(year, mon, 1).getDay() + 7) % 7;
-      const date = [year, String(mon + 1).padStart(2, '0'), String(firstWednesday + 7).padStart(2, '0')].join('-');
-      if (date >= day && !excludedDates.has(date) && !sessions.some(s => s.date === date)) result.push({ date, speaker: 'TBD', title: 'TBD', placeholder: true });
-      month.setMonth(month.getMonth() + 1);
-    }
-    return result;
-  }
-
   function renderProgramme() {
     const day = localDay();
-    const upcoming = [...sessions.filter(s => s.date >= day), ...nextPlaceholders(day)].sort((a, b) => a.date.localeCompare(b.date));
-    const past = sessions.filter(s => s.date < day).sort((a, b) => b.date.localeCompare(a.date));
+    const upcoming = sessions.filter(s => s.date >= day).sort((a, b) => a.date.localeCompare(b.date));
+    const past = sessions.filter(s => s.date < day && !isPlaceholder(s)).sort((a, b) => b.date.localeCompare(a.date));
     upcomingList.replaceChildren(...(upcoming.length ? upcoming.map(archiveRow) : [el('p', 'empty-state', 'Dates and speakers will appear here as they are confirmed.')]));
     archiveList.replaceChildren(...(past.length ? past.map(archiveRow) : [el('p', 'empty-state', 'Past sessions will be collected here.')]));
     $('upcoming-count').textContent = String(upcoming.length).padStart(2, '0');
