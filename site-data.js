@@ -1,19 +1,27 @@
-/* Add confirmed sessions here. The site fills second Wednesdays from November 2026 with TBD placeholders. A confirmed session on the same date replaces the placeholder. Confirmed sessions move to the archive after their date; unconfirmed placeholders expire. */
+/* Edit or delete any session below. Add new ones as { date: "YYYY-MM-DD", speaker: "Name", title: "Paper title" }. Entries with TBD details expire after their date; completed sessions move to the archive. */
 window.PDS_DATA = {
   email: "", // Public contact address, e.g. "pds@example.org"
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
   organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
-  excludedDates: ["2027-08-11", "2027-09-08", "2027-10-13"], // Skip a TBD slot, e.g. ["2026-12-09"]. Confirmed sessions are managed below.
   sessions: [
     {
-    date: "2026-10-15",
-    speaker: "TBD",
-    title: "TBD",
-    description: "Speaker and paper details will be announced."
+      date: "2026-10-15",
+      speaker: "TBD",
+      title: "TBD",
+      description: "Speaker and paper details will be announced."
     },
+    { date: "2026-11-11", speaker: "TBD", title: "TBD" },
+    { date: "2026-12-09", speaker: "TBD", title: "TBD" },
+    { date: "2027-01-13", speaker: "TBD", title: "TBD" },
+    { date: "2027-02-10", speaker: "TBD", title: "TBD" },
+    { date: "2027-03-10", speaker: "TBD", title: "TBD" },
+    { date: "2027-04-14", speaker: "TBD", title: "TBD" },
+    { date: "2027-05-12", speaker: "TBD", title: "TBD" },
+    { date: "2027-06-09", speaker: "TBD", title: "TBD" },
+    { date: "2027-07-14", speaker: "TBD", title: "TBD" },
     /*
     {
-      date: "2026-10-15", // YYYY-MM-DD
+      date: "2027-11-10", // YYYY-MM-DD
       time: "16:00",       // Optional; include your local time zone in location or description
       speaker: "Alex Smith",
       affiliation: "University name", // Optional
