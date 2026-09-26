@@ -30,10 +30,10 @@ To change the introductory wording, edit `index.html`. To change colours or layo
 Open `site-data.js` and find the `organisers: [ ... ]` list. Replace the nine placeholder entries with real names and biographies. For example:
 
 ```js
-{ name: "Alex Smith", photo: "images/organisers/alex-smith.jpg", bio: "Alex studies innovation and regional development. They help coordinate the paper discussions." },
+{ name: "Alex Smith", photo: "alex-smith.jpg", bio: "Alex studies innovation and regional development. They help coordinate the paper discussions." },
 ```
 
-To add a person, copy a row before the closing `],`; to remove one, delete their row. Keep the comma after each row and quotation marks around text. Upload photo files to `images/organisers/` in the repository, then enter the matching path in `photo`. Leave `photo: ""` to display the built-in portrait placeholder. A portrait cropped near 3:4 works best. Leave `bio: ""` to show “Biography to follow.” Click **Commit changes** on GitHub; the carousel and bio cards will update on the published site. Names appear in the order listed. The carousel advances every nine seconds and pauses while someone interacts with it.
+To add a person, copy a row before the closing `],`; to remove one, delete their row. Keep the comma after each row and quotation marks around text. Use **Add file → Upload files** in the repository to upload portraits beside `index.html`, then enter the exact filename in `photo`. Leave `photo: ""` to display the built-in portrait placeholder. A portrait cropped near 3:4 works best. Leave `bio: ""` to show “Biography to follow.” Click **Commit changes** on GitHub; the carousel and bio cards will update on the published site. Names appear in the order listed. The carousel advances every nine seconds and pauses while someone interacts with it.
 
 ## Publish on GitHub Pages
 
