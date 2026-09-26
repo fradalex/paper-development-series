@@ -20,6 +20,7 @@ window.PDS_DATA = {
     /*
     {
       date: "2027-11-10", // YYYY-MM-DD
+      reminders: false or true // Automatic broadcasting
       time: "16:00",       // Optional; include your local time zone in location or description
       speaker: "Alex Smith",
       affiliation: "University name", // Optional
@@ -27,6 +28,17 @@ window.PDS_DATA = {
       description: "One or two sentences about the research question and discussion.",
       location: "Online",  // Optional; or a room and address
       link: ""             // Optional full https:// URL; for online sessions, use the meeting link
+    }
+    */
+    /*
+    {
+      date: "2026-10-30",
+      time: "16:00 CET",
+      speaker: "Alice Smith, Bob Jones and Carla Rossi",
+      title: "Idea incubation: three early-stage research projects",
+      description: "Alice will discuss [idea]. Bob will discuss [idea]. Carla will discuss [idea].",
+      location: "Online",
+      link: "https://your-actual-meeting-link"
     }
     */
     {
