@@ -56,7 +56,7 @@ window.PDS_DATA = {
       link: "https://www.deepl.com/it/translator"
     },
     {
-      date: "2026-10-4",
+      date: "2026-10-04",
       reminders: true,
       time: "14:30 CET",
       speaker: "Jack Bryan",
