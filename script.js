@@ -42,11 +42,14 @@
       dialogContent.append(el('h4', 'session-dialog-subheading', session.abstract ? 'Abstract' : 'About the session'));
       dialogContent.append(el('p', 'session-dialog-abstract', summary));
     }
-    if (session.time || session.location) {
-      dialogContent.append(el('p', 'session-dialog-location', [session.time, session.location].filter(Boolean).join(' · ')));
+    // Meeting logistics are useful before a session, but not in the archive.
+    if (session.date >= localDay()) {
+      if (session.time || session.location) {
+        dialogContent.append(el('p', 'session-dialog-location', [session.time, session.location].filter(Boolean).join(' · ')));
+      }
+      const url = validLink(session.link);
+      if (url) { const link = el('a', 'session-link', /\bonline\b/i.test(session.location || '') ? 'Join the online meeting ↗' : 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; dialogContent.append(link); }
     }
-    const url = validLink(session.link);
-    if (url) { const link = el('a', 'session-link', session.date >= localDay() && /\bonline\b/i.test(session.location || '') ? 'Join the online meeting ↗' : 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; dialogContent.append(link); }
     dialog.showModal();
     $('session-dialog-close').focus();
   }
