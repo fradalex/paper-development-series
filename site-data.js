@@ -46,7 +46,7 @@ window.PDS_DATA = {
     {
       date: "2026-09-27",
       reminders: true,
-      time: "14:30 CET",
+      time: "14:30 CEST",
       speaker: "Alice Smith",
       coauthors: ["Bob Austin", "Jack Bryan"],
       affiliation: "Assistant Professor, University College London",
@@ -58,7 +58,7 @@ window.PDS_DATA = {
     {
       date: "2026-10-04",
       reminders: true,
-      time: "14:30 CET",
+      time: "14:30 CEST",
       speaker: "Jack Bryan",
       coauthors: ["Bob Austin"],
       affiliation: "Assistant Professor, University College London",
@@ -70,7 +70,7 @@ window.PDS_DATA = {
     {
       date: "2026-10-05",
       reminders: true,
-      time: "14:30 CET",
+      time: "14:30 CEST",
       speaker: "Jack Bryan, Alice Smith and Bob Austin",
       affiliation: "Jack Bryan (Assistant Professor, University College London), Alice Smith (London School of Economics), Bob Austin (University of Cambridge)",
       title: "Idea incubation: three early-stage research projects",
