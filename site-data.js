@@ -6,15 +6,15 @@ window.PDS_DATA = {
   // Upload portraits beside index.html in this repository; for example photo: "alex-smith.jpg".
   // Add or delete { name, photo, bio } rows to change the number of organisers.
   organisers: [
-    { name: "Organiser 01", photo: "", bio: "" },
-    { name: "Organiser 02", photo: "", bio: "" },
-    { name: "Organiser 03", photo: "", bio: "" },
-    { name: "Organiser 04", photo: "", bio: "" },
-    { name: "Organiser 05", photo: "", bio: "" },
-    { name: "Organiser 06", photo: "", bio: "" },
-    { name: "Organiser 07", photo: "", bio: "" },
-    { name: "Organiser 08", photo: "", bio: "" },
-    { name: "Organiser 09", photo: "", bio: "" },
+    { name: "Stefano Azzolina", photo: "", bio: "" },
+    { name: "Mariavittoria Castellucci", photo: "", bio: "" },
+    { name: "Ester Cipi", photo: "", bio: "" },
+    { name: "Stefano Fusinato", photo: "", bio: "" },
+    { name: "Francesco D'Alessandro", photo: "", bio: "" },
+    { name: "Arsla Khalid", photo: "", bio: "" },
+    { name: "Andrea Marini", photo: "", bio: "" },
+    { name: "Rahmi Can Yamanoğlu", photo: "", bio: "" },
+    { name: "Francesca Zannelli", photo: "", bio: "" },
   ],
   sessions: [
     /*
