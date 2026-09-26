@@ -115,11 +115,92 @@
   contactDialog.addEventListener('close', () => contactOpen.focus());
   contactDialog.addEventListener('click', event => { if (event.target === contactDialog) contactDialog.close(); });
   if (email) $('contact-form').setAttribute('action', 'https://formsubmit.co/' + email);
-  if (Array.isArray(data.organisers) && data.organisers.length) {
-    $('organiser-list').replaceChildren(...data.organisers.filter(Boolean).map(name => el('span', 'organiser-name', name)));
-    $('organisers').querySelector('.organisers-grid > div:last-child > p').textContent = 'The Paper Development Series is organised collaboratively by:';
+  const organisers = Array.isArray(data.organisers) ? data.organisers
+    .filter(person => person && typeof person === 'object' && typeof person.name === 'string' && person.name.trim())
+    : [];
+  const organiserSlide = $('organiser-slide');
+  const organiserPortrait = $('organiser-portrait');
+  const organiserName = $('organiser-name');
+  const organiserDialog = $('organiser-dialog');
+  const organiserDialogContent = $('organiser-dialog-content');
+  let organiserIndex = 0;
+  let organiserTimer;
+  let organiserTransition;
+  let lastOrganiserTrigger;
+  let organiserHovered = false;
+
+  function portraitPlaceholder() {
+    const placeholder = el('div', 'organiser-portrait-placeholder');
+    placeholder.append(el('span', '', 'Portrait to follow'));
+    return placeholder;
   }
-  if (email) { const a = el('a', 'contact-link', 'Contact the organisers ↗'); a.href = 'mailto:' + email; $('contact-action').append(a); }
+  function showOrganiser() {
+    const person = organisers[organiserIndex];
+    organiserName.textContent = person.name;
+    organiserPortrait.replaceChildren(portraitPlaceholder());
+    if (typeof person.photo === 'string' && person.photo.trim()) {
+      const img = el('img');
+      img.src = person.photo;
+      img.alt = 'Portrait of ' + person.name;
+      img.loading = 'lazy';
+      img.onerror = () => { if (organiserPortrait.contains(img)) organiserPortrait.replaceChildren(portraitPlaceholder()); };
+      organiserPortrait.replaceChildren(img);
+    }
+  }
+  function queueOrganiserAdvance() {
+    clearTimeout(organiserTimer);
+    if (organisers.length > 1 && !document.hidden && !organiserDialog.open && !organiserHovered && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !document.querySelector('.organiser-carousel').contains(document.activeElement)) {
+      organiserTimer = setTimeout(() => changeOrganiser(1), 9000);
+    }
+  }
+  function changeOrganiser(direction) {
+    if (organisers.length < 2) return;
+    clearTimeout(organiserTimer);
+    clearTimeout(organiserTransition);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMotion) organiserSlide.classList.add('is-changing');
+    organiserTransition = setTimeout(() => {
+      organiserIndex = (organiserIndex + direction + organisers.length) % organisers.length;
+      showOrganiser();
+      organiserSlide.classList.remove('is-changing');
+      queueOrganiserAdvance();
+    }, reducedMotion ? 0 : 380);
+  }
+  if (organisers.length) {
+    showOrganiser();
+    queueOrganiserAdvance();
+    $('organiser-prev').addEventListener('click', () => changeOrganiser(-1));
+    $('organiser-next').addEventListener('click', () => changeOrganiser(1));
+    organiserName.addEventListener('click', () => {
+      clearTimeout(organiserTimer);
+      const person = organisers[organiserIndex];
+      lastOrganiserTrigger = organiserName;
+      organiserDialogContent.replaceChildren();
+      const photo = typeof person.photo === 'string' && person.photo.trim() ? el('img', 'organiser-dialog-portrait') : el('div', 'organiser-dialog-portrait organiser-dialog-placeholder', 'Portrait to follow');
+      if (photo.tagName === 'IMG') { photo.src = person.photo; photo.alt = 'Portrait of ' + person.name; photo.onerror = () => photo.replaceWith(el('div', 'organiser-dialog-portrait organiser-dialog-placeholder', 'Portrait to follow')); }
+      const copy = el('div');
+      const heading = el('h3', '', person.name);
+      heading.id = 'organiser-dialog-title';
+      copy.append(heading, el('p', '', typeof person.bio === 'string' && person.bio.trim() ? person.bio : 'Biography to follow.'));
+      organiserDialogContent.append(photo, copy);
+      organiserDialog.showModal();
+      $('organiser-dialog-close').focus();
+    });
+    $('organiser-dialog-close').addEventListener('click', () => organiserDialog.close());
+    organiserDialog.addEventListener('click', event => { if (event.target === organiserDialog) organiserDialog.close(); });
+    organiserDialog.addEventListener('close', () => { lastOrganiserTrigger?.focus(); queueOrganiserAdvance(); });
+    const carousel = document.querySelector('.organiser-carousel');
+    carousel.addEventListener('mouseenter', () => { organiserHovered = true; clearTimeout(organiserTimer); });
+    carousel.addEventListener('mouseleave', () => { organiserHovered = false; queueOrganiserAdvance(); });
+    carousel.addEventListener('focusin', () => clearTimeout(organiserTimer));
+    carousel.addEventListener('focusout', event => { if (!event.currentTarget.contains(event.relatedTarget)) queueOrganiserAdvance(); });
+    document.addEventListener('visibilitychange', queueOrganiserAdvance);
+  } else {
+    organiserSlide.hidden = true;
+    $('organiser-prev').hidden = true;
+    $('organiser-next').hidden = true;
+    organiserPortrait.textContent = 'Organisers to be announced';
+  }
   $('year').textContent = today.getFullYear();
 
   const toggle = document.querySelector('.menu-toggle');
