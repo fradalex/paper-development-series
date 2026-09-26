@@ -73,6 +73,14 @@ async function testAudience() {
   return [{ all: [{ type: 'tag', ids: [tag.id] }] }];
 }
 
+if (process.argv.includes('--check')) {
+  if (!process.env.KIT_API_KEY) throw new Error('KIT_API_KEY is missing. Add it as a GitHub Actions repository secret.');
+  await testAudience();
+  await existingReminders();
+  console.log('Kit API and one-person test audience are ready. No emails were scheduled.');
+  process.exit(0);
+}
+
 function message(session, kind) {
   const when = prettyDate(session.date);
   const title = escape(session.title.trim());
