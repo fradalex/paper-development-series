@@ -68,6 +68,17 @@ window.PDS_DATA = {
       link: "https://www.deepl.com/it/translator"
     },
     {
+      date: "2026-10-05",
+      reminders: true,
+      time: "14:30 CET",
+      speaker: "Jack Bryan, Alice Smith and Bob Austin",
+      affiliation: "Jack Bryan (Assistant Professor, University College London), Alice Smith (London School of Economics), Bob Austin (University of Cambridge)",
+      title: "Idea incubation: three early-stage research projects",
+      description: "Alice will discuss a paper. Bob will discuss a paper. Carla will discuss a paper.",
+      location: "Online",
+      link: "https://www.deepl.com/it/translator"
+    },
+    {
       date: "2026-01-15",
       speaker: "Bastian Krieger",
       coauthors: ["Linus Strecke"],
