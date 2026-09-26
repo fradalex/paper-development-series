@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="stylesheet" href="styles.css?v=21">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@
         dataScript.src = 'site-data.js?fresh=' + Date.now();
         dataScript.onload = () => {
           const appScript = document.createElement('script');
-          appScript.src = 'script.js?v=16';
+          appScript.src = 'script.js?v=17';
           document.body.append(appScript);
         };
         document.body.append(dataScript);
@@ -196,7 +196,27 @@
         </div>
       </section>
 
-      <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title"><div class="shell organisers-grid"><div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div><div><p>The Paper Development Series is organised collaboratively by a group of researchers. We will share the organisers’ names and contact details here once the programme is ready.</p><div id="organiser-list" class="organiser-list" aria-label="Organisers"></div><div id="contact-action"></div></div></div></section>
+      <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title">
+        <div class="shell organisers-grid">
+          <div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div>
+          <div class="organiser-carousel" aria-label="Meet the organisers">
+            <div id="organiser-slide" class="organiser-slide">
+              <div id="organiser-portrait" class="organiser-portrait"></div>
+              <div class="organiser-caption">
+                <button id="organiser-name" class="organiser-name-button" type="button" aria-haspopup="dialog" aria-controls="organiser-dialog"></button>
+              </div>
+            </div>
+            <div class="organiser-controls">
+              <button id="organiser-prev" class="organiser-arrow" type="button" aria-label="Previous organiser"><span aria-hidden="true">←</span></button>
+              <button id="organiser-next" class="organiser-arrow" type="button" aria-label="Next organiser"><span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </div>
+        <dialog id="organiser-dialog" class="session-dialog organiser-dialog" aria-labelledby="organiser-dialog-title">
+          <div class="session-dialog-top"><span>Paper Development Series / Organisers</span><button id="organiser-dialog-close" class="session-dialog-close" type="button" aria-label="Close organiser bio">Close <span aria-hidden="true">×</span></button></div>
+          <div id="organiser-dialog-content" class="session-dialog-content"></div>
+        </dialog>
+      </section>
     </main>
     <footer class="footer"><div class="shell footer-inner"><div><img class="footer-logo-mark" src="footer-mark.svg" alt="Paper Development Series" width="42" height="42"><p>Ideas are better together.</p></div><div><a href="#top">Back to top ↑</a><span>© <span id="year"></span> Paper Development Series</span></div></div></footer>
   </body>
