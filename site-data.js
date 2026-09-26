@@ -17,7 +17,7 @@ window.PDS_DATA = {
     }
     */
     {
-      date: "2026-09-25",
+      date: "2026-09-26",
       time: "14:30 CET",
       speaker: "R. Maria del Rio-Chanona",
       coauthors: ["Linus Strecke", "Ole Teutloff"],
