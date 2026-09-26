@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '17 7 * * *'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Preview due reminders without contacting Kit'
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -20,7 +25,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Preview due reminders
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: node tools/send_session_reminders.mjs
       - name: Schedule due reminders through Kit
+        if: github.event_name == 'schedule' || !inputs.dry_run
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
         run: node tools/send_session_reminders.mjs --send
