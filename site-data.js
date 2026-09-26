@@ -33,8 +33,10 @@ window.PDS_DATA = {
     /*
     {
       date: "2026-10-30",
+      reminders: false or true // Automatic broadcasting
       time: "16:00 CET",
       speaker: "Alice Smith, Bob Jones and Carla Rossi",
+      affiliation: "Alice Smith (University A); Bob Jones (University B); Carla Rossi (University C)",
       title: "Idea incubation: three early-stage research projects",
       description: "Alice will discuss [idea]. Bob will discuss [idea]. Carla will discuss [idea].",
       location: "Online",
