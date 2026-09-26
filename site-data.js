@@ -31,6 +31,7 @@ window.PDS_DATA = {
     */
     {
       date: "2026-09-26",
+      reminders: false, // Fictitious test seminar: never email subscribers
       time: "14:30 CET",
       speaker: "R. Maria del Rio-Chanona",
       coauthors: ["Linus Strecke", "Ole Teutloff"],
