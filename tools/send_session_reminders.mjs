@@ -56,6 +56,7 @@ function message(session, kind) {
   const when = prettyDate(session.date);
   const title = escape(session.title.trim());
   const speaker = escape(session.speaker.trim());
+  const speakerLabel = /,|\\s+and\\s+|\\s*&\\s*/i.test(session.speaker.trim()) ? 'Speakers' : 'Speaker';
   const schedule = [when, session.time?.trim()].filter(Boolean).map(escape).join(' · ');
   const venue = session.location?.trim();
   const link = session.link?.trim();
@@ -64,7 +65,7 @@ function message(session, kind) {
   const parts = [
     `<p>${heading} in the Paper Development Series:</p>`,
     `<h2>${title}</h2>`,
-    `<p><strong>Speaker:</strong> ${speaker}<br><strong>When:</strong> ${schedule}`,
+    `<p><strong>${speakerLabel}:</strong> ${speaker}<br><strong>When:</strong> ${schedule}`,
     venue ? `<br><strong>Where:</strong> ${escape(venue)}` : '',
     '</p>',
     session.description?.trim() ? `<p>${escape(session.description.trim())}</p>` : '',
