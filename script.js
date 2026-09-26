@@ -118,62 +118,88 @@
   const organisers = Array.isArray(data.organisers) ? data.organisers
     .filter(person => person && typeof person === 'object' && typeof person.name === 'string' && person.name.trim())
     : [];
-  const organiserSlide = $('organiser-slide');
-  const organiserPortrait = $('organiser-portrait');
+  const organiserStage = $('organiser-stage');
+  const organiserCaption = document.querySelector('.organiser-caption');
   const organiserName = $('organiser-name');
   const organiserDialog = $('organiser-dialog');
   const organiserDialogContent = $('organiser-dialog-content');
+  const organiserReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let organiserIndex = 0;
   let organiserTimer;
   let organiserTransition;
-  let lastOrganiserTrigger;
+  let organiserMoving = false;
 
-  function portraitPlaceholder() {
+  const organiserAt = index => organisers[(index + organisers.length) % organisers.length];
+  function portraitPlaceholder(person) {
     const placeholder = el('div', 'organiser-portrait-placeholder');
-    placeholder.append(el('span', '', 'Portrait to follow'));
+    placeholder.append(el('span', '', person.name));
     return placeholder;
   }
-  function showOrganiser() {
-    const person = organisers[organiserIndex];
-    organiserName.textContent = person.name;
-    organiserPortrait.replaceChildren(portraitPlaceholder());
+  function makeOrganiserPortrait(person, offset) {
+    const frame = el('div', 'organiser-portrait');
+    frame.dataset.offset = String(offset);
+    frame.replaceChildren(portraitPlaceholder(person));
     if (typeof person.photo === 'string' && person.photo.trim()) {
       const img = el('img');
       img.src = person.photo;
-      img.alt = 'Portrait of ' + person.name;
-      img.loading = 'lazy';
-      img.onerror = () => { if (organiserPortrait.contains(img)) organiserPortrait.replaceChildren(portraitPlaceholder()); };
-      organiserPortrait.replaceChildren(img);
+      img.alt = '';
+      img.loading = Math.abs(offset) <= 1 ? 'eager' : 'lazy';
+      img.onerror = () => { if (frame.contains(img)) frame.replaceChildren(portraitPlaceholder(person)); };
+      frame.replaceChildren(img);
     }
+    return frame;
+  }
+  function renderOrganiserStage() {
+    organiserStage.replaceChildren(...[-2, -1, 0, 1, 2].map(offset =>
+      makeOrganiserPortrait(organiserAt(organiserIndex + offset), offset)));
+    organiserName.textContent = organiserAt(organiserIndex).name;
   }
   function queueOrganiserAdvance() {
     clearTimeout(organiserTimer);
-    if (organisers.length > 1 && !document.hidden && !organiserDialog.open && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (organisers.length > 1 && !document.hidden && !organiserDialog.open && !organiserReducedMotion.matches) {
       organiserTimer = setTimeout(() => changeOrganiser(1), 9000);
     }
   }
   function changeOrganiser(direction) {
-    if (organisers.length < 2) return;
+    if (organisers.length < 2 || organiserMoving) return;
     clearTimeout(organiserTimer);
     clearTimeout(organiserTransition);
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reducedMotion) organiserSlide.classList.add('is-changing');
-    organiserTransition = setTimeout(() => {
+    if (organiserReducedMotion.matches) {
       organiserIndex = (organiserIndex + direction + organisers.length) % organisers.length;
-      showOrganiser();
-      organiserSlide.classList.remove('is-changing');
+      renderOrganiserStage();
       queueOrganiserAdvance();
-    }, reducedMotion ? 0 : 380);
+      return;
+    }
+    organiserMoving = true;
+    organiserName.disabled = true;
+    organiserCaption.classList.add('is-changing');
+    // Allow the browser to paint the starting positions before moving the portraits.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      [...organiserStage.children].forEach(frame => {
+        frame.dataset.offset = String(Number(frame.dataset.offset) - direction);
+      });
+      organiserTransition = setTimeout(() => {
+        organiserIndex = (organiserIndex + direction + organisers.length) % organisers.length;
+        const exiting = organiserStage.querySelector('[data-offset="' + (direction === 1 ? -3 : 3) + '"]');
+        exiting?.remove();
+        const entering = makeOrganiserPortrait(organiserAt(organiserIndex + (direction === 1 ? 2 : -2)), direction === 1 ? 2 : -2);
+        organiserStage.append(entering);
+        organiserName.textContent = organiserAt(organiserIndex).name;
+        organiserCaption.classList.remove('is-changing');
+        organiserName.disabled = false;
+        organiserMoving = false;
+        queueOrganiserAdvance();
+      }, 690);
+    }));
   }
   if (organisers.length) {
-    showOrganiser();
+    renderOrganiserStage();
     queueOrganiserAdvance();
     $('organiser-prev').addEventListener('click', () => changeOrganiser(-1));
     $('organiser-next').addEventListener('click', () => changeOrganiser(1));
     organiserName.addEventListener('click', () => {
       clearTimeout(organiserTimer);
-      const person = organisers[organiserIndex];
-      lastOrganiserTrigger = organiserName;
+      const person = organiserAt(organiserIndex);
       organiserDialogContent.replaceChildren();
       const photo = typeof person.photo === 'string' && person.photo.trim() ? el('img', 'organiser-dialog-portrait') : el('div', 'organiser-dialog-portrait organiser-dialog-placeholder', 'Portrait to follow');
       if (photo.tagName === 'IMG') { photo.src = person.photo; photo.alt = 'Portrait of ' + person.name; photo.onerror = () => photo.replaceWith(el('div', 'organiser-dialog-portrait organiser-dialog-placeholder', 'Portrait to follow')); }
@@ -187,13 +213,13 @@
     });
     $('organiser-dialog-close').addEventListener('click', () => organiserDialog.close());
     organiserDialog.addEventListener('click', event => { if (event.target === organiserDialog) organiserDialog.close(); });
-    organiserDialog.addEventListener('close', () => { lastOrganiserTrigger?.focus(); queueOrganiserAdvance(); });
+    organiserDialog.addEventListener('close', queueOrganiserAdvance);
     document.addEventListener('visibilitychange', queueOrganiserAdvance);
   } else {
-    organiserSlide.hidden = true;
+    organiserStage.textContent = 'Organisers to be announced';
+    organiserName.hidden = true;
     $('organiser-prev').hidden = true;
     $('organiser-next').hidden = true;
-    organiserPortrait.textContent = 'Organisers to be announced';
   }
   $('year').textContent = today.getFullYear();
 
