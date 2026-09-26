@@ -32,4 +32,5 @@ jobs:
         if: github.event_name == 'schedule' || !inputs.dry_run
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+          KIT_TEST_TAG_NAME: PDS test
         run: node tools/send_session_reminders.mjs --send
