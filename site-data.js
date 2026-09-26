@@ -2,7 +2,20 @@
 window.PDS_DATA = {
   email: "info@paperdevelopmentseries.org", // Public contact address and contact form destination
   proposalUrl: "", // Optional Google Form or other submission link; use a full https:// URL
-  organisers: [], // Names, e.g. ["Alex Smith", "Sam Lee"]
+  // Replace each placeholder with a name, a short bio, and an optional photo path.
+  // Upload portraits to images/organisers/ in this repository; for example photo: "images/organisers/alex-smith.jpg".
+  // Add or delete { name, photo, bio } rows to change the number of organisers.
+  organisers: [
+    { name: "Organiser 01", photo: "", bio: "" },
+    { name: "Organiser 02", photo: "", bio: "" },
+    { name: "Organiser 03", photo: "", bio: "" },
+    { name: "Organiser 04", photo: "", bio: "" },
+    { name: "Organiser 05", photo: "", bio: "" },
+    { name: "Organiser 06", photo: "", bio: "" },
+    { name: "Organiser 07", photo: "", bio: "" },
+    { name: "Organiser 08", photo: "", bio: "" },
+    { name: "Organiser 09", photo: "", bio: "" },
+  ],
   sessions: [
     /*
     {
