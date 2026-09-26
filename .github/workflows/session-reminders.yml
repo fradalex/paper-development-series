@@ -9,6 +9,10 @@ on:
         description: 'Preview due reminders without contacting Kit'
         type: boolean
         default: true
+      verify_setup:
+        description: 'Check Kit key and one-person tag without sending'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -25,11 +29,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify Kit connection and test tag
+        if: github.event_name == 'workflow_dispatch' && inputs.verify_setup
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+          KIT_TEST_TAG_NAME: PDS test
+        run: node tools/send_session_reminders.mjs --check
       - name: Preview due reminders
-        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run && !inputs.verify_setup
         run: node tools/send_session_reminders.mjs
       - name: Schedule due reminders through Kit
-        if: github.event_name == 'schedule' || !inputs.dry_run
+        if: github.event_name == 'schedule' || (!inputs.dry_run && !inputs.verify_setup)
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
           KIT_TEST_TAG_NAME: PDS test
