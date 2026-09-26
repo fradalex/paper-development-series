@@ -127,7 +127,6 @@
   let organiserTimer;
   let organiserTransition;
   let lastOrganiserTrigger;
-  let organiserHovered = false;
 
   function portraitPlaceholder() {
     const placeholder = el('div', 'organiser-portrait-placeholder');
@@ -149,7 +148,7 @@
   }
   function queueOrganiserAdvance() {
     clearTimeout(organiserTimer);
-    if (organisers.length > 1 && !document.hidden && !organiserDialog.open && !organiserHovered && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !document.querySelector('.organiser-carousel').contains(document.activeElement)) {
+    if (organisers.length > 1 && !document.hidden && !organiserDialog.open && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       organiserTimer = setTimeout(() => changeOrganiser(1), 9000);
     }
   }
@@ -189,11 +188,6 @@
     $('organiser-dialog-close').addEventListener('click', () => organiserDialog.close());
     organiserDialog.addEventListener('click', event => { if (event.target === organiserDialog) organiserDialog.close(); });
     organiserDialog.addEventListener('close', () => { lastOrganiserTrigger?.focus(); queueOrganiserAdvance(); });
-    const carousel = document.querySelector('.organiser-carousel');
-    carousel.addEventListener('mouseenter', () => { organiserHovered = true; clearTimeout(organiserTimer); });
-    carousel.addEventListener('mouseleave', () => { organiserHovered = false; queueOrganiserAdvance(); });
-    carousel.addEventListener('focusin', () => clearTimeout(organiserTimer));
-    carousel.addEventListener('focusout', event => { if (!event.currentTarget.contains(event.relatedTarget)) queueOrganiserAdvance(); });
     document.addEventListener('visibilitychange', queueOrganiserAdvance);
   } else {
     organiserSlide.hidden = true;
