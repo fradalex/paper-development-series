@@ -70,3 +70,19 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` from this f
 - `.nojekyll`: publish static files without Jekyll processing
 
 The fonts use Google Fonts when available; Georgia and Arial serve as fallbacks. No visitor tracking or analytics are included.
+
+## Automatic seminar emails through Kit
+
+The separate `.github/workflows/session-reminders.yml` workflow checks `site-data.js` each day. For each confirmed session with a date, speaker, title, and time, it schedules one email seven calendar days before the event and one on the event date. It uses Europe/Rome dates, sends from `info@paperdevelopmentseries.org`, and uses Kit's subscribed audience. Subjects and email bodies are filled from the session's title, speaker, date, time, location, description, and optional online meeting link. Kit handles delivery and unsubscribe links. No subscriber addresses are stored in GitHub. `TBD` rows and rows with `reminders: false` are excluded. The fictitious September test session has reminders disabled.
+
+To activate:
+
+1. In Kit, verify `info@paperdevelopmentseries.org` as a sending address, and finish the domain authentication shown under **Settings → Email → Verified Sending Domains**. Check that imported contacts appear as active subscribers and that the website form adds an active subscriber.
+2. In Kit **Settings → Developer**, create a **V4 API key**. Copy it immediately; Kit does not show it again. Do not paste it into `site-data.js`, a GitHub file, or a chat.
+3. In the GitHub repository choose **Settings → Secrets and variables → Actions → New repository secret**. Name it exactly `KIT_API_KEY` and paste the V4 key as its value. The workflow remains inactive when the secret is absent.
+4. Add a confirmed future session in `site-data.js`. Set `time` explicitly, ideally with `CET` or `CEST`, and use `link` for the online meeting URL if applicable. To exclude any row, add `reminders: false`.
+5. Run **Actions → Schedule seminar reminders → Run workflow** to check its log. It sends only when today is exactly seven days before or the day of a confirmed event. For a safe email test, first create a temporary Kit account/audience or use a separate test segment before activating the real list.
+
+The job runs daily at 07:17 UTC, roughly 08:17–09:17 in Italy depending on daylight saving time. Kit schedules a due broadcast for ten minutes after the job runs. GitHub scheduled jobs can be delayed or skipped; check the Actions and Kit Broadcasts screens before an event. The job searches existing Kit broadcasts by an event/date/time marker, so rerunning it will not intentionally create a duplicate. If you change a session's date or time after a reminder was scheduled, review the corresponding scheduled Kit broadcast manually. The outgoing content is captured when the reminder is created, so update important details before the relevant reminder date.
+
+Preview decisions locally with `node tools/send_session_reminders.mjs`; this never calls Kit or sends an email. The production workflow runs the same script with `--send` and a GitHub Actions secret.
