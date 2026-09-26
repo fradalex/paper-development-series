@@ -189,7 +189,7 @@
         organiserName.disabled = false;
         organiserMoving = false;
         queueOrganiserAdvance();
-      }, 690);
+      }, 1080);
     }));
   }
   if (organisers.length) {
