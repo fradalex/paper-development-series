@@ -1,0 +1,26 @@
+name: Schedule seminar reminders
+
+on:
+  schedule:
+    - cron: '17 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seminar-reminders
+  cancel-in-progress: false
+
+jobs:
+  reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Schedule due reminders through Kit
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+        run: node tools/send_session_reminders.mjs --send
