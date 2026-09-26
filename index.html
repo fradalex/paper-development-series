@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="stylesheet" href="styles.css?v=22">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@
         dataScript.src = 'site-data.js?fresh=' + Date.now();
         dataScript.onload = () => {
           const appScript = document.createElement('script');
-          appScript.src = 'script.js?v=18';
+          appScript.src = 'script.js?v=19';
           document.body.append(appScript);
         };
         document.body.append(dataScript);
@@ -200,11 +200,9 @@
         <div class="shell organisers-grid">
           <div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div>
           <div class="organiser-carousel" aria-label="Meet the organisers">
-            <div id="organiser-slide" class="organiser-slide">
-              <div id="organiser-portrait" class="organiser-portrait"></div>
-              <div class="organiser-caption">
-                <button id="organiser-name" class="organiser-name-button" type="button" aria-haspopup="dialog" aria-controls="organiser-dialog"></button>
-              </div>
+            <div id="organiser-stage" class="organiser-stage" aria-hidden="true"></div>
+            <div class="organiser-caption">
+              <button id="organiser-name" class="organiser-name-button" type="button" aria-haspopup="dialog" aria-controls="organiser-dialog"></button>
             </div>
             <div class="organiser-controls">
               <button id="organiser-prev" class="organiser-arrow" type="button" aria-label="Previous organiser"><span aria-hidden="true">←</span></button>
