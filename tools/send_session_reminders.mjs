@@ -52,6 +52,27 @@ async function existingReminders() {
   return descriptions;
 }
 
+async function testAudience() {
+  const name = process.env.KIT_TEST_TAG_NAME;
+  if (!name) throw new Error('KIT_TEST_TAG_NAME is required for the one-person pilot.');
+  let cursor;
+  const matches = [];
+  do {
+    const query = new URLSearchParams({ include: 'subscriber_count', per_page: '500' });
+    if (cursor) query.set('after', cursor);
+    const result = await kit('GET', `/tags?${query}`);
+    matches.push(...(result.tags || []).filter(tag => tag.name === name));
+    cursor = result.pagination?.has_next_page ? result.pagination.end_cursor : undefined;
+  } while (cursor);
+  if (matches.length !== 1) throw new Error(`Expected one Kit tag named "${name}", found ${matches.length}.`);
+  const tag = matches[0];
+  if (Number(tag.subscriber_count) !== 1) {
+    throw new Error(`Kit tag "${name}" must have exactly one subscriber; found ${tag.subscriber_count ?? 'unknown'}.`);
+  }
+  console.log(`Test audience: one subscriber in Kit tag "${name}".`);
+  return [{ all: [{ type: 'tag', ids: [tag.id] }] }];
+}
+
 function message(session, kind) {
   const when = prettyDate(session.date);
   const title = escape(session.title.trim());
@@ -101,6 +122,7 @@ if (!candidates.length) {
   process.exit(0);
 }
 
+const audience = send ? await testAudience() : undefined;
 const known = send ? await existingReminders() : new Set();
 for (const { session, kind, marker } of candidates) {
   if (known.has(marker)) {
@@ -120,7 +142,7 @@ for (const { session, kind, marker } of candidates) {
     published_at: sendAt,
     send_at: sendAt,
     email_address: 'info@paperdevelopmentseries.org',
-    subscriber_filter: [{ all: [{ type: 'all_subscribers' }] }],
+    subscriber_filter: audience,
   });
   if (result.broadcast?.status !== 'scheduled') {
     throw new Error(`Kit did not confirm scheduling for ${marker}; inspect broadcast ${result.broadcast?.id ?? 'unknown'}.`);
