@@ -5,6 +5,7 @@ on:
     branches: [main]
   schedule:
     - cron: '17 8 * * *'
+    - cron: '41 9 * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,10 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check for the next three-day issue
-        if: github.event_name != 'push' || hashFiles('research-pulse.json') == ''
         run: python3 tools/update_research_pulse.py
       - name: Save the new issue and archive
-        if: github.event_name != 'push' || hashFiles('research-pulse.json') == ''
         run: |
           if ! git diff --quiet -- research-pulse.json; then
             git config user.name 'github-actions[bot]'
