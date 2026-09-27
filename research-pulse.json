@@ -1,19 +1,37 @@
 {
-  "updated": "2026-09-24",
+  "updated": "2026-09-27",
   "mode": "curated",
   "questions": [
     {
       "topic": "AI and discovery",
-      "question": "How should we evaluate discoveries when AI helps generate hypotheses?"
+      "question": "Does AI lead scientists toward novel ideas or familiar patterns?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "When do new technologies help young firms compete with established firms?"
+      "question": "Do AI knowledge spillovers benefit startups and established firms equally?"
     },
     {
       "topic": "Science and society",
-      "question": "Which innovation policies help spread the benefits of research across regions?"
+      "question": "When does collaboration between public and private researchers benefit society?"
     }
   ],
-  "archive": []
+  "archive": [
+    {
+      "updated": "2026-09-24",
+      "questions": [
+        {
+          "topic": "AI and discovery",
+          "question": "How should we evaluate discoveries when AI helps generate hypotheses?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "When do new technologies help young firms compete with established firms?"
+        },
+        {
+          "topic": "Science and society",
+          "question": "Which innovation policies help spread the benefits of research across regions?"
+        }
+      ]
+    }
+  ]
 }
