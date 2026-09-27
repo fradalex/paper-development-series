@@ -23,8 +23,7 @@ const prettyDate = value => new Intl.DateTimeFormat('en-GB', {
 const send = process.argv.includes('--send');
 
 if (send && !process.env.KIT_API_KEY) {
-  console.log('KIT_API_KEY is absent; reminders are inactive.');
-  process.exit(0);
+  throw new Error('KIT_API_KEY is missing. Add it as a GitHub Actions repository secret.');
 }
 
 async function kit(method, path, body) {
