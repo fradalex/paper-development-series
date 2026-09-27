@@ -1,21 +1,39 @@
 {
   "updated": "2026-09-27",
   "mode": "curated",
+  "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
-      "topic": "AI and discovery",
-      "question": "Does AI lead scientists toward novel ideas or familiar patterns?"
+      "topic": "Science and research",
+      "question": "When do AI-generated research ideas expand a scientist’s search space, and when do they anchor it to familiar topics?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Do AI knowledge spillovers benefit startups and established firms equally?"
+      "question": "When does AI allow firms to recombine technologically distant knowledge without eroding their existing expertise?"
     },
     {
-      "topic": "Science and society",
-      "question": "When does collaboration between public and private researchers benefit society?"
+      "topic": "Regions and policy",
+      "question": "How do carbon markets affect the direction of regional green innovation, beyond the number of green patents?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-09-27",
+      "questions": [
+        {
+          "topic": "AI and discovery",
+          "question": "Does AI lead scientists toward novel ideas or familiar patterns?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Do AI knowledge spillovers benefit startups and established firms equally?"
+        },
+        {
+          "topic": "Science and society",
+          "question": "When does collaboration between public and private researchers benefit society?"
+        }
+      ]
+    },
     {
       "updated": "2026-09-24",
       "questions": [
