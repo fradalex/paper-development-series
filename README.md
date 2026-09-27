@@ -47,11 +47,11 @@ For a shorter `https://ACCOUNT.github.io/` address, name the repository exactly 
 
 ## Automatic research pulse
 
-The workflow in `.github/workflows/research-pulse.yml` checks daily at 08:17 and 09:41 UTC and also on site updates. Once the current issue is at least three days old, it consults recent OpenAlex and Crossref metadata and chooses three discussion questions from a curated bank of 24 questions per topic. It saves the new issue and up to 23 earlier issues in `research-pulse.json`, then republishes the site. Visitors see questions without article links. The site uses no AI API key or model tokens.
+The workflow in `.github/workflows/research-pulse.yml` checks daily at 08:17 and 09:41 UTC and on site updates. It publishes a new set once the current issue is at least three days old. `research-questions.json` contains 90 editorially reviewed questions (30 per theme), with the papers and special-issue calls that informed each prompt. Three questions appear per issue, one from each theme. The rotation avoids repeating a question for 30 issues, about 90 days. `research-pulse.json` stores the current issue and 29 earlier issues. Visitors see the questions without paper links, and the workflow needs no API key or AI tokens.
 
-The landing card shows one question at a time and advances every 12 seconds with a soft dissolve. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic transitions. If the literature sources are unavailable, the three-day refresh still selects questions from the curated bank. These are discussion prompts, not measured claims about which topics are statistically trending.
+The landing card shows one question at a time and advances every 12 seconds with a soft dissolve. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic transitions. The sources in the bank were reviewed on 27 September 2026. The questions are editorial prompts informed by recent literature, not claims that their topics have a measured trend ranking. Future issues rotate the reviewed pool; they do not conduct a new literature search automatically.
 
-To refresh immediately, open **Actions → Publish research pulse → Run workflow**. The repository's **Settings → Pages** source must be **GitHub Actions** for scheduled updates to publish.
+To revise the question pool, edit `research-questions.json`: update an entry's `question` and its `sources` IDs, or add entries and source records. Keep at least 30 distinct questions in each of the three `topics` lists and preserve the three topic names unless you also intend to change the rotation. Each source ID must exist in the `sources` object. Commit to `main`; a change to the bank triggers an immediate new issue and site deployment, even if the last issue is less than three days old. Subsequent issues follow the three-day cadence. The repository's **Settings → Pages** source must be **GitHub Actions**. To retry an overdue issue without changing the bank, open **Actions → Publish research pulse → Run workflow**.
 
 ## Preview locally
 
@@ -63,8 +63,9 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` from this f
 - `styles.css`: responsive visual design
 - `site-data.js`: organisers, contact details, and sessions
 - `script.js`: automatic session display, rotating question card, and mobile navigation
+- `research-questions.json`: reviewed question bank and literature references
 - `research-pulse.json`: current research questions and archive
-- `tools/update_research_pulse.py`: three-day literature scan and question selection
+- `tools/update_research_pulse.py`: three-day rotation and no-repeat selection
 - `.github/workflows/research-pulse.yml`: daily refresh check and Pages publication
 - `favicon.svg`: browser icon
 - `.nojekyll`: publish static files without Jekyll processing
