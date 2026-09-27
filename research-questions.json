@@ -1,0 +1,832 @@
+{
+  "reviewed": "2026-09-27",
+  "editorial_note": "Questions are original discussion prompts informed by the linked literature and calls, not quotations or claims of measured trend prevalence.",
+  "sources": {
+    "S01": {
+      "title": "AI in science: When and where it makes a difference",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326000697"
+    },
+    "S02": {
+      "title": "How experience moderates the impact of AI suggestions on researchers' perceptions of their ideas",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326001666"
+    },
+    "S03": {
+      "title": "Organizing across cognitive asymmetry in human–AI collaboration: A study of perfume creation",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70089"
+    },
+    "S06": {
+      "title": "Research grant effects across funding modes and industry collaboration",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326002143"
+    },
+    "S07": {
+      "title": "Do mission-oriented grant schemes shape the direction of science?",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325001891"
+    },
+    "S08": {
+      "title": "How knowledge diversity in research proposals affects the academic performance of funded social science scholars",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S004873332600137X"
+    },
+    "S09": {
+      "title": "Do synthesis programs facilitate interdisciplinary research?",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325002082"
+    },
+    "S10": {
+      "title": "The effect of publicly co-funded industry-science collaboration on scientific production",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325002227"
+    },
+    "S11": {
+      "title": "The fine print of collaboration: How contractual provisions govern IP and disclosure in publicly funded research",
+      "journal": "Research Policy (2025/2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325001659"
+    },
+    "S12": {
+      "title": "How research agendas are framed: Insights for leadership, learning and spillover in science teams",
+      "journal": "Research Policy (2024)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733324000787"
+    },
+    "S13": {
+      "title": "Ivory tower or transdisciplinarity? Measuring preferences of scientists at public research institutes",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326000284"
+    },
+    "S14": {
+      "title": "Advancing Economic Geography with AI: Opportunities, Challenges and Innovations (call for papers)",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://academic.oup.com/joeg/pages/advancing-economic-geo-ai"
+    },
+    "S15": {
+      "title": "Leading the crowd in open collaboration for discovery",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326000442"
+    },
+    "S16": {
+      "title": "Algorithmic management in scientific research",
+      "journal": "Research Policy (2024)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733324000349"
+    },
+    "S17": {
+      "title": "Knowledge sovereignty: A path to independence or isolation?",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326001484"
+    },
+    "S18": {
+      "title": "Political, economic and research disintegration: The impact of geopolitical uncertainty on innovation and cross-border R&D collaborations",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326000624"
+    },
+    "S19": {
+      "title": "AI, trust, and the market for lemons: rethinking the credibility of entrepreneurship research",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01180-0"
+    },
+    "S20": {
+      "title": "Deliberate exploratory search in technology innovation: Discovering and developing need-solution pairs",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325001775"
+    },
+    "S21": {
+      "title": "Unlocking novel knowledge recombinations: The effect of artificial intelligence on inventive activity",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70080"
+    },
+    "S22": {
+      "title": "How to grow new applications out of old research? Evidence from firm cumulative investments in deep learning",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70045"
+    },
+    "S23": {
+      "title": "Free range startups? Market scope, academic founders, and the role of general knowledge in AI",
+      "journal": "Strategic Management Journal (2025)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.3685"
+    },
+    "S24": {
+      "title": "Artificial intelligence adoption and the demand for managerial expertise",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70099"
+    },
+    "S25": {
+      "title": "Adopting artificial intelligence in small and medium businesses: the knowledge-based perspective",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01214-7"
+    },
+    "S26": {
+      "title": "Simulating strategic interactions with AI agents",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70112"
+    },
+    "S27": {
+      "title": "AI orchestrator: How recommendation algorithms shape complementor strategies and market equality",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70073"
+    },
+    "S28": {
+      "title": "Platform competition and strategic trade-offs for complementors",
+      "journal": "Strategic Management Journal (2026)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70062"
+    },
+    "S29": {
+      "title": "Stand on the shoulders of academia: The effect of academic directors on science-based breakthrough innovations",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326001605"
+    },
+    "S30": {
+      "title": "Measuring the commercial potential of science",
+      "journal": "Strategic Management Journal (2025)",
+      "url": "https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.3720"
+    },
+    "S31": {
+      "title": "More knowledge, more entrepreneurs? An investigation of the science and cluster policy mix in Germany",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01175-x"
+    },
+    "S32": {
+      "title": "Entrepreneurial ecosystems, economic complexity, and venture-oriented entrepreneurship in German regions",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01278-5"
+    },
+    "S33": {
+      "title": "Microfoundations of entrepreneurial ecosystems: a critical commentary on future research directions",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01202-x"
+    },
+    "S34": {
+      "title": "Theorizing typologies of entrepreneurial ecosystems",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01257-w"
+    },
+    "S35": {
+      "title": "Is it too novel to succeed? How technological novelty affects observer responses to entrepreneurship failure",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01174-y"
+    },
+    "S36": {
+      "title": "Visual artificial intelligence as a methodological frontier in entrepreneurship research",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01221-8"
+    },
+    "S37": {
+      "title": "Technology transfer and academic entrepreneurship: a personal journey, lessons learned and new directions",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01251-2"
+    },
+    "S38": {
+      "title": "Co-location of skill-related suppliers: advancing coagglomeration research using firm-to-firm network data",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://doi.org/10.1093/jeg/lbag006"
+    },
+    "S39": {
+      "title": "Entrepreneurial growth aspirations and the adoption of environmental actions: the role of regulatory stringency",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-025-01159-3"
+    },
+    "S40": {
+      "title": "Taking stock and looking ahead: research on antecedents and impact of sustainable entrepreneurship",
+      "journal": "Small Business Economics (2026)",
+      "url": "https://link.springer.com/article/10.1007/s11187-026-01219-2"
+    },
+    "S41": {
+      "title": "Towards disruptive sustainability: A multi-level analysis of business models driving sustainability transitions",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S004873332600048X"
+    },
+    "S42": {
+      "title": "Cap-and-trade policies and regional environmental innovation: evidence from the EU Emissions Trading System",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://doi.org/10.1093/jeg/lbag002"
+    },
+    "S43": {
+      "title": "Directing environmental innovation toward radical clean technologies for sustainable transitions",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326000375"
+    },
+    "S44": {
+      "title": "The effects of public procurement requirements and voluntary standards on environmental product innovation",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733326000107"
+    },
+    "S45": {
+      "title": "The economic geography of climate change: recent progress and open questions",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://doi.org/10.1093/jeg/lbaf049"
+    },
+    "S46": {
+      "title": "Illuminating the dark sides of innovation: toward an economic geography of controversial innovation",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://doi.org/10.1093/jeg/lbag026"
+    },
+    "S47": {
+      "title": "The uneven geography of standards (special issue call)",
+      "journal": "Journal of Economic Geography (2024)",
+      "url": "https://academic.oup.com/joeg/pages/cfp-uneven-geography-standards"
+    },
+    "S48": {
+      "title": "The state and the remaking of economic geographies of the global economy (call for papers)",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://academic.oup.com/joeg/pages/state-global-economic"
+    },
+    "S49": {
+      "title": "The contribution of academic inventors to regional technological diversification: the Italian evidence",
+      "journal": "Journal of Economic Geography (2024)",
+      "url": "https://doi.org/10.1093/jeg/lbae021"
+    },
+    "S50": {
+      "title": "Europe’s two towers: the uneven regional geography of telecommunication standard essential patents",
+      "journal": "Journal of Economic Geography (2026)",
+      "url": "https://doi.org/10.1093/jeg/lbag045"
+    },
+    "S52": {
+      "title": "Great expectations: The promises and limits of innovation policy in addressing societal challenges",
+      "journal": "Research Policy (2025)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325000137"
+    },
+    "S53": {
+      "title": "From virtuous to vicious cycles: towards a life cycle model of technology deployment policies",
+      "journal": "Research Policy (2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325000964"
+    },
+    "S54": {
+      "title": "Organizing transformative innovation: Advancing an organizational research agenda within Transformative Innovation Policy",
+      "journal": "Research Policy (2025/2026)",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0048733325001210"
+    }
+  },
+  "topics": {
+    "Science and research": [
+      {
+        "question": "When do AI-generated research ideas expand a scientist’s search space, and when do they anchor it to familiar topics?",
+        "sources": [
+          "S02"
+        ]
+      },
+      {
+        "question": "Does AI raise scientific novelty most in fields with fragmented knowledge, or in fields with mature data infrastructures?",
+        "sources": [
+          "S01"
+        ]
+      },
+      {
+        "question": "How does a researcher’s experience alter the use and rejection of AI-generated hypotheses?",
+        "sources": [
+          "S02"
+        ]
+      },
+      {
+        "question": "Which parts of tacit scientific judgment can be translated into AI-readable representations without losing context?",
+        "sources": [
+          "S03"
+        ]
+      },
+      {
+        "question": "Does assigning AI to hypothesis generation rather than evaluation change the originality of subsequent research?",
+        "sources": [
+          "S02"
+        ]
+      },
+      {
+        "question": "How can we separate genuine conceptual novelty from lexical novelty in AI-assisted scientific publications?",
+        "sources": [
+          "S01"
+        ]
+      },
+      {
+        "question": "Does widespread AI use reduce intellectual diversity within a field even as its average output rises?",
+        "sources": [
+          "S01"
+        ]
+      },
+      {
+        "question": "Which complementarities between domain expertise, data access, and computing capacity determine AI’s scientific returns?",
+        "sources": [
+          "S01"
+        ]
+      },
+      {
+        "question": "Do shared AI models help peripheral research teams enter frontier fields or reinforce concentration in leading labs?",
+        "sources": [
+          "S01",
+          "S14"
+        ]
+      },
+      {
+        "question": "How does AI adoption change the division of labor between junior and senior researchers in scientific teams?",
+        "sources": [
+          "S02",
+          "S03"
+        ]
+      },
+      {
+        "question": "Can AI-assisted synthesis bridge distant literatures without erasing disagreements between research traditions?",
+        "sources": [
+          "S09",
+          "S14"
+        ]
+      },
+      {
+        "question": "When do interdisciplinary funding programs generate durable collaborations beyond the grant period?",
+        "sources": [
+          "S09"
+        ]
+      },
+      {
+        "question": "Does disciplinary distance in a proposal predict scientific breakthroughs differently across funding schemes?",
+        "sources": [
+          "S08"
+        ]
+      },
+      {
+        "question": "How do mission-oriented grant calls redirect research agendas compared with investigator-led funding?",
+        "sources": [
+          "S07"
+        ]
+      },
+      {
+        "question": "Which research funding modes best support exploratory work while maintaining useful industry collaboration?",
+        "sources": [
+          "S06"
+        ]
+      },
+      {
+        "question": "Do industry–science grants change the content of academic research more than its volume?",
+        "sources": [
+          "S10"
+        ]
+      },
+      {
+        "question": "How do contractual rules on disclosure shape the timing and openness of university–industry knowledge flows?",
+        "sources": [
+          "S11"
+        ]
+      },
+      {
+        "question": "When does collaboration with industry increase scientific reach, and when does it narrow researchers’ questions?",
+        "sources": [
+          "S10"
+        ]
+      },
+      {
+        "question": "How does decentralized agenda-setting in science teams affect their ability to pursue unexpected findings?",
+        "sources": [
+          "S12"
+        ]
+      },
+      {
+        "question": "Which incentives make researchers willing to engage with practitioners without compromising scientific autonomy?",
+        "sources": [
+          "S13"
+        ]
+      },
+      {
+        "question": "What forms of leadership sustain open scientific collaboration when evidence remains highly uncertain?",
+        "sources": [
+          "S15"
+        ]
+      },
+      {
+        "question": "Can algorithmic coordination improve citizen-science discovery without privileging already active contributors?",
+        "sources": [
+          "S16"
+        ]
+      },
+      {
+        "question": "How does access to shared research infrastructure affect which institutions participate in AI-enabled science?",
+        "sources": [
+          "S01",
+          "S14"
+        ]
+      },
+      {
+        "question": "When does national research autonomy protect scientific capacity, and when does it isolate researchers from knowledge flows?",
+        "sources": [
+          "S17"
+        ]
+      },
+      {
+        "question": "How do geopolitical disruptions alter collaboration networks in science differently from those in technology?",
+        "sources": [
+          "S18"
+        ]
+      },
+      {
+        "question": "Which indicators distinguish AI’s contribution to knowledge creation from faster production of routine papers?",
+        "sources": [
+          "S01"
+        ]
+      },
+      {
+        "question": "Are AI methods evaluated differently from conventional methods in entrepreneurship and innovation research?",
+        "sources": [
+          "S19"
+        ]
+      },
+      {
+        "question": "How does the framing of a research problem determine whether AI aids exploration or merely speeds up solution search?",
+        "sources": [
+          "S02",
+          "S20"
+        ]
+      },
+      {
+        "question": "Do AI tools shift researchers toward questions with readily available data at the expense of important unmeasured problems?",
+        "sources": [
+          "S01",
+          "S14"
+        ]
+      },
+      {
+        "question": "What happens to scientific quality when funding agencies reward cross-disciplinary combinations but teams lack integrative capacity?",
+        "sources": [
+          "S08",
+          "S09"
+        ]
+      }
+    ],
+    "Innovation and firms": [
+      {
+        "question": "When does AI allow firms to recombine technologically distant knowledge without eroding their existing expertise?",
+        "sources": [
+          "S21"
+        ]
+      },
+      {
+        "question": "Do AI-enabled recombinations generate genuinely new applications or mainly new combinations of established components?",
+        "sources": [
+          "S21"
+        ]
+      },
+      {
+        "question": "Which complementary assets let firms turn cumulative AI research into applications across multiple markets?",
+        "sources": [
+          "S22"
+        ]
+      },
+      {
+        "question": "How do academic founders choose market scope when digital technologies lower downstream entry costs?",
+        "sources": [
+          "S23"
+        ]
+      },
+      {
+        "question": "Do general-purpose AI capabilities favor broad startups, while specialized data and distribution favor incumbents?",
+        "sources": [
+          "S23"
+        ]
+      },
+      {
+        "question": "How does managerial expertise change when AI is deployed in innovation-oriented rather than routine operations?",
+        "sources": [
+          "S24"
+        ]
+      },
+      {
+        "question": "Can small firms adopt AI productively without first building internal data and knowledge-management capabilities?",
+        "sources": [
+          "S25"
+        ]
+      },
+      {
+        "question": "Does AI adoption widen or narrow innovation gaps between small firms with different knowledge bases?",
+        "sources": [
+          "S25"
+        ]
+      },
+      {
+        "question": "How does human–AI coordination across tacit and codified knowledge affect the viability of new products?",
+        "sources": [
+          "S03"
+        ]
+      },
+      {
+        "question": "Which kinds of strategic decisions improve when AI agents simulate rival responses rather than forecast outcomes alone?",
+        "sources": [
+          "S26"
+        ]
+      },
+      {
+        "question": "Do algorithmic recommendations on digital platforms redistribute discovery toward niche complementors or reinforce winners?",
+        "sources": [
+          "S27"
+        ]
+      },
+      {
+        "question": "When does a platform rival’s entry induce complementors to diversify across platforms rather than specialize?",
+        "sources": [
+          "S28"
+        ]
+      },
+      {
+        "question": "How do firms identify unmet uses for existing technologies before a clear market has formed?",
+        "sources": [
+          "S20"
+        ]
+      },
+      {
+        "question": "Can academic directors help firms identify science-based breakthroughs without narrowing their search to familiar disciplines?",
+        "sources": [
+          "S29"
+        ]
+      },
+      {
+        "question": "Which signals of scientific commercial potential are useful before patents, licensing, or venture funding appear?",
+        "sources": [
+          "S30"
+        ]
+      },
+      {
+        "question": "How do science and cluster policies interact in generating high-tech startups across regions?",
+        "sources": [
+          "S31"
+        ]
+      },
+      {
+        "question": "Do technologically complex regions create more frontier ventures, or merely attract entrepreneurs already equipped to launch them?",
+        "sources": [
+          "S32"
+        ]
+      },
+      {
+        "question": "Which network behaviors turn entrepreneurial ecosystems’ resources into productive ventures rather than local buzz?",
+        "sources": [
+          "S33"
+        ]
+      },
+      {
+        "question": "How do ecosystem configurations shape the survival and scaling of deep-tech firms beyond initial entry?",
+        "sources": [
+          "S34"
+        ]
+      },
+      {
+        "question": "When does technological novelty attract resources after venture failure, and when does it damage credibility?",
+        "sources": [
+          "S35"
+        ]
+      },
+      {
+        "question": "How do visual AI measures change what entrepreneurship researchers can infer about founder teams and venture contexts?",
+        "sources": [
+          "S36"
+        ]
+      },
+      {
+        "question": "Does the use of AI methods in venture evaluation reduce perceived credibility even when predictive performance improves?",
+        "sources": [
+          "S19"
+        ]
+      },
+      {
+        "question": "How does access to compute alter the boundary between upstream AI infrastructure firms and downstream application startups?",
+        "sources": [
+          "S23"
+        ]
+      },
+      {
+        "question": "What determines whether a university spin-off can turn exploratory research into an investable product strategy?",
+        "sources": [
+          "S37"
+        ]
+      },
+      {
+        "question": "Which forms of industry–university collaboration help smaller firms absorb scientific knowledge rather than outsource R&D?",
+        "sources": [
+          "S10",
+          "S31"
+        ]
+      },
+      {
+        "question": "How do supply-chain ties and skill-related suppliers affect firms’ capacity to enter new technological activities?",
+        "sources": [
+          "S38"
+        ]
+      },
+      {
+        "question": "Do firms gain more from AI when they use it to search across technologies or to deepen established trajectories?",
+        "sources": [
+          "S21",
+          "S22"
+        ]
+      },
+      {
+        "question": "When do environmental regulations encourage growth-oriented startups to adopt substantive green practices rather than symbolic ones?",
+        "sources": [
+          "S39"
+        ]
+      },
+      {
+        "question": "How can the impact of sustainable startups be measured beyond venture growth and self-reported intentions?",
+        "sources": [
+          "S40"
+        ]
+      },
+      {
+        "question": "Which business models let young firms coordinate complementary actors in disruptive sustainability transitions?",
+        "sources": [
+          "S41"
+        ]
+      }
+    ],
+    "Regions and policy": [
+      {
+        "question": "How do carbon markets affect the direction of regional green innovation, beyond the number of green patents?",
+        "sources": [
+          "S42"
+        ]
+      },
+      {
+        "question": "Do market-based environmental policies foster more radical clean technologies than prescriptive rules, and where?",
+        "sources": [
+          "S43"
+        ]
+      },
+      {
+        "question": "When do public procurement and voluntary standards complement each other in creating markets for green products?",
+        "sources": [
+          "S44"
+        ]
+      },
+      {
+        "question": "Which regional capabilities allow climate policy to induce innovation rather than relocation of inventive activity?",
+        "sources": [
+          "S42",
+          "S45"
+        ]
+      },
+      {
+        "question": "How should innovation policy account for environmental harms that arise far from the places where technologies are developed?",
+        "sources": [
+          "S46"
+        ]
+      },
+      {
+        "question": "Can regions identify harmful or foregone innovations before their costs become visible in market data?",
+        "sources": [
+          "S46"
+        ]
+      },
+      {
+        "question": "How do technical standards redistribute value between regions that develop technologies and those that implement them?",
+        "sources": [
+          "S47"
+        ]
+      },
+      {
+        "question": "Which actors set AI and green-technology standards, and how does their geography shape entry opportunities?",
+        "sources": [
+          "S47"
+        ]
+      },
+      {
+        "question": "Does control of standard-essential patents create new regional specializations or deepen existing technological hierarchies?",
+        "sources": [
+          "S50"
+        ]
+      },
+      {
+        "question": "When can latecomer regions influence international standards instead of remaining standard takers?",
+        "sources": [
+          "S47"
+        ]
+      },
+      {
+        "question": "How does state participation in global production networks reshape the location of research and strategic assets?",
+        "sources": [
+          "S48"
+        ]
+      },
+      {
+        "question": "Do technology-sovereignty policies build domestic capabilities or fragment international knowledge exchange?",
+        "sources": [
+          "S17",
+          "S48"
+        ]
+      },
+      {
+        "question": "How can mission-oriented policy coordinate firms and researchers without locking in one technological solution?",
+        "sources": [
+          "S07",
+          "S54"
+        ]
+      },
+      {
+        "question": "At what stage do technology-deployment subsidies begin to impede rather than accelerate further innovation?",
+        "sources": [
+          "S53"
+        ]
+      },
+      {
+        "question": "Which policy mixes support a transition from early experimentation to large-scale deployment without entrenching incumbents?",
+        "sources": [
+          "S53",
+          "S54"
+        ]
+      },
+      {
+        "question": "What counts as success for transformative innovation policy when societal goals conflict across places?",
+        "sources": [
+          "S52",
+          "S54"
+        ]
+      },
+      {
+        "question": "How do publicly funded collaborations balance open research with firms’ incentives to protect intellectual property?",
+        "sources": [
+          "S11"
+        ]
+      },
+      {
+        "question": "Do regional science investments generate local entrepreneurship or primarily benefit firms elsewhere?",
+        "sources": [
+          "S31"
+        ]
+      },
+      {
+        "question": "Which kinds of interregional ties help places enter technological fields beyond their existing knowledge base?",
+        "sources": [
+          "S14",
+          "S49"
+        ]
+      },
+      {
+        "question": "Can academic inventors reduce the constraining effect of regional technological relatedness on diversification?",
+        "sources": [
+          "S49"
+        ]
+      },
+      {
+        "question": "When do multinational subsidiaries create local knowledge spillovers, and when do they extract regional capabilities?",
+        "sources": [
+          "S48"
+        ]
+      },
+      {
+        "question": "How does the spatial distribution of data and compute infrastructure alter opportunities for regional AI innovation?",
+        "sources": [
+          "S14",
+          "S48"
+        ]
+      },
+      {
+        "question": "Are place-based innovation policies more effective when they target missing capabilities or connect firms to distant ones?",
+        "sources": [
+          "S14",
+          "S32"
+        ]
+      },
+      {
+        "question": "Do green transitions diversify peripheral regions or concentrate advanced activity in established hubs?",
+        "sources": [
+          "S45",
+          "S42"
+        ]
+      },
+      {
+        "question": "How do skill-related supplier networks shape the co-location of innovative firms across regions?",
+        "sources": [
+          "S38"
+        ]
+      },
+      {
+        "question": "What regional indicators capture the social value of innovation when patenting and productivity miss adverse effects?",
+        "sources": [
+          "S46",
+          "S52"
+        ]
+      },
+      {
+        "question": "Can sustainable entrepreneurship measurably change environmental outcomes at the regional scale?",
+        "sources": [
+          "S40",
+          "S42"
+        ]
+      },
+      {
+        "question": "How do geopolitical shocks affect international scientific cooperation differently from cross-border R&D investment?",
+        "sources": [
+          "S18"
+        ]
+      },
+      {
+        "question": "When do research-security restrictions preserve strategic capacity, and when do they undermine scientific discovery?",
+        "sources": [
+          "S17",
+          "S18"
+        ]
+      },
+      {
+        "question": "What would an equitable geography of AI-enabled innovation require from funding, standards, and public infrastructure?",
+        "sources": [
+          "S14",
+          "S47",
+          "S52"
+        ]
+      }
+    ]
+  }
+}
