@@ -71,9 +71,11 @@ def main():
         print("Current reviewed questions are less than three days old.")
         return
 
+    questions = choose_questions(topics, previous)
     archive = previous.get("archive", [])
     if not isinstance(archive, list):
         archive = []
+    archive = archive.copy()
     if previous.get("updated") and previous.get("questions"):
         archive.insert(0, {
             "updated": previous["updated"],
@@ -83,7 +85,7 @@ def main():
         "updated": TODAY.isoformat(),
         "mode": "curated",
         "bank_sha": bank_sha,
-        "questions": choose_questions(topics, previous),
+        "questions": questions,
         "archive": archive[:29],
     }
     OUTPUT.write_text(json.dumps(issue, indent=2, ensure_ascii=False) + "\n")
