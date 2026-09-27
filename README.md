@@ -1,6 +1,6 @@
 # Paper Development Series website
 
-A static website for GitHub Pages. The weekly question card is built remotely in GitHub Actions. It does not need an AI API key or paid model calls. The site uses a single page, an editable programme file, and automatic upcoming/archive grouping.
+A static website for GitHub Pages. The rotating research question card is updated by GitHub Actions. It does not need an AI API key or paid model calls. The site uses a single page, an editable programme file, and automatic upcoming/archive grouping.
 
 ## Before publishing
 
@@ -47,9 +47,9 @@ For a shorter `https://ACCOUNT.github.io/` address, name the repository exactly 
 
 ## Automatic research pulse
 
-The workflow in `.github/workflows/research-pulse.yml` checks recent OpenAlex and Crossref metadata every Tuesday at 08:17 UTC. It uses that metadata to choose three open discussion questions from a curated 36-question bank on science, technology and innovation. Each topic gets a different question every week; an earlier question can return after the 12-question set for that topic has been used. It republishes the page automatically; previous issues are retained for up to 12 weeks in `research-pulse.json`. Visitors only download the questions and do not see article links. The site never calls an AI model, so no API key or AI tokens are needed.
+The workflow in `.github/workflows/research-pulse.yml` checks daily at 08:17 and 09:41 UTC and also on site updates. Once the current issue is at least three days old, it consults recent OpenAlex and Crossref metadata and chooses three discussion questions from a curated bank of 24 questions per topic. It saves the new issue and up to 23 earlier issues in `research-pulse.json`, then republishes the site. Visitors see questions without article links. The site uses no AI API key or model tokens.
 
-The landing card shows one question at a time and advances every 12 seconds with a soft dissolve. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic transitions. If the literature sources are unavailable, the weekly rotation still selects questions from the curated bank. These are discussion prompts, not measured claims about which topics are statistically trending.
+The landing card shows one question at a time and advances every 12 seconds with a soft dissolve. Visitors can select a question or pause the rotation. Reduced-motion settings disable automatic transitions. If the literature sources are unavailable, the three-day refresh still selects questions from the curated bank. These are discussion prompts, not measured claims about which topics are statistically trending.
 
 To refresh immediately, open **Actions → Publish research pulse → Run workflow**. The repository's **Settings → Pages** source must be **GitHub Actions** for scheduled updates to publish.
 
@@ -64,8 +64,8 @@ Open `index.html` in a browser, or run `python3 -m http.server 8000` from this f
 - `site-data.js`: organisers, contact details, and sessions
 - `script.js`: automatic session display, rotating question card, and mobile navigation
 - `research-pulse.json`: current research questions and archive
-- `tools/update_research_pulse.py`: weekly literature scan and question selection
-- `.github/workflows/research-pulse.yml`: weekly refresh and Pages publication
+- `tools/update_research_pulse.py`: three-day literature scan and question selection
+- `.github/workflows/research-pulse.yml`: daily refresh check and Pages publication
 - `favicon.svg`: browser icon
 - `.nojekyll`: publish static files without Jekyll processing
 
@@ -83,6 +83,16 @@ The `.github/workflows/session-reminders.yml` workflow reads `site-data.js` ever
 4. In GitHub **Settings → Secrets and variables → Actions → New repository secret**, add it as `KIT_API_KEY`.
 5. Open **Actions → Schedule seminar reminders → Run workflow**. Select **Verify setup** to test API access and tag count without scheduling email. You can also leave **Dry run** checked to preview reminders due on the current day. The daily scheduled run sends automatically once configured.
 
-The job runs at 07:17 UTC (09:17 CEST or 08:17 CET). Kit schedules due emails ten minutes later. GitHub scheduled jobs can be delayed or skipped; inspect GitHub Actions and Kit Broadcasts around a test date. Reruns check for an existing event/date/time reminder to avoid intentional duplicates. If you change an event's date or time after scheduling, review the broadcast in Kit manually. The week's email captures the details as they stood on the one-week reminder date; the day-of email captures them again on the event date.
+The job is scheduled daily at **10:00 a.m. Europe/Rome**, with a backup at **10:30 a.m. Europe/Rome**. This follows Italian daylight-saving time. Kit schedules due emails about ten minutes after the job actually starts. GitHub may delay or drop scheduled triggers, so these are target times rather than guaranteed delivery times. Both runs check Kit for an existing event/date/time reminder before creating a broadcast. If you change an event's date or time after scheduling, review the older broadcast in Kit manually. The week's email uses the session details on its reminder date; the day-of email reads them again on the event date.
+
+### If an expected email does not arrive
+
+1. Check the date in `site-data.js`: a confirmed entry needs `date` in `YYYY-MM-DD` format, a non-`TBD` speaker and title, and a nonempty `time`. `reminders: false` disables it. A message is due only **seven calendar days before** the session or **on its date** in Europe/Rome.
+2. Open **GitHub → Actions → Schedule seminar reminders**. Look for a run whose event is **schedule** on the expected date, around 10:00 or 10:30 a.m. A green manual run from a previous day does not establish that the automatic trigger worked. GitHub schedules can start late.
+3. Open the run, select **reminders**, and expand **Schedule due reminders through Kit**. Look for `scheduled in Kit as broadcast …`, `already exists in Kit; skipping`, `no confirmed sessions due`, or an error. If the run failed, inspect the error before retrying. The current one-person pilot requires `KIT_API_KEY` and exactly one subscriber in the **PDS test** tag.
+4. In Kit, check **Broadcasts** for the matching subject and scheduled/sent status. If Kit shows it as sent, check the subscribed mailbox's inbox and spam folders. If Kit has no broadcast and GitHub has no run by late morning, start **Actions → Schedule seminar reminders → Run workflow** with **Dry run off** and **Verify setup off**. The live run schedules due reminders; a dry run only previews them. The script checks Kit for an existing reminder before scheduling another.
+5. If a broadcast exists but contains an old time, link, or title, edit or cancel that broadcast in Kit. Changing `site-data.js` does not rewrite an email already scheduled there.
+
+For research questions, open **Actions → Publish research pulse** and inspect the latest run's **Check for the next three-day issue** and **Save the new issue and archive** steps. Compare `research-pulse.json`'s `updated` date with today (UTC). The questions change only once at least three days have elapsed. Use **Run workflow** to retry an overdue update; then confirm the Pages **deploy** job succeeded.
 
 Local preview: `node tools/send_session_reminders.mjs` makes no API calls and sends nothing.
