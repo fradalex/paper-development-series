@@ -86,7 +86,7 @@ The `.github/workflows/session-reminders.yml` workflow reads `site-data.js` ever
 
 ### Scheduling and reliability
 
-GitHub checks at **10:00 and 10:30 Europe/Rome**. These are checks, not guaranteed GitHub start times. Scheduled Actions in this repository have arrived roughly five hours late. A valid cron configuration and a successful manual test do not prove that GitHub will start tomorrow's run on time.
+GitHub checks at **10:11 and 10:47 Europe/Rome**. These minutes avoid the start of an hour, when GitHub reports higher scheduling load. These are checks, not guaranteed GitHub start times. Scheduled Actions in this repository have arrived roughly five hours late. A valid cron configuration and a successful manual test do not prove that GitHub will start tomorrow's run on time.
 
 To reduce this dependence, the script now **books reminders in Kit up to seven days ahead**, with a target send time of **10:00 Europe/Rome on each reminder date**. Kit can send a booked broadcast without GitHub running that morning. A missing reminder due today is queued about ten minutes after the recovery run; reminders for past dates are not sent retrospectively.
 
