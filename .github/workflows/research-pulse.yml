@@ -22,6 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Queued and repeated runs must read the latest saved issue and question bank.
+          ref: main
       - name: Check for the next three-day issue
         run: python3 tools/update_research_pulse.py
       - name: Save the new issue and archive
