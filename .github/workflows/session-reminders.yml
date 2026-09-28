@@ -1,6 +1,17 @@
 name: Schedule seminar reminders
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'site-data.js'
+      - 'tools/send_session_reminders.mjs'
+      - 'tools/send_session_reminders.test.mjs'
+      - '.github/workflows/session-reminders.yml'
+  # A second existing automatic workflow can recover a missed reminder trigger.
+  workflow_run:
+    workflows: ['Publish research pulse']
+    types: [completed]
   schedule:
     - cron: '0 10 * * *'
       timezone: 'Europe/Rome'
@@ -9,7 +20,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Preview due reminders without contacting Kit'
+        description: 'Preview the next seven days without contacting Kit'
         type: boolean
         default: true
       verify_setup:
@@ -26,24 +37,31 @@ concurrency:
 
 jobs:
   reminders:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.event == 'schedule' && github.event.workflow_run.conclusion == 'success')
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Test reminder planning and duplicate protection
+        run: node --test tools/send_session_reminders.test.mjs
       - name: Verify Kit connection and test tag
         if: github.event_name == 'workflow_dispatch' && inputs.verify_setup
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
           KIT_TEST_TAG_NAME: PDS test
         run: node tools/send_session_reminders.mjs --check
-      - name: Preview due reminders
+      - name: Preview reminder schedule
         if: github.event_name == 'workflow_dispatch' && inputs.dry_run && !inputs.verify_setup
         run: node tools/send_session_reminders.mjs
-      - name: Schedule due reminders through Kit
-        if: github.event_name == 'schedule' || (!inputs.dry_run && !inputs.verify_setup)
+      - name: Synchronise reminders with Kit
+        if: github.event_name != 'workflow_dispatch' || (!inputs.dry_run && !inputs.verify_setup)
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
           KIT_TEST_TAG_NAME: PDS test
         run: node tools/send_session_reminders.mjs --send
+
