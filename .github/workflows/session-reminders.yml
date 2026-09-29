@@ -13,9 +13,9 @@ on:
     workflows: ['Publish research pulse']
     types: [completed]
   schedule:
-    - cron: '11 10 * * *'
+    - cron: '17 1 * * *'
       timezone: 'Europe/Rome'
-    - cron: '47 10 * * *'
+    - cron: '47 4 * * *'
       timezone: 'Europe/Rome'
   workflow_dispatch:
     inputs:
