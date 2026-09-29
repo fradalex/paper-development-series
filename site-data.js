@@ -44,7 +44,7 @@ window.PDS_DATA = {
     }
     */
     {
-      date: "2026-09-29",
+      date: "2026-09-30",
       reminders: true,
       time: "14:30 CEST",
       speaker: "Alice Smith",
@@ -56,7 +56,7 @@ window.PDS_DATA = {
       link: "https://www.deepl.com/it/translator"
     },
     {
-      date: "2026-10-06",
+      date: "2026-10-07",
       reminders: true,
       time: "14:30 CEST",
       speaker: "Jack Bryan, Alice Smith and Bob Austin",
