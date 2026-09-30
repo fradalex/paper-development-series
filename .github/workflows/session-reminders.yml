@@ -24,7 +24,7 @@ on:
         type: boolean
         default: true
       verify_setup:
-        description: 'Check Kit key and one-person tag without sending'
+        description: 'Check Kit connection without sending'
         type: boolean
         default: false
 
@@ -49,11 +49,10 @@ jobs:
           node-version: '22'
       - name: Test reminder planning and duplicate protection
         run: node --test tools/send_session_reminders.test.mjs
-      - name: Verify Kit connection and test tag
+      - name: Verify Kit connection
         if: github.event_name == 'workflow_dispatch' && inputs.verify_setup
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
-          KIT_TEST_TAG_NAME: PDS test
         run: node tools/send_session_reminders.mjs --check
       - name: Preview reminder schedule
         if: github.event_name == 'workflow_dispatch' && inputs.dry_run && !inputs.verify_setup
@@ -62,6 +61,5 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || (!inputs.dry_run && !inputs.verify_setup)
         env:
           KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
-          KIT_TEST_TAG_NAME: PDS test
         run: node tools/send_session_reminders.mjs --send
 
