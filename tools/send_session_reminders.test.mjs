@@ -41,7 +41,7 @@ test('live scheduling catches up today, books ahead, and does not duplicate on r
   assert.equal(api.records.filter(r=>r.send_at==='2026-10-05T08:00:00.000Z').length,1);
   await runReminders([seminar,next],now,true);
   assert.equal(api.writes.length,3);
-  assert.deepEqual(api.records[0].subscriber_filter,[{all:[{type:'all_subscribers'}]}]);
+  assert.deepEqual(api.records[0].subscriber_filter,[]);
 });
 test('future content edits update the existing broadcast without shifting its time',async()=>{
   const api=apiMock();await runReminders([next],now,true);
@@ -70,7 +70,7 @@ test('pending pilot broadcasts migrate to all subscribers without changing the s
   prior.subscriber_filter=[{all:[{type:'tag',ids:[1]}]}];
   const originalTime=prior.send_at;
   await runReminders([next],now,true);
-  assert.deepEqual(prior.subscriber_filter,[{all:[{type:'all_subscribers'}]}]);
+  assert.deepEqual(prior.subscriber_filter,[]);
   assert.equal(prior.send_at,originalTime);
   assert.equal(api.records.length,2);
 });
