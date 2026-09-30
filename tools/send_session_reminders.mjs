@@ -45,7 +45,7 @@ async function existingReminders() {
 
 function mailingAudience() {
   console.log('Audience: all Kit subscribers (Kit excludes unsubscribed and unconfirmed contacts).');
-  return [{ all: [{ type: 'all_subscribers' }] }];
+  return [];
 }
 
 function message(session, kind) {
