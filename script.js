@@ -344,13 +344,6 @@
       render(0);
       sizingQuestions = entries.map(entry => entry.question);
       sizeCard();
-      fetch('research-questions.json', { cache: 'no-cache' })
-        .then(response => { if (!response.ok) throw Error('Unavailable'); return response.json(); })
-        .then(bank => {
-          sizingQuestions = [...sizingQuestions, ...Object.values(bank.topics || {}).flat()
-            .filter(item => item && typeof item.question === 'string').map(item => item.question)];
-          sizeCard();
-        }).catch(() => {});
       pause.hidden = entries.length < 2;
       if (motion) {
         pause.setAttribute('aria-pressed', 'true');
