@@ -1,22 +1,39 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-09-30",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "When do AI-generated research ideas expand a scientist’s search space, and when do they anchor it to familiar topics?"
+      "question": "Does AI raise scientific novelty most in fields with fragmented knowledge, or in fields with mature data infrastructures?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "When does AI allow firms to recombine technologically distant knowledge without eroding their existing expertise?"
+      "question": "Do AI-enabled recombinations generate genuinely new applications or mainly new combinations of established components?"
     },
     {
       "topic": "Regions and policy",
-      "question": "How do carbon markets affect the direction of regional green innovation, beyond the number of green patents?"
+      "question": "Do market-based environmental policies foster more radical clean technologies than prescriptive rules, and where?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-09-27",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "When do AI-generated research ideas expand a scientist’s search space, and when do they anchor it to familiar topics?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "When does AI allow firms to recombine technologically distant knowledge without eroding their existing expertise?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "How do carbon markets affect the direction of regional green innovation, beyond the number of green patents?"
+        }
+      ]
+    },
     {
       "updated": "2026-09-27",
       "questions": [
