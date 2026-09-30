@@ -243,6 +243,33 @@
 
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let entries = [];
+  let sizingQuestions = [];
+  function sizeCard() {
+    if (!sizingQuestions.length || !page.clientWidth) return;
+    const probe = page.cloneNode(true);
+    probe.removeAttribute('id');
+    probe.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+    probe.className = 'pulse-page pulse-measure';
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.width = page.getBoundingClientRect().width + 'px';
+    page.parentElement.append(probe);
+    let tallest = 0;
+    for (const question of sizingQuestions) {
+      probe.querySelector('h2').textContent = question;
+      tallest = Math.max(tallest, probe.getBoundingClientRect().height);
+    }
+    probe.remove();
+    const bodyStyle = getComputedStyle(page.parentElement);
+    const chrome = [...card.children].filter(child => child !== page.parentElement)
+      .reduce((total, child) => total + child.getBoundingClientRect().height, 0);
+    card.style.height = Math.ceil(Math.max(620, tallest + chrome + parseFloat(bodyStyle.paddingTop) + parseFloat(bodyStyle.paddingBottom) + 18)) + 'px';
+  }
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(sizeCard, 120);
+  });
+  document.fonts?.ready.then(sizeCard);
   let index = 0;
   let timer;
   let turning = false;
@@ -315,6 +342,15 @@
         controls.append(button);
       });
       render(0);
+      sizingQuestions = entries.map(entry => entry.question);
+      sizeCard();
+      fetch('research-questions.json', { cache: 'no-cache' })
+        .then(response => { if (!response.ok) throw Error('Unavailable'); return response.json(); })
+        .then(bank => {
+          sizingQuestions = [...sizingQuestions, ...Object.values(bank.topics || {}).flat()
+            .filter(item => item && typeof item.question === 'string').map(item => item.question)];
+          sizeCard();
+        }).catch(() => {});
       pause.hidden = entries.length < 2;
       if (motion) {
         pause.setAttribute('aria-pressed', 'true');
