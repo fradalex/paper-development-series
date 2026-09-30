@@ -76,13 +76,13 @@ The fonts use Google Fonts when available; Georgia and Arial serve as fallbacks.
 
 The `.github/workflows/session-reminders.yml` workflow reads `site-data.js` every day. A confirmed session with a date, speaker, title, and time gets one email seven calendar days before it and one on the event date. Dates follow Europe/Rome; the sender is `info@paperdevelopmentseries.org`. The template draws the title, speaker(s), affiliation(s), date, time, location, full description, and optional meeting link from the session entry. `TBD` entries and `reminders: false` entries are skipped.
 
-**One-person pilot:** To keep the test restricted to one recipient even if someone joins through the public signup form, the workflow currently targets only a Kit tag named exactly `PDS test`. It checks that this tag exists and has exactly one subscriber before it schedules any broadcasts. It does not use the whole mailing list during this pilot. When the test ends, explicitly change this targeting before mailing everyone.
+**Audience:** Automated broadcasts target all active Kit subscribers. There is no test tag or one-person limit. Pending automated broadcasts are updated to this audience on the next successful sync; sent messages are never resent. New confirmed subscribers are eligible for future reminders without changing the code.
 
 1. In Kit, ensure `info@paperdevelopmentseries.org` is a verified sending address and the domain authentication is complete. Ensure your own email is an **active** subscriber.
-2. Create a Kit tag called **PDS test** and apply it to your subscriber record only. Check its count is 1.
+2. Import your subscribed contacts into Kit and check that their status is **Confirmed**. No tag is required.
 3. In Kit **Settings → Developer → V4 Keys**, create a V4 API key and copy it. Never put it in a public file or chat.
 4. In GitHub **Settings → Secrets and variables → Actions → New repository secret**, add it as `KIT_API_KEY`.
-5. Open **Actions → Schedule seminar reminders → Run workflow**. Select **Verify setup** to test API access and tag count without scheduling email. You can also leave **Dry run** checked to preview reminders for today and the next seven days. Live runs synchronise the sending schedule automatically once configured.
+5. Open **Actions → Schedule seminar reminders → Run workflow**. Select **Verify setup** to test API access without scheduling email. You can also leave **Dry run** checked to preview reminders for today and the next seven days. Live runs synchronise the sending schedule automatically once configured.
 
 ### Scheduling and reliability
 
@@ -98,7 +98,7 @@ When you edit the website's session data, pending reminders are updated on the n
 
 1. **Check Kit → Broadcasts first.** Find the seminar and look at its scheduled time or sent status. With advance scheduling, there need not be a GitHub run on the sending morning. If Kit shows sent, check the recipient's spam folder too.
 2. If there is no scheduled broadcast, check `site-data.js`: `date` must be `YYYY-MM-DD`, speaker/title must be nonblank and not `TBD`, and `time` must be nonempty. `reminders: false` disables scheduling. Reminders are seven calendar days before and on the session date, using Europe/Rome.
-3. In **Actions → Schedule seminar reminders**, open the latest run and **Synchronise reminders with Kit**. Logs show the planning date, broadcast IDs, target sending times, skips or errors. A successful **Verify setup** or **Preview** does not schedule email. The one-person pilot requires the `KIT_API_KEY` secret and exactly one subscriber in **PDS test**.
+3. In **Actions → Schedule seminar reminders**, open the latest run and **Synchronise reminders with Kit**. Logs show the planning date, broadcast IDs, target sending times, skips or errors. A successful **Verify setup** or **Preview** does not schedule email. The workflow requires the `KIT_API_KEY` secret; broadcasts target all active subscribers.
 4. If no live run has succeeded, choose **Run workflow** on `main`, with **Dry run off** and **Verify setup off**. This books missing reminders for today and the next seven days. It checks Kit before creating anything. Confirm the actual matching broadcasts in Kit afterwards.
 5. If no `schedule` runs appear, check that the workflow is enabled in Actions. Both workflows were active on 28 September 2026; the research-pulse runs from 27 September started at 16:00 and 16:49 Italy time, despite morning schedules. There was still no scheduled reminder run at the time of investigation. GitHub does not expose the exact cause of a missing trigger in the job log because no job started. If timing remains unreliable, use an external scheduler or GitHub Support; changing cron repeatedly does not establish a fix.
 6. After removing or rescheduling a seminar, confirm the sync succeeded and its old pending broadcasts became drafts. If the sync fails, unschedule the obsolete broadcasts directly in Kit before their send times.
