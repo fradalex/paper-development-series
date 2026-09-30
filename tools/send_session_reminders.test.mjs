@@ -4,13 +4,12 @@ import { planReminders, tenInRome, runReminders } from './send_session_reminders
 const now = new Date('2026-09-28T09:30:00Z');
 const seminar = { date:'2026-09-28',time:'14:30 CEST',speaker:'Alice',title:'AI and jobs',description:'Test',location:'Online',link:'https://example.org/meeting' };
 const next = {...seminar,date:'2026-10-05',speaker:'Alice and Bob',title:'Idea incubation'};
-function apiMock(records=[], count=1) {
+function apiMock(records=[]) {
   const writes=[];
   globalThis.fetch=async (url,{method,body})=>{
     const path=new URL(url).pathname;
     let result;
-    if(method==='GET'&&path.endsWith('/tags')) result={tags:[{id:1,name:'PDS test',subscriber_count:count}]};
-    else if(method==='GET'&&path.endsWith('/broadcasts')) result={broadcasts:structuredClone(records)};
+    if(method==='GET'&&path.endsWith('/broadcasts')) result={broadcasts:structuredClone(records)};
     else {
       const data=JSON.parse(body);writes.push({method,path,data});
       if(method==='POST') {const row={id:records.length+100,...data,status:'scheduled'};records.push(row);result={broadcast:row};}
@@ -19,7 +18,7 @@ function apiMock(records=[], count=1) {
     }
     return {ok:true,json:async()=>structuredClone(result)};
   };
-  process.env.KIT_API_KEY='mock';process.env.KIT_TEST_TAG_NAME='PDS test';
+  process.env.KIT_API_KEY='mock';
   return {records,writes};
 }
 test('Italy 10:00 follows DST on the sending date',()=>{
@@ -42,7 +41,7 @@ test('live scheduling catches up today, books ahead, and does not duplicate on r
   assert.equal(api.records.filter(r=>r.send_at==='2026-10-05T08:00:00.000Z').length,1);
   await runReminders([seminar,next],now,true);
   assert.equal(api.writes.length,3);
-  assert.deepEqual(api.records[0].subscriber_filter,[{all:[{type:'tag',ids:[1]}]}]);
+  assert.deepEqual(api.records[0].subscriber_filter,[{all:[{type:'all_subscribers'}]}]);
 });
 test('future content edits update the existing broadcast without shifting its time',async()=>{
   const api=apiMock();await runReminders([next],now,true);
@@ -65,9 +64,15 @@ test('sent reminders are preserved and never resent',async()=>{
   await runReminders([seminar],now,true);assert.equal(api.writes.length,1);
   await runReminders([],now,true);assert.equal(api.records[0].status,'completed');
 });
-test('more than one test subscriber fails before any write',async()=>{
-  const api=apiMock([],2);await assert.rejects(runReminders([seminar],now,true),/exactly one subscriber/);
-  assert.equal(api.writes.length,0);
+test('pending pilot broadcasts migrate to all subscribers without changing the send time',async()=>{
+  const api=apiMock();await runReminders([next],now,true);
+  const prior=api.records.find(r=>r.description.endsWith('today'));
+  prior.subscriber_filter=[{all:[{type:'tag',ids:[1]}]}];
+  const originalTime=prior.send_at;
+  await runReminders([next],now,true);
+  assert.deepEqual(prior.subscriber_filter,[{all:[{type:'all_subscribers'}]}]);
+  assert.equal(prior.send_at,originalTime);
+  assert.equal(api.records.length,2);
 });
 test('dry run makes no API calls',async()=>{
   globalThis.fetch=()=>{throw new Error('Network prohibited');};
