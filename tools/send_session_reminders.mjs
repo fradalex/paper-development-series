@@ -43,25 +43,9 @@ async function existingReminders() {
   return broadcasts;
 }
 
-async function testAudience() {
-  const name = process.env.KIT_TEST_TAG_NAME;
-  if (!name) throw new Error('KIT_TEST_TAG_NAME is required for the one-person pilot.');
-  let cursor;
-  const matches = [];
-  do {
-    const query = new URLSearchParams({ include: 'subscriber_count', per_page: '500' });
-    if (cursor) query.set('after', cursor);
-    const result = await kit('GET', `/tags?${query}`);
-    matches.push(...(result.tags || []).filter(tag => tag.name === name));
-    cursor = result.pagination?.has_next_page ? result.pagination.end_cursor : undefined;
-  } while (cursor);
-  if (matches.length !== 1) throw new Error(`Expected one Kit tag named "${name}", found ${matches.length}.`);
-  const tag = matches[0];
-  if (Number(tag.subscriber_count) !== 1) {
-    throw new Error(`Kit tag "${name}" must have exactly one subscriber; found ${tag.subscriber_count ?? 'unknown'}.`);
-  }
-  console.log(`Test audience: one subscriber in Kit tag "${name}".`);
-  return [{ all: [{ type: 'tag', ids: [tag.id] }] }];
+function mailingAudience() {
+  console.log('Audience: all Kit subscribers (Kit excludes unsubscribed and unconfirmed contacts).');
+  return [{ all: [{ type: 'all_subscribers' }] }];
 }
 
 function message(session, kind) {
@@ -137,7 +121,7 @@ export async function runReminders(sessions, now = new Date(), send = false) {
     return;
   }
   if (!process.env.KIT_API_KEY) throw new Error('KIT_API_KEY is missing. Add it as a GitHub Actions repository secret.');
-  const audience = await testAudience();
+  const audience = mailingAudience();
   const existing = await existingReminders();
   const desired = new Map(all.map(item => [item.marker, item]));
   const known = new Map();
@@ -206,9 +190,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   vm.runInNewContext(dataSource, sandbox, { timeout: 1000 });
   if (process.argv.includes('--check')) {
     if (!process.env.KIT_API_KEY) throw new Error('KIT_API_KEY is missing.');
-    await testAudience();
+    mailingAudience();
     await existingReminders();
-    console.log('Kit API and one-person test audience are ready. No emails were scheduled.');
+    console.log('Kit API connection is ready; broadcasts target all subscribers. No emails were scheduled.');
   } else {
     await runReminders(sandbox.window.PDS_DATA.sessions, new Date(), process.argv.includes('--send'));
   }
