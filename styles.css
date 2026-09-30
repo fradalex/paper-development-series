@@ -123,3 +123,9 @@
 .organiser-dialog-content p{color:var(--muted);line-height:1.8;white-space:pre-line;margin:0}
 @media(max-width:680px){.organiser-carousel{padding-top:18px!important}.organiser-stage{height:290px}.organiser-portrait{width:165px}.organiser-portrait[data-offset="-1"]{transform:translate(-50%,-50%) translateX(-122px) rotateY(24deg) scale(.78)}.organiser-portrait[data-offset="1"]{transform:translate(-50%,-50%) translateX(122px) rotateY(-24deg) scale(.78)}.organiser-portrait[data-offset="-2"],.organiser-portrait[data-offset="-3"]{transform:translate(-50%,-50%) translateX(-250px) rotateY(38deg) scale(.56)}.organiser-portrait[data-offset="2"],.organiser-portrait[data-offset="3"]{transform:translate(-50%,-50%) translateX(250px) rotateY(-38deg) scale(.56)}.organiser-dialog-content{grid-template-columns:1fr}.organiser-dialog-content .organiser-dialog-portrait{width:90px}}
 @media(prefers-reduced-motion:reduce){.organiser-portrait,.organiser-caption,.organiser-arrow{transition:none}}
+
+/* Reserve one stable height for the complete question bank at this screen width. */
+.pulse{height:620px}
+.pulse h2{font-size:clamp(1.7rem,2.3vw,2.2rem);overflow-wrap:break-word}
+.pulse-measure{position:absolute!important;left:0;top:0;inset:auto;visibility:hidden;pointer-events:none;height:auto!important;min-height:0;flex:none;animation:none!important}
+@media(max-width:680px){.pulse{height:620px}.pulse h2{font-size:clamp(1.6rem,6.2vw,2rem)}}
