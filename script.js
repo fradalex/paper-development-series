@@ -262,7 +262,7 @@
     const bodyStyle = getComputedStyle(page.parentElement);
     const chrome = [...card.children].filter(child => child !== page.parentElement)
       .reduce((total, child) => total + child.getBoundingClientRect().height, 0);
-    card.style.height = Math.ceil(Math.max(620, tallest + chrome + parseFloat(bodyStyle.paddingTop) + parseFloat(bodyStyle.paddingBottom) + 18)) + 'px';
+    card.style.height = Math.ceil(Math.max(460, tallest + chrome + parseFloat(bodyStyle.paddingTop) + parseFloat(bodyStyle.paddingBottom) + 18)) + 'px';
   }
   let resizeTimer;
   window.addEventListener('resize', () => {
