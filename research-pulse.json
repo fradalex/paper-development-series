@@ -1,22 +1,39 @@
 {
-  "updated": "2026-09-30",
+  "updated": "2026-10-03",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Does AI raise scientific novelty most in fields with fragmented knowledge, or in fields with mature data infrastructures?"
+      "question": "How does a researcher’s experience alter the use and rejection of AI-generated hypotheses?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Do AI-enabled recombinations generate genuinely new applications or mainly new combinations of established components?"
+      "question": "Which complementary assets let firms turn cumulative AI research into applications across multiple markets?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Do market-based environmental policies foster more radical clean technologies than prescriptive rules, and where?"
+      "question": "When do public procurement and voluntary standards complement each other in creating markets for green products?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-09-30",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Does AI raise scientific novelty most in fields with fragmented knowledge, or in fields with mature data infrastructures?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Do AI-enabled recombinations generate genuinely new applications or mainly new combinations of established components?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Do market-based environmental policies foster more radical clean technologies than prescriptive rules, and where?"
+        }
+      ]
+    },
     {
       "updated": "2026-09-27",
       "questions": [
