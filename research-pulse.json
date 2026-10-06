@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-03",
+  "updated": "2026-10-06",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "How does a researcher’s experience alter the use and rejection of AI-generated hypotheses?"
+      "question": "Which parts of tacit scientific judgment can be translated into AI-readable representations without losing context?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Which complementary assets let firms turn cumulative AI research into applications across multiple markets?"
+      "question": "How do academic founders choose market scope when digital technologies lower downstream entry costs?"
     },
     {
       "topic": "Regions and policy",
-      "question": "When do public procurement and voluntary standards complement each other in creating markets for green products?"
+      "question": "Which regional capabilities allow climate policy to induce innovation rather than relocation of inventive activity?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-03",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "How does a researcher’s experience alter the use and rejection of AI-generated hypotheses?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Which complementary assets let firms turn cumulative AI research into applications across multiple markets?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "When do public procurement and voluntary standards complement each other in creating markets for green products?"
+        }
+      ]
+    },
     {
       "updated": "2026-09-30",
       "questions": [
