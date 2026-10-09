@@ -30,8 +30,10 @@ window.PDS_DATA = {
       link: ""             // Optional full https:// URL; for online sessions, use the meeting link
     }
     */
+    /*
     {
       date: "2026-10-10",
+      reminders: false or true, // Automatic broadcasting
       time: "16:00 CET",
       speaker: "Alice Smith, Bob Jones and Carla Rossi",
       affiliation: "Alice Smith (University A); Bob Jones (University B); Carla Rossi (University C)",
@@ -39,7 +41,8 @@ window.PDS_DATA = {
       description: "Alice will discuss [idea]. Bob will discuss [idea]. Carla will discuss [idea].",
       location: "Online",
       link: "https://your-actual-meeting-link"
-    },
+    }
+    */
     {
       date: "2026-01-15",
       speaker: "Bastian Krieger",
