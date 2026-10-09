@@ -44,7 +44,7 @@ window.PDS_DATA = {
     }
     */
     {
-      date: "2026-10-11",
+      date: "2026-10-12",
       reminders: true,
       time: "16:00 CET",
       speaker: "Alice Smith, Bob Jones and Carla Rossi",
