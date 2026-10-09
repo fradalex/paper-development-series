@@ -43,24 +43,16 @@ window.PDS_DATA = {
       link: "https://your-actual-meeting-link"
     }
     */
-    {
-      date: "2026-11-04",
-      reminders: false,
-      time: "14:30 CET",
-      speaker: "TBD",
-      title: "Idea incubation: three early-stage research projects",
-      description: "TBD",
-      location: "Online"
-    },
-    { date: "2026-11-11", speaker: "TBD", title: "TBD" },
-    { date: "2026-12-09", speaker: "TBD", title: "TBD" },
-    { date: "2027-01-13", speaker: "TBD", title: "TBD" },
-    { date: "2027-02-10", speaker: "TBD", title: "TBD" },
-    { date: "2027-03-10", speaker: "TBD", title: "TBD" },
-    { date: "2027-04-14", speaker: "TBD", title: "TBD" },
-    { date: "2027-05-12", speaker: "TBD", title: "TBD" },
-    { date: "2027-06-09", speaker: "TBD", title: "TBD" },
-    { date: "2027-07-14", speaker: "TBD", title: "TBD" },
+    { date: "2026-11-04", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Idea incubation: three early-stage research projects", description: "TBD", location: "Online" },
+    { date: "2026-11-11", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2026-12-09", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-01-13", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-02-10", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-03-10", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-04-14", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-05-12", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-06-09", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2027-07-14", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     {
       date: "2026-01-15",
       speaker: "Bastian Krieger",
