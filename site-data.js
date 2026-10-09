@@ -44,6 +44,17 @@ window.PDS_DATA = {
     }
     */
     {
+      date: "2026-10-10",
+      reminders: true,
+      time: "16:00 CET",
+      speaker: "Alice Smith, Bob Jones and Carla Rossi",
+      affiliation: "Alice Smith (University A); Bob Jones (University B); Carla Rossi (University C)",
+      title: "Idea incubation: three early-stage research projects",
+      description: "Alice will discuss [idea]. Bob will discuss [idea]. Carla will discuss [idea].",
+      location: "Online",
+      link: "https://your-actual-meeting-link"
+    },
+    {
       date: "2026-01-15",
       speaker: "Bastian Krieger",
       coauthors: ["Linus Strecke"],
