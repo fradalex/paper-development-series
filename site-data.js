@@ -44,16 +44,23 @@ window.PDS_DATA = {
     }
     */
     {
-      date: "2026-10-12",
-      reminders: true,
-      time: "16:00 CET",
-      speaker: "Alice Smith, Bob Jones and Carla Rossi",
-      affiliation: "Alice Smith (University A); Bob Jones (University B); Carla Rossi (University C)",
+      date: "2026-11-04",
+      reminders: false,
+      time: "14:30 CET",
+      speaker: "TBD",
       title: "Idea incubation: three early-stage research projects",
-      description: "Alice will discuss [idea]. Bob will discuss [idea]. Carla will discuss [idea].",
+      description: "TBD",
       location: "Online",
-      link: "https://your-actual-meeting-link"
     },
+    { date: "2026-11-11", speaker: "TBD", title: "TBD" },
+    { date: "2026-12-09", speaker: "TBD", title: "TBD" },
+    { date: "2027-01-13", speaker: "TBD", title: "TBD" },
+    { date: "2027-02-10", speaker: "TBD", title: "TBD" },
+    { date: "2027-03-10", speaker: "TBD", title: "TBD" },
+    { date: "2027-04-14", speaker: "TBD", title: "TBD" },
+    { date: "2027-05-12", speaker: "TBD", title: "TBD" },
+    { date: "2027-06-09", speaker: "TBD", title: "TBD" },
+    { date: "2027-07-14", speaker: "TBD", title: "TBD" },
     {
       date: "2026-01-15",
       speaker: "Bastian Krieger",
@@ -92,16 +99,6 @@ window.PDS_DATA = {
       coauthors: ["Alice Bertoletti"],
       title: "“Girls Just Want to Do Math”: Maternal Role Models and Local Stereotypes in the Mathematics Gender Gap of Italian Regions",
       description: "This paper examines the role of family-based role models and local social context in shaping gender disparities in mathematics achievement among Italian students. Drawing on the literature on the determinants of gender gaps in mathematics, the study addresses the limited empirical integration of family and context-based factors. By using longitudinal administrative data from INVALSI, covering primary and lower secondary education, the analysis adopts a dynamic panel framework with instrumental variables to study how gender gaps evolve across different regions and stages of schooling. The main contribution of the paper is represented by the integration of maternal employment and contextual indicators of gender stereotypes, proxied by local levels of female unemployment rates and exposure to gender-based violence, within a unified empirical framework. The results show that having a working mother mitigates the gender gap in mathematics during lower secondary school, consistent with a role-model mechanism. In contrast, exposure to gender-based violence is associated with poorer outcomes for girls, particularly in Grade 5. Importantly, maternal employment partially mitigates the negative association between adverse gendered environments and girls’ achievement, highlighting the heterogeneity of the phenomenon and the interaction between household role models and local gender norms in shaping educational gender gaps."
-    },
-    { date: "2026-10-15", speaker: "TBD", title: "TBD" },
-    { date: "2026-11-11", speaker: "TBD", title: "TBD" },
-    { date: "2026-12-09", speaker: "TBD", title: "TBD" },
-    { date: "2027-01-13", speaker: "TBD", title: "TBD" },
-    { date: "2027-02-10", speaker: "TBD", title: "TBD" },
-    { date: "2027-03-10", speaker: "TBD", title: "TBD" },
-    { date: "2027-04-14", speaker: "TBD", title: "TBD" },
-    { date: "2027-05-12", speaker: "TBD", title: "TBD" },
-    { date: "2027-06-09", speaker: "TBD", title: "TBD" },
-    { date: "2027-07-14", speaker: "TBD", title: "TBD" }
+    }
   ]
 };
