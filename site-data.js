@@ -32,7 +32,6 @@ window.PDS_DATA = {
     */
     {
       date: "2026-10-10",
-      reminders: true, // Automatic broadcasting
       time: "16:00 CET",
       speaker: "Alice Smith, Bob Jones and Carla Rossi",
       affiliation: "Alice Smith (University A); Bob Jones (University B); Carla Rossi (University C)",
