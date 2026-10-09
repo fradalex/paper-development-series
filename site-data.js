@@ -50,7 +50,7 @@ window.PDS_DATA = {
       speaker: "TBD",
       title: "Idea incubation: three early-stage research projects",
       description: "TBD",
-      location: "Online",
+      location: "Online"
     },
     { date: "2026-11-11", speaker: "TBD", title: "TBD" },
     { date: "2026-12-09", speaker: "TBD", title: "TBD" },
