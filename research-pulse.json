@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-09",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Which parts of tacit scientific judgment can be translated into AI-readable representations without losing context?"
+      "question": "Does assigning AI to hypothesis generation rather than evaluation change the originality of subsequent research?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "How do academic founders choose market scope when digital technologies lower downstream entry costs?"
+      "question": "Do general-purpose AI capabilities favor broad startups, while specialized data and distribution favor incumbents?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Which regional capabilities allow climate policy to induce innovation rather than relocation of inventive activity?"
+      "question": "How should innovation policy account for environmental harms that arise far from the places where technologies are developed?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-06",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Which parts of tacit scientific judgment can be translated into AI-readable representations without losing context?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "How do academic founders choose market scope when digital technologies lower downstream entry costs?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Which regional capabilities allow climate policy to induce innovation rather than relocation of inventive activity?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-03",
       "questions": [
