@@ -207,6 +207,8 @@
       const heading = el('h3', '', person.name);
       heading.id = 'organiser-dialog-title';
       copy.append(heading, el('p', '', typeof person.bio === 'string' && person.bio.trim() ? person.bio : 'Biography to follow.'));
+      const website = validLink(person.website);
+      if (website) { const link = el('a', 'session-link organiser-website', 'Personal website ↗'); link.href = website; link.target = '_blank'; link.rel = 'noopener noreferrer'; copy.append(link); }
       organiserDialogContent.append(photo, copy);
       organiserDialog.showModal();
       $('organiser-dialog-close').focus();

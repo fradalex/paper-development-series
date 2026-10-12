@@ -121,6 +121,7 @@
 .organiser-dialog-content .organiser-dialog-placeholder{display:grid;place-items:center;color:#71827f;font-size:.68rem;text-transform:uppercase;letter-spacing:.12em}
 .organiser-dialog-content h3{font:400 clamp(1.8rem,3vw,2.5rem)/1.15 var(--serif);margin:0 0 10px}
 .organiser-dialog-content p{color:var(--muted);line-height:1.8;white-space:pre-line;margin:0}
+.organiser-dialog .organiser-website{margin-top:16px}
 @media(max-width:680px){.organiser-carousel{padding-top:18px!important}.organiser-stage{height:290px}.organiser-portrait{width:165px}.organiser-portrait[data-offset="-1"]{transform:translate(-50%,-50%) translateX(-122px) rotateY(24deg) scale(.78)}.organiser-portrait[data-offset="1"]{transform:translate(-50%,-50%) translateX(122px) rotateY(-24deg) scale(.78)}.organiser-portrait[data-offset="-2"],.organiser-portrait[data-offset="-3"]{transform:translate(-50%,-50%) translateX(-250px) rotateY(38deg) scale(.56)}.organiser-portrait[data-offset="2"],.organiser-portrait[data-offset="3"]{transform:translate(-50%,-50%) translateX(250px) rotateY(-38deg) scale(.56)}.organiser-dialog-content{grid-template-columns:1fr}.organiser-dialog-content .organiser-dialog-portrait{width:90px}}
 @media(prefers-reduced-motion:reduce){.organiser-portrait,.organiser-caption,.organiser-arrow{transition:none}}
 
