@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-09",
+  "updated": "2026-10-12",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Does assigning AI to hypothesis generation rather than evaluation change the originality of subsequent research?"
+      "question": "How can we separate genuine conceptual novelty from lexical novelty in AI-assisted scientific publications?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Do general-purpose AI capabilities favor broad startups, while specialized data and distribution favor incumbents?"
+      "question": "How does managerial expertise change when AI is deployed in innovation-oriented rather than routine operations?"
     },
     {
       "topic": "Regions and policy",
-      "question": "How should innovation policy account for environmental harms that arise far from the places where technologies are developed?"
+      "question": "Can regions identify harmful or foregone innovations before their costs become visible in market data?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-09",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Does assigning AI to hypothesis generation rather than evaluation change the originality of subsequent research?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Do general-purpose AI capabilities favor broad startups, while specialized data and distribution favor incumbents?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "How should innovation policy account for environmental harms that arise far from the places where technologies are developed?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-06",
       "questions": [
