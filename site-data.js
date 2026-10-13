@@ -5,6 +5,7 @@ window.PDS_DATA = {
   // Replace each placeholder with a name, a short bio, and an optional photo path.
   // Upload portraits beside index.html in this repository; for example photo: "alex-smith.jpg".
   // Add or delete { name, photo, bio } rows to change the number of organisers.
+  // Optional: website: "https://..." adds a link to the person's biography card.
   organisers: [
     { name: "Stefano Azzolina", photo: "", bio: "" },
     { name: "Mariavittoria Castellucci", photo: "", bio: "" },
@@ -13,7 +14,7 @@ window.PDS_DATA = {
     { name: "Stefano Fusinato", photo: "", bio: "" },
     { name: "Arsla Khalid", photo: "", bio: "" },
     { name: "Andrea Marini", photo: "", bio: "" },
-    { name: "Rahmi Can Yamanoğlu", photo: "", bio: "" },
+    { name: "Rahmi Can Yamanoğlu", photo: "", website: "https://rcyamanoglu.com", bio: "Rahmi Can Yamanoğlu is a PhD candidate in economic geography and regional science at the Gran Sasso Science Institute in L'Aquila, Italy, working on the geography of innovation and on how institutional and intellectual property frameworks shape innovation dynamics across regions. The research focuses on inclusive forms of innovation and on the social side of innovation: how institutions, social relations and gender shape who innovates and where. It combines econometric analysis and computational methods with large-scale IP and regional datasets." },
     { name: "Francesca Zannelli", photo: "", bio: "" },
   ],
   sessions: [
@@ -53,6 +54,73 @@ window.PDS_DATA = {
     { date: "2027-05-12", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     { date: "2027-06-09", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     { date: "2027-07-14", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    {
+      date: "2024-05-09",
+      speaker: "Stefano Basilico",
+      title: "Divergent Paths for Green Transition: Regional Disparities in Technology Diversification"
+    },
+    {
+      date: "2024-11-14",
+      speaker: "Andrea Ascani",
+      title: "Critical Raw Materials and MNE Strategies under Paradigm Shift"
+    },
+    {
+      date: "2024-12-05",
+      speaker: "Cecilia Seri",
+      coauthors: ["Carlo Pietrobelli", "Andrea Presbitero", "Danilo Spinola"],
+      affiliation: "PhD fellow at UNU-MERIT",
+      title: "Global FDI Networks Reconfigurations: Strategic Sectors and the Influence of Geopolitical Shifts"
+    },
+    {
+      date: "2025-01-08",
+      speaker: "Eduardo Hernández Rodríguez",
+      affiliation: "PhD candidate at Utrecht University",
+      title: "Centrality in GVCs: Implications for functional upgrading and downgrading dynamics"
+    },
+    {
+      date: "2025-02-12",
+      speaker: "Daniela Arlia",
+      coauthors: ["Giacomo Lo Conte (University College Dublin)", "Silvia Rocchetta (DCU Business School)"],
+      affiliation: "Economist at the European Commission's Joint Research Centre and PhD candidate in Economics at the Aix-Marseille School of Economics",
+      title: "Localised innovation and its effects in the labor markets"
+    },
+    {
+      date: "2025-03-06",
+      speaker: "Gianluca Biggi",
+      affiliation: "Postdoctoral researcher at the Institute of Economics, Scuola Superiore Sant'Anna",
+      title: "The uneven geography of remediation technologies: Industrial development and soil contamination in European regions"
+    },
+    {
+      date: "2025-04-08",
+      speaker: "Jacopo Tramontano",
+      affiliation: "PhD student at Sapienza University of Rome",
+      title: "The Impact of Amazon on Italian Local Labor Markets: a Staggered Difference-in-Differences Approach"
+    },
+    {
+      date: "2025-05-12",
+      speaker: "Milene Tessarin",
+      affiliation: "Postdoctoral researcher at Utrecht University",
+      title: "Women in cultural and creative occupations boost innovation in rural areas"
+    },
+    {
+      date: "2025-05-28",
+      speaker: "Yibo Qiao",
+      affiliation: "Assistant Professor in the Department of Urban and Regional Planning, Nanjing University",
+      title: "High-speed Railway and City Industrial Upgrading in China: A Quasi-experimental Study"
+    },
+    {
+      date: "2025-10-23",
+      speaker: "Berkeren Büyükeren",
+      affiliation: "PhD candidate at the Einaudi Institute for Economics and Finance and LUISS Guido Carli",
+      title: "Remaking the State from Below: Local Government Formation in Ukraine"
+    },
+    {
+      date: "2025-11-13",
+      speaker: "Andrea Marini",
+      coauthors: ["Fabio Landini", "Ugo Rizzo"],
+      affiliation: "PhD candidate at the University of Ferrara",
+      title: "University Education and Students’ Willingness-To-Pay for Green Attributes of Hypothetical Jobs"
+    },
     {
       date: "2026-01-15",
       speaker: "Bastian Krieger",
