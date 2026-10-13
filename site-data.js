@@ -118,8 +118,9 @@ window.PDS_DATA = {
       date: "2025-11-13",
       speaker: "Andrea Marini",
       coauthors: ["Fabio Landini", "Ugo Rizzo"],
-      affiliation: "PhD candidate at the University of Ferrara",
-      title: "University Education and Students’ Willingness-To-Pay for Green Attributes of Hypothetical Jobs"
+      affiliation: "PhD candidate at the University of Ferrara and University of Parma",
+      title: "University Education and Students’ Willingness-To-Pay for Green Attributes of Hypothetical Jobs",
+      description: "Despite growing evidence that individuals intrinsically care about the environment, particularly when they act as consumers, less is known about their views as workers in the labour market. Moreover, the literature on compensating differentials shows that individuals are willing to trade higher wages for better job attributes, such as flexible schedules and moderate work pace. However, prior research has not investigated preferences for environmental job attributes. This study addresses this gap by estimating individuals’ willingness to pay for previously unexplored green attributes in hypothetical job offers, using a discrete choice experiment on a sample of 2,008 individuals aged 18-30 residing across all Italian regions. We find that workers at the start of their career are, on average, willing to give up between 2\% and 8\% of their monthly salary to have a green job attribute. Furthermore, willingness to pay varies according to individual characteristics, with women and more prosocial individuals exhibiting stronger preferences for green amenities. These findings have implications for sorting dynamics and managerial policy, suggesting that companies committed to environmental sustainability may attract a higher proportion of prosocial workers, who could arguably contribute more effectively."
     },
     {
       date: "2026-01-15",
