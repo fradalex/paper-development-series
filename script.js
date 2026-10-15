@@ -203,7 +203,8 @@
       organiserDialogContent.replaceChildren();
       const photo = typeof person.photo === 'string' && person.photo.trim() ? el('img', 'organiser-dialog-portrait') : el('div', 'organiser-dialog-portrait organiser-dialog-placeholder', 'Portrait to follow');
       if (photo.tagName === 'IMG') { photo.src = person.photo; photo.alt = 'Portrait of ' + person.name; photo.onerror = () => photo.replaceWith(el('div', 'organiser-dialog-portrait organiser-dialog-placeholder', 'Portrait to follow')); }
-      const copy = el('div');
+      const copy = el('div', 'organiser-bio-copy');
+      copy.append(el('p', 'organiser-bio-label', 'Meet the organiser'));
       const heading = el('h3', '', person.name);
       heading.id = 'organiser-dialog-title';
       copy.append(heading, el('p', '', typeof person.bio === 'string' && person.bio.trim() ? person.bio : 'Biography to follow.'));
