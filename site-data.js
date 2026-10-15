@@ -14,7 +14,7 @@ window.PDS_DATA = {
     { name: "Stefano Fusinato", photo: "", bio: "" },
     { name: "Arsla Khalid", photo: "", bio: "" },
     { name: "Andrea Marini", photo: "", bio: "" },
-    { name: "Rahmi Can Yamanoğlu", photo: "", website: "https://rcyamanoglu.com", bio: "Rahmi Can Yamanoğlu is a PhD candidate in economic geography and regional science at the Gran Sasso Science Institute in L'Aquila, Italy, working on the geography of innovation and on how institutional and intellectual property frameworks shape innovation dynamics across regions. The research focuses on inclusive forms of innovation and on the social side of innovation: how institutions, social relations and gender shape who innovates and where. It combines econometric analysis and computational methods with large-scale IP and regional datasets." },
+    { name: "Rahmi Can Yamanoğlu", photo: "rahmi-can-yamanoglu.jpg", website: "https://rcyamanoglu.com", bio: "Rahmi Can Yamanoğlu is a PhD candidate in economic geography and regional science at the Gran Sasso Science Institute in L'Aquila, Italy, working on the geography of innovation and on how institutional and intellectual property frameworks shape innovation dynamics across regions. The research focuses on inclusive forms of innovation and on the social side of innovation: how institutions, social relations and gender shape who innovates and where. It combines econometric analysis and computational methods with large-scale IP and regional datasets." },
     { name: "Francesca Zannelli", photo: "", bio: "" },
   ],
   sessions: [
@@ -55,9 +55,20 @@ window.PDS_DATA = {
     { date: "2027-06-09", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     { date: "2027-07-14", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     {
+      date: "2024-04-11",
+      speaker: "Alberto Marzucchi",
+      title: "Robots Adoption and Product Innovation"
+    },
+    {
       date: "2024-05-09",
       speaker: "Stefano Basilico",
       title: "Divergent Paths for Green Transition: Regional Disparities in Technology Diversification"
+    },
+    {
+      date: "2024-06-14",
+      speaker: "Davide Lunardon",
+      coauthors: ["Alberto Marzucchi (GSSI)", "Fabio Landini (University of Parma)"],
+      title: "Green jobs and Meaningful work"
     },
     {
       date: "2024-11-14",
@@ -106,21 +117,23 @@ window.PDS_DATA = {
       date: "2025-05-28",
       speaker: "Yibo Qiao",
       affiliation: "Assistant Professor in the Department of Urban and Regional Planning, Nanjing University",
-      title: "High-speed Railway and City Industrial Upgrading in China: A Quasi-experimental Study"
+      title: "High-speed Railway and City Industrial Upgrading in China: A Quasi-experimental Study",
+      description: "This paper investigates the effect of High-speed Railway (HSR) on city industrial upgrading. Using the Annual Survey of Industrial Firms (1998-2015) and HSR opening information in China, we conduct a difference-in-differences-in-differences (DDD) analysis on 300 prefecture- and higher-level cities and 389 4-digit manufacturing industries. We find that HSR enables cities to enter more complex industries, and this result is robust under parallel trend test, placebo test, instrumental variable estimation, and other specifications. We contribute to Evolutionary Economic Geography by considering HSR as a regional external linkage and by integrating the causal analysis in the study of regional diversification."
     },
     {
       date: "2025-10-23",
       speaker: "Berkeren Büyükeren",
       affiliation: "PhD candidate at the Einaudi Institute for Economics and Finance and LUISS Guido Carli",
-      title: "Remaking the State from Below: Local Government Formation in Ukraine"
+      title: "Remaking the State from Below: Local Government Formation in Ukraine",
+      description: "Does consolidating local governments while expanding their autonomy improve governance and development? I study Ukraine’s 2015-2020 reform, which allowed small local councils to voluntarily amalgamate into newly created hromadas with greater fiscal and administrative authority. Councils that were wealthier, more Ukrainian-speaking and more similar to their neighbors were more likely to merge. Amalgamation improved procurement performance, strengthened fiscal capacity and increased local economic activity. Survey evidence further shows that residents of rural areas, who were most exposed to the reform, were more likely to identify solely as Ukrainian. The gains were particularly pronounced for smaller hromadas and for peripheral local councils within merged units, as well as in places with greater baseline financial capacity. Together, these findings suggest that consolidating jurisdictions while devolving authority can enhance state effectiveness, stimulate local development and shape civic identity."
     },
     {
       date: "2025-11-13",
       speaker: "Andrea Marini",
       coauthors: ["Fabio Landini", "Ugo Rizzo"],
-      affiliation: "PhD candidate at the University of Ferrara and University of Parma",
-      title: "University Education and Students’ Willingness-To-Pay for Green Attributes of Hypothetical Jobs",
-      description: "Despite growing evidence that individuals intrinsically care about the environment, particularly when they act as consumers, less is known about their views as workers in the labour market. Moreover, the literature on compensating differentials shows that individuals are willing to trade higher wages for better job attributes, such as flexible schedules and moderate work pace. However, prior research has not investigated preferences for environmental job attributes. This study addresses this gap by estimating individuals’ willingness to pay for previously unexplored green attributes in hypothetical job offers, using a discrete choice experiment on a sample of 2,008 individuals aged 18-30 residing across all Italian regions. We find that workers at the start of their career are, on average, willing to give up between 2\% and 8\% of their monthly salary to have a green job attribute. Furthermore, willingness to pay varies according to individual characteristics, with women and more prosocial individuals exhibiting stronger preferences for green amenities. These findings have implications for sorting dynamics and managerial policy, suggesting that companies committed to environmental sustainability may attract a higher proportion of prosocial workers, who could arguably contribute more effectively."
+      affiliation: "PhD candidate at the University of Ferrara",
+      title: "The Value of Green Job Attributes: A Discrete Choice Experiment",
+      description: "Despite growing evidence that individuals intrinsically care about the environment, particularly when they act as consumers, less is known about their views as workers in the labour market. Moreover, the literature on compensating differentials shows that individuals are willing to trade higher wages for better job attributes, such as flexible schedules and moderate work pace. However, prior research has not investigated preferences for environmental job attributes. This study addresses this gap by estimating individuals’ willingness to pay for previously unexplored green attributes in hypothetical job offers, using a discrete choice experiment on a sample of 2,008 individuals aged 18-30 residing across all Italian regions. We find that workers at the start of their career are, on average, willing to give up between 2% and 8% of their monthly salary to have a green job attribute. Furthermore, willingness to pay varies according to individual characteristics, with women and more prosocial individuals exhibiting stronger preferences for green amenities. These findings have implications for sorting dynamics and managerial policy, suggesting that companies committed to environmental sustainability may attract a higher proportion of prosocial workers, who could arguably contribute more effectively."
     },
     {
       date: "2026-01-15",
