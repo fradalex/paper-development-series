@@ -134,3 +134,31 @@
 /* Compact spacing; sizing reserves room for the longest current question. */
 .pulse-page{padding-top:24px;padding-bottom:18px}
 .pulse h2{margin-bottom:10px}
+
+/* Organiser portraits: framed photographs and an editorial biography layout. */
+.organiser-stage{height:370px}
+.organiser-portrait{width:230px;padding:9px;background:var(--paper);border:1px solid #d6d6ca;border-radius:9px;box-shadow:0 12px 28px #172d3514}
+.organiser-portrait img,.organiser-portrait-placeholder{border-radius:4px}
+.organiser-portrait[data-offset="0"]{box-shadow:0 16px 36px #172d3524}
+.organiser-caption{width:min(350px,86%);margin-top:8px;padding-top:20px;min-height:100px;border-color:#c4cbc3}
+.organiser-name-button{font-size:clamp(1.5rem,2.7vw,2rem);line-height:1.2}
+.organiser-controls{width:min(350px,86%);margin-top:12px}
+.organiser-arrow{width:44px;height:44px;border:1px solid #cbd1c9;border-radius:50%;font-size:1.4rem}
+.organiser-arrow:hover{background:#eee9df;transform:none}
+.organiser-dialog{width:min(820px,calc(100% - 32px));border-radius:12px}
+.organiser-dialog .organiser-dialog-content{display:grid;grid-template-columns:190px minmax(0,1fr);gap:36px;align-items:start;padding:36px}
+.organiser-dialog-content .organiser-dialog-portrait{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center;padding:8px;background:var(--cream);border:1px solid #d7d9cf;border-radius:8px;box-shadow:0 8px 20px #172d3512}
+.organiser-dialog-content .organiser-dialog-placeholder{height:auto;min-height:240px;text-align:center;font-size:.65rem}
+.organiser-dialog-content .organiser-bio-label{font-family:var(--sans);font-size:.63rem;color:#a35139;font-weight:700;letter-spacing:.17em;text-transform:uppercase;margin:0 0 12px}
+.organiser-dialog-content h3{font:400 clamp(1.8rem,3vw,2.5rem)/1.15 var(--serif);letter-spacing:-.03em;margin:0 0 20px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.organiser-dialog-content p{font-size:.92rem;line-height:1.85;color:#45585d}
+.organiser-dialog .organiser-website{margin-top:22px;font-size:.8rem}
+@media(max-width:680px){
+ .organiser-stage{height:300px}
+ .organiser-portrait{width:178px;padding:7px}
+ .organiser-caption{min-height:88px}
+ .organiser-dialog .organiser-dialog-content{grid-template-columns:1fr;gap:24px;padding:26px}
+ .organiser-dialog-content .organiser-dialog-portrait{width:140px}
+ .organiser-dialog-content .organiser-dialog-placeholder{min-height:0}
+ .organiser-dialog-content h3{margin-bottom:16px;padding-bottom:16px}
+}
