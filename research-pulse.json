@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-18",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Does widespread AI use reduce intellectual diversity within a field even as its average output rises?"
+      "question": "Which complementarities between domain expertise, data access, and computing capacity determine AI’s scientific returns?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Can small firms adopt AI productively without first building internal data and knowledge-management capabilities?"
+      "question": "Does AI adoption widen or narrow innovation gaps between small firms with different knowledge bases?"
     },
     {
       "topic": "Regions and policy",
-      "question": "How do technical standards redistribute value between regions that develop technologies and those that implement them?"
+      "question": "Which actors set AI and green-technology standards, and how does their geography shape entry opportunities?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-15",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Does widespread AI use reduce intellectual diversity within a field even as its average output rises?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Can small firms adopt AI productively without first building internal data and knowledge-management capabilities?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "How do technical standards redistribute value between regions that develop technologies and those that implement them?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-12",
       "questions": [
