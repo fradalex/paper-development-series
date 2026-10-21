@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-18",
+  "updated": "2026-10-21",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Which complementarities between domain expertise, data access, and computing capacity determine AI’s scientific returns?"
+      "question": "Do shared AI models help peripheral research teams enter frontier fields or reinforce concentration in leading labs?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Does AI adoption widen or narrow innovation gaps between small firms with different knowledge bases?"
+      "question": "How does human–AI coordination across tacit and codified knowledge affect the viability of new products?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Which actors set AI and green-technology standards, and how does their geography shape entry opportunities?"
+      "question": "Does control of standard-essential patents create new regional specializations or deepen existing technological hierarchies?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-18",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Which complementarities between domain expertise, data access, and computing capacity determine AI’s scientific returns?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Does AI adoption widen or narrow innovation gaps between small firms with different knowledge bases?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Which actors set AI and green-technology standards, and how does their geography shape entry opportunities?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-15",
       "questions": [
