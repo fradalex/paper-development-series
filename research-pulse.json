@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-24",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Do shared AI models help peripheral research teams enter frontier fields or reinforce concentration in leading labs?"
+      "question": "How does AI adoption change the division of labor between junior and senior researchers in scientific teams?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "How does human–AI coordination across tacit and codified knowledge affect the viability of new products?"
+      "question": "Which kinds of strategic decisions improve when AI agents simulate rival responses rather than forecast outcomes alone?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Does control of standard-essential patents create new regional specializations or deepen existing technological hierarchies?"
+      "question": "When can latecomer regions influence international standards instead of remaining standard takers?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-21",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Do shared AI models help peripheral research teams enter frontier fields or reinforce concentration in leading labs?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "How does human–AI coordination across tacit and codified knowledge affect the viability of new products?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Does control of standard-essential patents create new regional specializations or deepen existing technological hierarchies?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-18",
       "questions": [
