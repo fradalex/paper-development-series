@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-10-27",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "How does AI adoption change the division of labor between junior and senior researchers in scientific teams?"
+      "question": "Can AI-assisted synthesis bridge distant literatures without erasing disagreements between research traditions?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Which kinds of strategic decisions improve when AI agents simulate rival responses rather than forecast outcomes alone?"
+      "question": "Do algorithmic recommendations on digital platforms redistribute discovery toward niche complementors or reinforce winners?"
     },
     {
       "topic": "Regions and policy",
-      "question": "When can latecomer regions influence international standards instead of remaining standard takers?"
+      "question": "How does state participation in global production networks reshape the location of research and strategic assets?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-24",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "How does AI adoption change the division of labor between junior and senior researchers in scientific teams?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Which kinds of strategic decisions improve when AI agents simulate rival responses rather than forecast outcomes alone?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "When can latecomer regions influence international standards instead of remaining standard takers?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-21",
       "questions": [
