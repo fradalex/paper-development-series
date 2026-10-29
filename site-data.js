@@ -45,7 +45,8 @@ window.PDS_DATA = {
       link: "https://your-actual-meeting-link"
     }
     */
-    { date: "2026-11-04", reminders: false, time: "14:30 CET", speaker: "Ester Cipi (University of Trento and the free University of Bolzano), Rahmi Can Yamanoğlu (Gran Sasso Science Institute), Francesca Zannelli (Catholic University)", 
+    { date: "2026-11-04", reminders: false, time: "14:30 CET", speaker: "Ester Cipi, Rahmi Can Yamanoğlu and Francesca Zannelli", 
+      affiliation: "Ester Cipi (University of Trento and the free University of Bolzano); Rahmi Can Yamanoğlu (Gran Sasso Science Institute); Francesca Zannelli (Catholic University)",
       title: "Idea incubation: three early-stage research projects", 
       description: "Our first idea incubation session brings together three early-stage projects on climate policy and international scientific collaboration. Ester Cipi explores how the fossil energy mix shapes the effects of carbon pricing on inflation, output and emissions in the euro area, combining empirical analysis with a proposed DSGE framework incorporating fuel substitution and allowance banking. Can Yamanoğlu examines how colonial ties, scientific capacity, accumulated collaboration and university autonomy shape scientific partnerships in the Global South, drawing on OpenAlex articles from 1995–2023. Francesca Zannelli investigates whether green State aid encourages firms regulated by the EU Emissions Trading System to cut emissions, innovate or both, and how these responses depend on their existing technological capabilities.", location: "Online" },
     
