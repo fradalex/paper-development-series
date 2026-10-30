@@ -73,7 +73,7 @@ function message(session, kind) {
     '<p>Paper Development Series</p>',
   ];
   return {
-    subject: `${kind === 'week' ? 'Next week' : 'Today'}: ${session.title.trim()} | Paper Development Series`,
+    subject: `${kind === 'week' ? 'Next week' : 'Today'} — ${session.title.trim()} | Paper Development Series`,
     preview_text: `${speaker} · ${schedule}`,
     content: parts.join(''),
   };
