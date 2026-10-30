@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-30",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Can AI-assisted synthesis bridge distant literatures without erasing disagreements between research traditions?"
+      "question": "When do interdisciplinary funding programs generate durable collaborations beyond the grant period?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Do algorithmic recommendations on digital platforms redistribute discovery toward niche complementors or reinforce winners?"
+      "question": "When does a platform rival’s entry induce complementors to diversify across platforms rather than specialize?"
     },
     {
       "topic": "Regions and policy",
-      "question": "How does state participation in global production networks reshape the location of research and strategic assets?"
+      "question": "Do technology-sovereignty policies build domestic capabilities or fragment international knowledge exchange?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-27",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Can AI-assisted synthesis bridge distant literatures without erasing disagreements between research traditions?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Do algorithmic recommendations on digital platforms redistribute discovery toward niche complementors or reinforce winners?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "How does state participation in global production networks reshape the location of research and strategic assets?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-24",
       "questions": [
