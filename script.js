@@ -25,14 +25,40 @@
   const archiveList = $('past-list');
   let lastSessionTrigger;
 
+
+  // Existing multi-speaker entries use "Name (Affiliation); Name (Affiliation)".
+  // Only format this as a roster when every name also appears in speaker.
+  function speakerRoster(session) {
+    if (typeof session.affiliation !== 'string') return [];
+    const parts = session.affiliation.split(';').map(part => part.trim()).filter(Boolean);
+    if (parts.length < 2) return [];
+    const roster = parts.map(part => {
+      const match = part.match(/^(.+?)\s*\((.+)\)$/);
+      return match ? { name: match[1].trim(), affiliation: match[2].trim() } : null;
+    });
+    return roster.every(person => person && session.speaker.includes(person.name)) ? roster : [];
+  }
+
   function openSessionCard(session, trigger) {
     lastSessionTrigger = trigger;
     const title = el('h3', 'session-dialog-title', session.title);
     title.id = 'session-dialog-title';
     dialogContent.replaceChildren(el('p', 'session-dialog-date', formatDate(session.date)), title);
-    dialogContent.append(el('p', 'session-dialog-speaker', session.speaker));
+    const roster = speakerRoster(session);
+    if (roster.length) {
+      const list = el('ul', 'session-speaker-roster');
+      for (const person of roster) {
+        const row = el('li', 'session-speaker-person');
+        row.append(el('p', 'session-dialog-speaker', person.name),
+          el('p', 'session-dialog-affiliation', person.affiliation));
+        list.append(row);
+      }
+      dialogContent.append(list);
+    } else {
+      dialogContent.append(el('p', 'session-dialog-speaker', session.speaker));
+      if (session.affiliation) dialogContent.append(el('p', 'session-dialog-affiliation', session.affiliation));
+    }
     if (isPlaceholder(session) && !session.description && !session.abstract) dialogContent.append(el('p', 'session-dialog-abstract', 'Speaker and paper details will be announced.'));
-    if (session.affiliation) dialogContent.append(el('p', 'session-dialog-affiliation', session.affiliation));
     if (Array.isArray(session.coauthors) && session.coauthors.length) {
       const names = session.coauthors.filter(Boolean).join(', ');
       if (names) dialogContent.append(el('p', 'session-dialog-coauthors', (session.coauthors.length === 1 ? 'Coauthor: ' : 'Coauthors: ') + names));
@@ -82,7 +108,7 @@
     const content = $('next-session').querySelector('.featured-content');
     if (upcoming.length) {
       const next = upcoming[0];
-      content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', next.speaker + (next.affiliation ? ' · ' + next.affiliation : '')));
+      content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', next.speaker + (next.affiliation && !speakerRoster(next).length && !/,|\s+and\s+|\s*&\s*/i.test(next.speaker) ? ' · ' + next.affiliation : '')));
       if (next.location) content.append(el('p', 'featured-location', next.location));
       const url = validLink(next.link);
       if (url) { const link = el('a', 'featured-link', /\bonline\b/i.test(next.location || '') ? 'Join the online meeting ↗' : 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; content.append(link); }
