@@ -69,7 +69,7 @@ function message(session, kind) {
     '</p>',
     session.description?.trim() ? `<p>${escape(session.description.trim())}</p>` : '',
     safeLink ? `<p><a href="${escape(safeLink)}">Join the online discussion</a></p>` : '',
-    '<p>We look forward to discussing the work together.</p>',
+    '<p>We look forward to seeing you and hearing your thoughts.</p>',
     '<p>Paper Development Series</p>',
   ];
   return {
