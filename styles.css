@@ -162,3 +162,9 @@
  .organiser-dialog-content .organiser-dialog-placeholder{min-height:0}
  .organiser-dialog-content h3{margin-bottom:16px;padding-bottom:16px}
 }
+
+/* Multiple speakers: pair each name with its institution once. */
+.session-speaker-roster{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:14px}
+.session-speaker-person{padding-left:15px;border-left:2px solid #c8735366}
+.session-speaker-person .session-dialog-speaker{margin:0 0 3px}
+.session-speaker-person .session-dialog-affiliation{margin:0;line-height:1.6}
