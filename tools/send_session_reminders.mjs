@@ -1,4 +1,4 @@
-/** Schedule one-week and day-of seminar reminders through Kit's Broadcast API.
+/** Schedule five-day and day-of seminar reminders through Kit's Broadcast API.
  * Run locally without --send to preview decisions. Requires KIT_API_KEY to send.
  */
 import fs from 'node:fs';
@@ -95,9 +95,10 @@ export function planReminders(sessions, now) {
     if (!dateOnly(session.date) || !session.speaker?.trim() || !session.title?.trim()) return [];
     if ([session.speaker.trim(), session.title.trim()].some(value => /^tbd$/i.test(value))) return [];
     if (!session.time?.trim()) return [];
-    return [7, 0].map(days => {
+    return [5, 0].map(days => {
       const date = new Date(Date.parse(`${session.date}T12:00:00Z`) - days * 86400000).toISOString().slice(0, 10);
-      const kind = days === 7 ? 'week' : 'today';
+      // Keep the legacy marker so existing advance emails are updated, not duplicated.
+      const kind = days === 5 ? 'week' : 'today';
       return { session, kind, date, sendAt: tenInRome(date),
         marker: `PDS reminder | ${session.date} | ${session.time.trim()} | ${kind}` };
     });
@@ -157,7 +158,8 @@ export async function runReminders(sessions, now = new Date(), send = false) {
     }
     const email = message(session, kind);
     // Do not push an existing scheduled broadcast back on every retry.
-    const actualSendAt = prior?.status === 'scheduled' ? prior.send_at
+    const sameReminderDate = prior?.status === 'scheduled' && localDate(new Date(prior.send_at)) === localDate(new Date(sendAt));
+    const actualSendAt = sameReminderDate ? prior.send_at
       : new Date(Math.max(Date.parse(sendAt), now.getTime() + 10 * 60000)).toISOString();
     const body = { ...email, description: marker, public: false,
       published_at: actualSendAt, send_at: actualSendAt,
@@ -168,7 +170,7 @@ export async function runReminders(sessions, now = new Date(), send = false) {
         console.log(`${marker}: already queued for delivery; skipping.`);
         continue;
       }
-      const unchanged = Object.entries(email).every(([key, value]) => prior[key] === value)
+      const unchanged = prior.send_at === actualSendAt && Object.entries(email).every(([key, value]) => prior[key] === value)
         && JSON.stringify(prior.subscriber_filter) === JSON.stringify(audience)
         && prior.email_address === body.email_address;
       if (unchanged) {
