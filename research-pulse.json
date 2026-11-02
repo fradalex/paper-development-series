@@ -1,22 +1,39 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-11-02",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "When do interdisciplinary funding programs generate durable collaborations beyond the grant period?"
+      "question": "Does disciplinary distance in a proposal predict scientific breakthroughs differently across funding schemes?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "When does a platform rival’s entry induce complementors to diversify across platforms rather than specialize?"
+      "question": "How do firms identify unmet uses for existing technologies before a clear market has formed?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Do technology-sovereignty policies build domestic capabilities or fragment international knowledge exchange?"
+      "question": "How can mission-oriented policy coordinate firms and researchers without locking in one technological solution?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-10-30",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "When do interdisciplinary funding programs generate durable collaborations beyond the grant period?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "When does a platform rival’s entry induce complementors to diversify across platforms rather than specialize?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Do technology-sovereignty policies build domestic capabilities or fragment international knowledge exchange?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-27",
       "questions": [
