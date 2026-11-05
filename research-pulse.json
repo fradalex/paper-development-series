@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-05",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Does disciplinary distance in a proposal predict scientific breakthroughs differently across funding schemes?"
+      "question": "How do mission-oriented grant calls redirect research agendas compared with investigator-led funding?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "How do firms identify unmet uses for existing technologies before a clear market has formed?"
+      "question": "Can academic directors help firms identify science-based breakthroughs without narrowing their search to familiar disciplines?"
     },
     {
       "topic": "Regions and policy",
-      "question": "How can mission-oriented policy coordinate firms and researchers without locking in one technological solution?"
+      "question": "At what stage do technology-deployment subsidies begin to impede rather than accelerate further innovation?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-02",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Does disciplinary distance in a proposal predict scientific breakthroughs differently across funding schemes?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "How do firms identify unmet uses for existing technologies before a clear market has formed?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "How can mission-oriented policy coordinate firms and researchers without locking in one technological solution?"
+        }
+      ]
+    },
     {
       "updated": "2026-10-30",
       "questions": [
