@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-05",
+  "updated": "2026-11-08",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "How do mission-oriented grant calls redirect research agendas compared with investigator-led funding?"
+      "question": "Which research funding modes best support exploratory work while maintaining useful industry collaboration?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Can academic directors help firms identify science-based breakthroughs without narrowing their search to familiar disciplines?"
+      "question": "Which signals of scientific commercial potential are useful before patents, licensing, or venture funding appear?"
     },
     {
       "topic": "Regions and policy",
-      "question": "At what stage do technology-deployment subsidies begin to impede rather than accelerate further innovation?"
+      "question": "Which policy mixes support a transition from early experimentation to large-scale deployment without entrenching incumbents?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-05",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "How do mission-oriented grant calls redirect research agendas compared with investigator-led funding?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Can academic directors help firms identify science-based breakthroughs without narrowing their search to familiar disciplines?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "At what stage do technology-deployment subsidies begin to impede rather than accelerate further innovation?"
+        }
+      ]
+    },
     {
       "updated": "2026-11-02",
       "questions": [
