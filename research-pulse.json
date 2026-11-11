@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-08",
+  "updated": "2026-11-11",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Which research funding modes best support exploratory work while maintaining useful industry collaboration?"
+      "question": "Do industry–science grants change the content of academic research more than its volume?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Which signals of scientific commercial potential are useful before patents, licensing, or venture funding appear?"
+      "question": "How do science and cluster policies interact in generating high-tech startups across regions?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Which policy mixes support a transition from early experimentation to large-scale deployment without entrenching incumbents?"
+      "question": "What counts as success for transformative innovation policy when societal goals conflict across places?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-08",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Which research funding modes best support exploratory work while maintaining useful industry collaboration?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Which signals of scientific commercial potential are useful before patents, licensing, or venture funding appear?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Which policy mixes support a transition from early experimentation to large-scale deployment without entrenching incumbents?"
+        }
+      ]
+    },
     {
       "updated": "2026-11-05",
       "questions": [
