@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=29">
+    <link rel="stylesheet" href="styles.css?v=30">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,7 @@
         dataScript.src = 'site-data.js?fresh=' + Date.now();
         dataScript.onload = () => {
           const appScript = document.createElement('script');
-          appScript.src = 'script.js?v=26';
+          appScript.src = 'script.js?v=27';
           document.body.append(appScript);
         };
         document.body.append(dataScript);
@@ -29,7 +29,7 @@
         <a class="brand" href="#top" aria-label="Paper Development Series, home"><img class="brand-mark" src="brand-mark.svg" alt="" width="44" height="44"><span class="brand-name">Paper Development Series</span></a>
         <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
         <nav id="primary-nav" class="nav" aria-label="Main navigation">
-          <a href="#about">About</a><a href="#prepare">Prepare</a><a href="#sessions">Sessions</a><a href="#participate">Take part</a><a href="#mailing-list">Mailing list</a><a href="#organisers">Organisers</a>
+          <a href="#about">About</a><a href="#sessions">Sessions</a><a href="#prepare">Prepare</a><a href="#participate">Take part</a><a href="#mailing-list">Mailing list</a><a href="#organisers">Organisers</a>
         </nav>
       </div>
     </header>
@@ -64,7 +64,8 @@
             </div>
             <div class="about-body">
               <p class="lead">Research gets stronger when we share it before it feels finished.</p>
-              <p>The Paper Development Series brings together early-career researchers to discuss work in progress. We focus on innovation, science and technology, while welcoming research on other topics too.</p>
+              <p>The Paper Development Series started in 2024 within the Innovation and Global Futures research track at the Gran Sasso Science Institute (GSSI). It grew out of discussions on innovation, technology, and global futures, and in its first year it hosted monthly webinars with speakers from around the world.</p>
+              <p>Since 2025, the series has been co-organised with the other universities of the Economics of New Technologies and Global Change network: Università Cattolica del Sacro Cuore, the University of Ferrara, the University of Parma, the University of Pisa, the University of Trento, and the Sant’Anna School of Advanced Studies (Pisa). The series has kept its original format, offering junior researchers an informal and friendly setting to present their work and receive feedback.</p>
               <p>There are two ways to share work: a regular paper discussion and, on some months, an additional session for ideas at an earlier stage.</p>
             </div>
           </div>
@@ -83,6 +84,28 @@
             </article>
           </div>
         </div>
+      </section>
+
+      <section class="section sessions-section" id="sessions" aria-labelledby="sessions-title">
+        <div class="shell"><div class="section-heading"><div><p class="eyebrow">The programme</p><h2 id="sessions-title">Sessions<span class="period">.</span></h2></div><p>Explore forthcoming discussions and revisit the papers and ideas shared within the series.</p></div>
+          <div class="featured" id="next-session" aria-live="polite"><div class="featured-label"><span class="live-dot"></span> Next session</div><div class="featured-content"><h3>Next session to be announced</h3><p>We are putting the programme together. Check back soon for the next discussion.</p></div></div>
+          <div class="session-columns">
+            <div class="upcoming-panel">
+              <div class="list-heading"><h3>Upcoming</h3><span id="upcoming-count" class="count">00</span></div>
+              <div class="archive-scroll is-at-end" id="upcoming-scroll"><div id="upcoming-list" class="archive-list"><p class="empty-state">Dates and speakers will appear here as they are confirmed.</p></div></div>
+            </div>
+            <div class="archive-panel">
+              <div class="list-heading"><h3>Archive</h3><span id="past-count" class="count">00</span></div>
+              <div class="archive-scroll is-at-end" id="archive-scroll">
+                <div id="past-list" class="archive-list"><p class="empty-state">Past sessions will be collected here.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <dialog id="session-dialog" class="session-dialog" aria-labelledby="session-dialog-title">
+          <div class="session-dialog-top"><span>Paper Development Series / Sessions</span><button id="session-dialog-close" type="button" class="session-dialog-close" aria-label="Close session details">Close <span aria-hidden="true">×</span></button></div>
+          <div id="session-dialog-content" class="session-dialog-content"></div>
+        </dialog>
       </section>
 
       <section class="section preparation-section" id="prepare" aria-labelledby="prepare-title">
@@ -120,28 +143,6 @@
             </article>
           </div>
         </div>
-      </section>
-
-      <section class="section sessions-section" id="sessions" aria-labelledby="sessions-title">
-        <div class="shell"><div class="section-heading"><div><p class="eyebrow">The programme</p><h2 id="sessions-title">Sessions<span class="period">.</span></h2></div><p>Explore forthcoming discussions and revisit the papers and ideas shared within the series.</p></div>
-          <div class="featured" id="next-session" aria-live="polite"><div class="featured-label"><span class="live-dot"></span> Next session</div><div class="featured-content"><h3>Next session to be announced</h3><p>We are putting the programme together. Check back soon for the next discussion.</p></div></div>
-          <div class="session-columns">
-            <div class="upcoming-panel">
-              <div class="list-heading"><h3>Upcoming</h3><span id="upcoming-count" class="count">00</span></div>
-              <div class="archive-scroll is-at-end" id="upcoming-scroll"><div id="upcoming-list" class="archive-list"><p class="empty-state">Dates and speakers will appear here as they are confirmed.</p></div></div>
-            </div>
-            <div class="archive-panel">
-              <div class="list-heading"><h3>Archive</h3><span id="past-count" class="count">00</span></div>
-              <div class="archive-scroll is-at-end" id="archive-scroll">
-                <div id="past-list" class="archive-list"><p class="empty-state">Past sessions will be collected here.</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <dialog id="session-dialog" class="session-dialog" aria-labelledby="session-dialog-title">
-          <div class="session-dialog-top"><span>Paper Development Series / Sessions</span><button id="session-dialog-close" type="button" class="session-dialog-close" aria-label="Close session details">Close <span aria-hidden="true">×</span></button></div>
-          <div id="session-dialog-content" class="session-dialog-content"></div>
-        </dialog>
       </section>
 
       <section class="section participate-section" id="participate" aria-labelledby="participate-title"><div class="shell participate-grid"><div><p class="eyebrow light">Join the conversation</p><h2 id="participate-title">Your work belongs<br>in the <em>discussion.</em></h2></div><div><p>Have a paper draft or a research idea you would like to discuss? We welcome contributions from early-career researchers and value thoughtful feedback from everyone who attends.</p><div class="participate-action"><button id="contact-form-open" class="contact-form-trigger" type="button" aria-haspopup="dialog" aria-controls="contact-dialog">Contact form <span aria-hidden="true">↗</span></button></div></div></div></section>
