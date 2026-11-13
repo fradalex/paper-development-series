@@ -29,7 +29,7 @@
         <a class="brand" href="#top" aria-label="Paper Development Series, home"><img class="brand-mark" src="brand-mark.svg" alt="" width="44" height="44"><span class="brand-name">Paper Development Series</span></a>
         <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
         <nav id="primary-nav" class="nav" aria-label="Main navigation">
-          <a href="#about">About</a><a href="#sessions">Sessions</a><a href="#prepare">Prepare</a><a href="#participate">Take part</a><a href="#mailing-list">Mailing list</a><a href="#organisers">Organisers</a>
+          <a href="#about">About</a><a href="#sessions">Sessions</a><a href="#prepare">Prepare</a><a href="#participate">Take part</a><a href="#organisers">Organisers</a><a href="#mailing-list">Mailing list</a>
         </nav>
       </div>
     </header>
@@ -83,6 +83,18 @@
               <p>Several early-career researchers share very preliminary research ideas. Short presentations invite feedback, connect researchers with related interests and lay the groundwork for collaboration.</p>
             </article>
           </div>
+        </div>
+        <div class="shell partners">
+          <p class="eyebrow" id="partners-title">In collaboration with the ENTeG network</p>
+          <ul class="partner-logos">
+            <li><a href="https://www.gssi.it/" target="_blank" rel="noopener noreferrer" title="Gran Sasso Science Institute"><img src="logos/gssi.png" alt="Gran Sasso Science Institute" loading="lazy"></a></li>
+            <li><a href="https://www.unicatt.it/" target="_blank" rel="noopener noreferrer" title="Università Cattolica del Sacro Cuore"><img src="logos/unicatt.svg" alt="Università Cattolica del Sacro Cuore" loading="lazy"></a></li>
+            <li><a href="https://www.unife.it/" target="_blank" rel="noopener noreferrer" title="University of Ferrara"><img src="logos/unife.png" alt="University of Ferrara" loading="lazy"></a></li>
+            <li><a href="https://www.unipr.it/" target="_blank" rel="noopener noreferrer" title="University of Parma"><img src="logos/unipr.svg" alt="University of Parma" loading="lazy"></a></li>
+            <li><a href="https://www.unipi.it/" target="_blank" rel="noopener noreferrer" title="University of Pisa"><img src="logos/unipi.svg" alt="University of Pisa" loading="lazy"></a></li>
+            <li><a href="https://www.unitn.it/" target="_blank" rel="noopener noreferrer" title="University of Trento"><img src="logos/unitn.svg" alt="University of Trento" loading="lazy"></a></li>
+            <li><a href="https://www.santannapisa.it/" target="_blank" rel="noopener noreferrer" title="Sant’Anna School of Advanced Studies"><img src="logos/santanna.svg" alt="Sant’Anna School of Advanced Studies" loading="lazy"></a></li>
+          </ul>
         </div>
       </section>
 
@@ -172,6 +184,26 @@
       </div>
     </dialog>
 
+      <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title">
+        <div class="shell organisers-grid">
+          <div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div>
+          <div class="organiser-carousel" aria-label="Meet the organisers">
+            <div id="organiser-stage" class="organiser-stage" aria-hidden="true"></div>
+            <div class="organiser-caption">
+              <button id="organiser-name" class="organiser-name-button" type="button" aria-haspopup="dialog" aria-controls="organiser-dialog"></button>
+            </div>
+            <div class="organiser-controls">
+              <button id="organiser-prev" class="organiser-arrow" type="button" aria-label="Previous organiser"><span aria-hidden="true">←</span></button>
+              <button id="organiser-next" class="organiser-arrow" type="button" aria-label="Next organiser"><span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </div>
+        <dialog id="organiser-dialog" class="session-dialog organiser-dialog" aria-labelledby="organiser-dialog-title">
+          <div class="session-dialog-top"><span>Paper Development Series / Organisers</span><button id="organiser-dialog-close" class="session-dialog-close" type="button" aria-label="Close organiser bio">Close <span aria-hidden="true">×</span></button></div>
+          <div id="organiser-dialog-content" class="session-dialog-content organiser-dialog-content"></div>
+        </dialog>
+      </section>
+
       <section class="section mailing-section" id="mailing-list" aria-labelledby="mailing-title">
         <div class="shell mailing-grid">
           <div>
@@ -195,38 +227,6 @@
             </div>
           </div>
         </div>
-      </section>
-
-      <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title">
-        <div class="shell organisers-grid">
-          <div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div>
-          <div class="organiser-carousel" aria-label="Meet the organisers">
-            <div id="organiser-stage" class="organiser-stage" aria-hidden="true"></div>
-            <div class="organiser-caption">
-              <button id="organiser-name" class="organiser-name-button" type="button" aria-haspopup="dialog" aria-controls="organiser-dialog"></button>
-            </div>
-            <div class="organiser-controls">
-              <button id="organiser-prev" class="organiser-arrow" type="button" aria-label="Previous organiser"><span aria-hidden="true">←</span></button>
-              <button id="organiser-next" class="organiser-arrow" type="button" aria-label="Next organiser"><span aria-hidden="true">→</span></button>
-            </div>
-          </div>
-        </div>
-        <div class="shell partners">
-          <p class="eyebrow" id="partners-title">In collaboration with the ENTeG network</p>
-          <ul class="partner-logos">
-            <li><a href="https://www.gssi.it/" target="_blank" rel="noopener noreferrer" title="Gran Sasso Science Institute"><img src="logos/gssi.png" alt="Gran Sasso Science Institute" loading="lazy"></a></li>
-            <li><a href="https://www.unicatt.it/" target="_blank" rel="noopener noreferrer" title="Università Cattolica del Sacro Cuore"><img src="logos/unicatt.svg" alt="Università Cattolica del Sacro Cuore" loading="lazy"></a></li>
-            <li><a href="https://www.unife.it/" target="_blank" rel="noopener noreferrer" title="University of Ferrara"><img src="logos/unife.png" alt="University of Ferrara" loading="lazy"></a></li>
-            <li><a href="https://www.unipr.it/" target="_blank" rel="noopener noreferrer" title="University of Parma"><img src="logos/unipr.svg" alt="University of Parma" loading="lazy"></a></li>
-            <li><a href="https://www.unipi.it/" target="_blank" rel="noopener noreferrer" title="University of Pisa"><img src="logos/unipi.svg" alt="University of Pisa" loading="lazy"></a></li>
-            <li><a href="https://www.unitn.it/" target="_blank" rel="noopener noreferrer" title="University of Trento"><img src="logos/unitn.svg" alt="University of Trento" loading="lazy"></a></li>
-            <li><a href="https://www.santannapisa.it/" target="_blank" rel="noopener noreferrer" title="Sant’Anna School of Advanced Studies"><img src="logos/santanna.svg" alt="Sant’Anna School of Advanced Studies" loading="lazy"></a></li>
-          </ul>
-        </div>
-        <dialog id="organiser-dialog" class="session-dialog organiser-dialog" aria-labelledby="organiser-dialog-title">
-          <div class="session-dialog-top"><span>Paper Development Series / Organisers</span><button id="organiser-dialog-close" class="session-dialog-close" type="button" aria-label="Close organiser bio">Close <span aria-hidden="true">×</span></button></div>
-          <div id="organiser-dialog-content" class="session-dialog-content organiser-dialog-content"></div>
-        </dialog>
       </section>
     </main>
     <footer class="footer"><div class="shell footer-inner"><div><img class="footer-logo-mark" src="footer-mark.svg" alt="Paper Development Series" width="42" height="42"><p>Ideas are better together.</p></div><div><a href="#top">Back to top ↑</a><span>© <span id="year"></span> Paper Development Series</span></div></div></footer>
