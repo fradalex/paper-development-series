@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=30">
+    <link rel="stylesheet" href="styles.css?v=31">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -42,14 +42,10 @@
             <p class="hero-lede">A welcoming space for early-career researchers in the fields of economics and management of science, technology and innovation to share papers and research ideas in progress, ask questions, and develop their work with peers.</p>
             <div class="hero-actions"><a class="button button-light" href="#sessions">Explore the sessions <span aria-hidden="true">↗</span></a><a class="text-link light-link" href="#participate">Present your work <span aria-hidden="true">↗</span></a></div>
           </div>
-<aside class="pulse" aria-labelledby="pulse-title">
-            <div class="pulse-top"><span class="pulse-dot" aria-hidden="true"></span><span>Research pulse</span></div>
-            <div class="pulse-body"><div id="pulse-page" class="pulse-page">
-              <p class="pulse-kicker">A question for the conversation</p>
-              <h2 id="pulse-title">What should we discuss next?</h2>
-            </div></div>
-            <div class="pulse-bottom"><div class="pulse-navigation"><div id="pulse-controls" class="pulse-controls" aria-label="Choose a question"></div><button id="pulse-pause" class="pulse-pause" type="button" aria-label="Pause automatic questions" aria-pressed="false" title="Pause automatic questions"><span class="pulse-pause-icon" aria-hidden="true"></span></button></div></div>
-            <div class="pulse-progress" aria-hidden="true"><span id="pulse-progress-bar"></span></div>
+          <aside class="next-card" aria-labelledby="next-card-title">
+            <div class="pulse-top"><span class="pulse-dot" aria-hidden="true"></span><span id="next-card-title">Next session</span></div>
+            <div class="next-card-body" id="next-session" aria-live="polite"><div class="featured-content"><h3>Next session to be announced</h3><p>We are putting the programme together. Check back soon for the next discussion.</p></div></div>
+            <div class="pulse-bottom"><a class="next-card-all" href="#sessions">All sessions <span aria-hidden="true">↓</span></a></div>
           </aside>
         </div>
         <div class="shell hero-foot"><span>1-2 sessions / month</span><span>Ideas welcome at every stage</span><span>Open to early-career researchers</span></div>
@@ -100,7 +96,6 @@
 
       <section class="section sessions-section" id="sessions" aria-labelledby="sessions-title">
         <div class="shell"><div class="section-heading"><div><p class="eyebrow">The programme</p><h2 id="sessions-title">Sessions<span class="period">.</span></h2></div><p>Explore forthcoming discussions and revisit the papers and ideas shared within the series.</p></div>
-          <div class="featured" id="next-session" aria-live="polite"><div class="featured-label"><span class="live-dot"></span> Next session</div><div class="featured-content"><h3>Next session to be announced</h3><p>We are putting the programme together. Check back soon for the next discussion.</p></div></div>
           <div class="session-columns">
             <div class="upcoming-panel">
               <div class="list-heading"><h3>Upcoming</h3><span id="upcoming-count" class="count">00</span></div>
@@ -202,6 +197,25 @@
           <div class="session-dialog-top"><span>Paper Development Series / Organisers</span><button id="organiser-dialog-close" class="session-dialog-close" type="button" aria-label="Close organiser bio">Close <span aria-hidden="true">×</span></button></div>
           <div id="organiser-dialog-content" class="session-dialog-content organiser-dialog-content"></div>
         </dialog>
+      </section>
+
+      <section class="section pulse-section" id="research-pulse" aria-labelledby="pulse-section-title">
+        <div class="shell pulse-grid">
+          <div>
+            <p class="eyebrow light">Research pulse</p>
+            <h2 id="pulse-section-title">Questions for<br>the <em>conversation.</em></h2>
+            <p class="pulse-intro">Every three days, three open questions informed by recent research on science, technology and innovation, offered as prompts for the next discussion.</p>
+          </div>
+            <aside class="pulse" aria-labelledby="pulse-title">
+            <div class="pulse-top"><span class="pulse-dot" aria-hidden="true"></span><span>Research pulse</span></div>
+            <div class="pulse-body"><div id="pulse-page" class="pulse-page">
+              <p class="pulse-kicker">A question for the conversation</p>
+              <h2 id="pulse-title">What should we discuss next?</h2>
+            </div></div>
+            <div class="pulse-bottom"><div class="pulse-navigation"><div id="pulse-controls" class="pulse-controls" aria-label="Choose a question"></div><button id="pulse-pause" class="pulse-pause" type="button" aria-label="Pause automatic questions" aria-pressed="false" title="Pause automatic questions"><span class="pulse-pause-icon" aria-hidden="true"></span></button></div></div>
+            <div class="pulse-progress" aria-hidden="true"><span id="pulse-progress-bar"></span></div>
+          </aside>
+        </div>
       </section>
 
       <section class="section mailing-section" id="mailing-list" aria-labelledby="mailing-title">

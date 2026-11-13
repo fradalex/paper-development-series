@@ -181,3 +181,20 @@
 @media(max-width:980px){.partner-logos{justify-content:center;gap:18px 40px}.partner-logos li{flex-basis:170px}}
 @media(max-width:560px){.partner-logos{gap:14px 20px}.partner-logos li{flex-basis:calc(50% - 10px)}.partner-logos a{height:64px}}
 @media(prefers-reduced-motion:reduce){.partner-logos a{transition:none}}
+
+.next-card{width:100%;max-width:490px;margin:55px auto 55px 0;background:#f8f3e9;color:var(--ink);border:1px solid #dfd8c9;box-shadow:0 20px 48px #081b2338;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.next-card-body{flex:1;padding:32px 30px 28px}
+.next-card .featured-date{color:#a34e37;text-transform:uppercase;letter-spacing:.11em;font-weight:700;font-size:.67rem;margin-bottom:16px}
+.next-card h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,2.7vw,2.5rem);line-height:1.2;letter-spacing:-.03em;margin:0 0 16px}
+.next-card p{color:#53666a;font-size:.88rem;margin:0 0 4px}
+.next-card .featured-location{margin-top:8px}
+.next-card .featured-link{display:inline-block;margin-top:18px;font-size:.8rem;font-weight:700;color:var(--ink)}
+.next-card-all{color:var(--ink);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.pulse-section{background:var(--ink);color:var(--paper)}
+.pulse-section h2 em{color:#e5a98f}
+.pulse-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(55px,10vw,150px);align-items:center}
+.pulse-intro{color:#cbd4d4;max-width:460px;line-height:1.85;margin:26px 0 0}
+.pulse-grid .pulse{margin:0}
+@media(max-width:900px){.pulse-grid{gap:50px}}
+@media(max-width:680px){.next-card{margin:10px 0 50px;max-width:none}.next-card-body{padding:26px 22px}.pulse-grid{grid-template-columns:1fr;gap:36px}.pulse-grid .pulse{max-width:none}}
+@media(max-width:680px){.hero-copy{padding:52px 0 28px}.next-card{margin:0 0 34px}.next-card .pulse-top,.next-card .pulse-bottom{padding:12px 20px}.next-card-body{padding:20px 20px 16px}.next-card .featured-date{margin-bottom:10px}.next-card h3{font-size:1.65rem;margin-bottom:10px}}
