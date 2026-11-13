@@ -172,14 +172,15 @@
 @media(max-width:900px){.section-heading{gap:50px}}
 .partners{margin-top:clamp(64px,8vw,104px);padding-top:30px;border-top:1px solid #d8d3c8}
 .partners .eyebrow{margin-bottom:26px}
-.partner-logos{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px 24px;align-items:center}
-.partner-logos li{flex:0 1 140px}
-.partner-logos a{display:flex;align-items:center;justify-content:center;height:72px;padding:6px;filter:grayscale(1);opacity:.72;transition:filter .2s,opacity .2s}
+.partner-logos{--s:1;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px 28px}
+.partner-logos li{flex:0 0 auto}
+.partner-logos a{display:flex;align-items:center;justify-content:center;padding:6px;filter:grayscale(1);opacity:.72;transition:filter .2s,opacity .2s}
 .partner-logos a:hover,.partner-logos a:focus-visible{filter:none;opacity:1}
-.partner-logos img{display:block;max-width:100%;max-height:60px;object-fit:contain}
-.partner-logos img[src$="gssi.png"]{max-height:68px}
-@media(max-width:980px){.partner-logos{justify-content:center;gap:18px 40px}.partner-logos li{flex-basis:170px}}
-@media(max-width:560px){.partner-logos{gap:14px 20px}.partner-logos li{flex-basis:calc(50% - 10px)}.partner-logos a{height:64px}}
+.partner-logos img{display:block;height:calc(var(--h) * var(--s));width:auto;max-width:100%;object-fit:contain}
+@media(max-width:1240px){.partner-logos{--s:.86}}
+@media(max-width:1100px){.partner-logos{--s:.75}}
+@media(max-width:980px){.partner-logos{--s:.8;justify-content:center;gap:22px 44px}}
+@media(max-width:560px){.partner-logos{--s:.72;gap:16px 20px}.partner-logos li{flex-basis:calc(50% - 10px)}}
 @media(prefers-reduced-motion:reduce){.partner-logos a{transition:none}}
 
 .next-card{width:100%;max-width:490px;margin:55px auto 55px 0;background:#f8f3e9;color:var(--ink);border:1px solid #dfd8c9;box-shadow:0 20px 48px #081b2338;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
