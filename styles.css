@@ -215,3 +215,15 @@
 .behind-people h3{text-align:center;margin-bottom:4px}
 .behind-section .partners{margin-top:clamp(42px,6vw,74px)}
 @media(max-width:780px){.behind-grid{grid-template-columns:1fr}.behind-people h3{text-align:left}}
+
+/* Compact navigation disclosure on desktop and mobile. */
+.header-inner{position:relative}
+.site-header .menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:9px 15px;border:1px solid #c4cdc9;border-radius:6px;background:var(--paper);color:var(--ink);font-size:.82rem;font-weight:700;cursor:pointer}
+.site-header .menu-toggle:hover,.site-header .menu-toggle[aria-expanded="true"]{background:#ece9e0}
+.menu-chevron{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] .menu-chevron{transform:translateY(2px) rotate(225deg)}
+.site-header .nav{display:none;position:absolute;top:calc(100% - 6px);right:0;left:auto;width:min(250px,100%);max-height:calc(100dvh - 100px);overflow:auto;padding:7px;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;gap:2px;background:var(--paper);border:1px solid #d4d8d0;border-radius:8px;box-shadow:0 14px 32px #172d3526}
+.site-header .nav.is-open{display:flex}
+.site-header .nav a{padding:9px 12px;border-radius:4px;font-size:.88rem}
+.site-header .nav a:hover,.site-header .nav a:focus-visible{background:#f1ece2;color:var(--ink)}
+@media(max-width:400px){.site-header .menu-toggle{padding-inline:10px}}
