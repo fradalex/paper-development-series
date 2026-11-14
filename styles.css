@@ -199,3 +199,5 @@
 @media(max-width:900px){.pulse-grid{gap:50px}}
 @media(max-width:680px){.next-card{margin:10px 0 50px;max-width:none}.next-card-body{padding:26px 22px}.pulse-grid{grid-template-columns:1fr;gap:36px}.pulse-grid .pulse{max-width:none}}
 @media(max-width:680px){.hero-copy{padding:52px 0 28px}.next-card{margin:0 0 34px}.next-card .pulse-top,.next-card .pulse-bottom{padding:12px 20px}.next-card-body{padding:20px 20px 16px}.next-card .featured-date{margin-bottom:10px}.next-card h3{font-size:1.65rem;margin-bottom:10px}}
+
+@media(min-width:681px){.nav{gap:clamp(10px,1.55vw,24px);justify-content:flex-end;flex-wrap:wrap}.nav a{white-space:nowrap}.header-inner{gap:16px}}
