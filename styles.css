@@ -201,3 +201,17 @@
 @media(max-width:680px){.hero-copy{padding:52px 0 28px}.next-card{margin:0 0 34px}.next-card .pulse-top,.next-card .pulse-bottom{padding:12px 20px}.next-card-body{padding:20px 20px 16px}.next-card .featured-date{margin-bottom:10px}.next-card h3{font-size:1.65rem;margin-bottom:10px}}
 
 @media(min-width:681px){.nav{gap:clamp(10px,1.55vw,24px);justify-content:flex-end;flex-wrap:wrap}.nav a{white-space:nowrap}.header-inner{gap:16px}}
+
+/* Final section: the story and organisers above the shared partner strip. */
+.behind-section{background:var(--cream);border-top:1px solid var(--line)}
+.behind-heading{margin-bottom:clamp(32px,5vw,62px)}
+.behind-heading h2{margin:0}
+.behind-heading h2 em{color:#a35139}
+.behind-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,6vw,88px);align-items:start}
+.behind-grid>div{border-top:1px solid #d8d3c8;padding-top:22px;min-width:0}
+.behind-grid h3{font:400 clamp(1.6rem,2.6vw,2.25rem)/1.16 var(--serif);margin:0 0 20px}
+.behind-story p{color:var(--muted);line-height:1.85;max-width:62ch}
+.behind-story p:last-child{margin-bottom:0}
+.behind-people h3{text-align:center;margin-bottom:4px}
+.behind-section .partners{margin-top:clamp(42px,6vw,74px)}
+@media(max-width:780px){.behind-grid{grid-template-columns:1fr}.behind-people h3{text-align:left}}
