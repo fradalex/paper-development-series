@@ -207,7 +207,7 @@
 .behind-heading{margin-bottom:clamp(32px,5vw,62px)}
 .behind-heading h2{margin:0}
 .behind-heading h2 em{color:#a35139}
-.behind-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,6vw,88px);align-items:start}
+.behind-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(32px,6vw,88px);align-items:start}
 .behind-grid>div{border-top:1px solid #d8d3c8;padding-top:22px;min-width:0}
 .behind-grid h3{font:400 clamp(1.6rem,2.6vw,2.25rem)/1.16 var(--serif);margin:0 0 20px}
 .behind-story p{color:var(--muted);line-height:1.85;max-width:62ch}
