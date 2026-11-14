@@ -7,7 +7,7 @@
     <meta name="description" content="Paper Development Series is a space for early-career researchers to share work in progress, exchange ideas, and develop their papers together.">
     <title>Paper Development Series</title>
     <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=32">
+    <link rel="stylesheet" href="styles.css?v=33">
     <script>
       // Load edited session data fresh, then start the page after the DOM is ready.
       document.addEventListener('DOMContentLoaded', () => {
@@ -29,7 +29,7 @@
         <a class="brand" href="#top" aria-label="Paper Development Series, home"><img class="brand-mark" src="brand-mark.svg" alt="" width="44" height="44"><span class="brand-name">Paper Development Series</span></a>
         <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
         <nav id="primary-nav" class="nav" aria-label="Main navigation">
-          <a href="#about">About</a><a href="#prepare">Prepare</a><a href="#sessions">Sessions</a><a href="#participate">Take part</a><a href="#mailing-list">Mailing list</a><a href="#research-pulse">Research pulse</a><a href="#organisers">Organisers</a><a href="#history">History</a>
+          <a href="#about">About</a><a href="#prepare">Prepare</a><a href="#sessions">Sessions</a><a href="#participate">Take part</a><a href="#mailing-list">Mailing list</a><a href="#research-pulse">Research pulse</a><a href="#behind-the-series">Behind the series</a>
         </nav>
       </div>
     </header>
@@ -209,9 +209,22 @@
         </div>
       </section>
 
-      <section class="section organisers-section" id="organisers" aria-labelledby="organisers-title">
-        <div class="shell organisers-grid">
-          <div><p class="eyebrow">Behind the series</p><h2 id="organisers-title">Organised by<br>researchers, <em>for researchers.</em></h2></div>
+
+
+      <section class="section behind-section" id="behind-the-series" aria-labelledby="behind-title">
+        <div class="shell">
+          <header class="behind-heading">
+            <p class="eyebrow">Paper Development Series</p>
+            <h2 id="behind-title">Behind the <em>series.</em></h2>
+          </header>
+          <div class="behind-grid">
+            <div class="behind-story" id="history">
+              <h3>How it started</h3>
+              <p>The Paper Development Series started in 2024 within the Innovation and Global Futures research track at the Gran Sasso Science Institute (GSSI). It grew out of discussions on innovation, technology, and global futures, and in its first year it hosted monthly webinars with speakers from around the world.</p>
+              <p>Since 2025, the series has been co-organised with the other universities of the Economics of New Technologies and Global Change network: Università Cattolica del Sacro Cuore, the University of Ferrara, the University of Parma, the University of Pisa, the University of Trento, and the Sant’Anna School of Advanced Studies (Pisa). The series has kept its original format, offering junior researchers an informal and friendly setting to present their work and receive feedback.</p>
+            </div>
+            <div class="behind-people" id="organisers">
+              <h3>Meet the organisers</h3>
           <div class="organiser-carousel" aria-label="Meet the organisers">
             <div id="organiser-stage" class="organiser-stage" aria-hidden="true"></div>
             <div class="organiser-caption">
@@ -222,22 +235,10 @@
               <button id="organiser-next" class="organiser-arrow" type="button" aria-label="Next organiser"><span aria-hidden="true">→</span></button>
             </div>
           </div>
-        </div>
-        <dialog id="organiser-dialog" class="session-dialog organiser-dialog" aria-labelledby="organiser-dialog-title">
-          <div class="session-dialog-top"><span>Paper Development Series / Organisers</span><button id="organiser-dialog-close" class="session-dialog-close" type="button" aria-label="Close organiser bio">Close <span aria-hidden="true">×</span></button></div>
-          <div id="organiser-dialog-content" class="session-dialog-content organiser-dialog-content"></div>
-        </dialog>
-      </section>
-
-      <section class="section about-section" id="history" aria-labelledby="history-title">
-        <div class="shell about-grid">
-          <div><h2 id="history-title">History</h2></div>
-          <div class="about-body">
-              <p>The Paper Development Series started in 2024 within the Innovation and Global Futures research track at the Gran Sasso Science Institute (GSSI). It grew out of discussions on innovation, technology, and global futures, and in its first year it hosted monthly webinars with speakers from around the world.</p>
-              <p>Since 2025, the series has been co-organised with the other universities of the Economics of New Technologies and Global Change network: Università Cattolica del Sacro Cuore, the University of Ferrara, the University of Parma, the University of Pisa, the University of Trento, and the Sant’Anna School of Advanced Studies (Pisa). The series has kept its original format, offering junior researchers an informal and friendly setting to present their work and receive feedback.</p>
+            </div>
           </div>
         </div>
-        <div class="shell partners">
+        <div class="shell partners" aria-labelledby="partners-title">
           <p class="eyebrow" id="partners-title">In collaboration with the ENTeG network</p>
           <ul class="partner-logos">
             <li><a href="https://www.gssi.it/" target="_blank" rel="noopener noreferrer" title="Gran Sasso Science Institute"><img src="logos/gssi.png" style="--h:81.5px" alt="Gran Sasso Science Institute" loading="lazy"></a></li>
@@ -249,6 +250,10 @@
             <li><a href="https://www.santannapisa.it/" target="_blank" rel="noopener noreferrer" title="Sant’Anna School of Advanced Studies"><img src="logos/santanna.svg" style="--h:43.6px" alt="Sant’Anna School of Advanced Studies" loading="lazy"></a></li>
           </ul>
         </div>
+        <dialog id="organiser-dialog" class="session-dialog organiser-dialog" aria-labelledby="organiser-dialog-title">
+          <div class="session-dialog-top"><span>Paper Development Series / Organisers</span><button id="organiser-dialog-close" class="session-dialog-close" type="button" aria-label="Close organiser bio">Close <span aria-hidden="true">×</span></button></div>
+          <div id="organiser-dialog-content" class="session-dialog-content organiser-dialog-content"></div>
+        </dialog>
       </section>
     </main>
     <footer class="footer"><div class="shell footer-inner"><div><img class="footer-logo-mark" src="footer-mark.svg" alt="Paper Development Series" width="42" height="42"><p>Ideas are better together.</p></div><div><a href="#top">Back to top ↑</a><span>© <span id="year"></span> Paper Development Series</span></div></div></footer>
