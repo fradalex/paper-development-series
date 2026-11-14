@@ -215,15 +215,3 @@
 .behind-people h3{text-align:center;margin-bottom:4px}
 .behind-section .partners{margin-top:clamp(42px,6vw,74px)}
 @media(max-width:780px){.behind-grid{grid-template-columns:1fr}.behind-people h3{text-align:left}}
-
-/* Stagger the story and organiser carousel, then span the partner logos. */
-.behind-section .behind-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(28px,5vw,72px);row-gap:clamp(20px,3vw,40px)}
-.behind-section .behind-story{grid-column:1;grid-row:1}
-.behind-section .behind-people{grid-column:2;grid-row:2}
-.behind-section .behind-heading{margin-bottom:26px}
-.behind-section .behind-heading h2{font-size:clamp(2.8rem,4.4vw,4.4rem)}
-.behind-section .partners{margin-top:clamp(42px,6vw,74px)}
-@media(max-width:780px){
-  .behind-section .behind-grid{grid-template-columns:minmax(0,1fr)}
-  .behind-section .behind-people{grid-column:1}
-}
