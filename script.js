@@ -9,6 +9,7 @@
   };
   const sessions = Array.isArray(data.sessions) ? data.sessions.filter(s => s && isValidDate(s.date) && s.title && s.speaker) : [];
   const isPlaceholder = session => session.speaker.trim().toUpperCase() === 'TBD' || session.title.trim().toUpperCase() === 'TBD';
+  const speakerLabel = session => session.speaker.trim().toUpperCase() === 'TBD' ? 'Speaker to be announced' : session.speaker;
   const today = new Date();
   const localDay = () => {
     const date = new Date();
@@ -55,7 +56,7 @@
       }
       dialogContent.append(list);
     } else {
-      dialogContent.append(el('p', 'session-dialog-speaker', session.speaker));
+      dialogContent.append(el('p', 'session-dialog-speaker', speakerLabel(session)));
       if (session.affiliation) dialogContent.append(el('p', 'session-dialog-affiliation', session.affiliation));
     }
     if (isPlaceholder(session) && !session.description && !session.abstract) dialogContent.append(el('p', 'session-dialog-abstract', 'Speaker and paper details will be announced.'));
@@ -84,9 +85,9 @@
     const row = el('button', 'archive-row');
     row.type = 'button';
     row.append(el('span', 'archive-row-date', formatDate(session.date)),
-               el('span', 'archive-row-speaker', session.speaker),
+               el('span', 'archive-row-speaker', speakerLabel(session)),
                el('span', 'archive-row-title', session.title));
-    row.setAttribute('aria-label', formatDate(session.date) + ': ' + session.speaker + ', ' + session.title + '. View session details');
+    row.setAttribute('aria-label', formatDate(session.date) + ': ' + speakerLabel(session) + ', ' + session.title + '. View session details');
     row.addEventListener('click', () => openSessionCard(session, row));
     return row;
   }
@@ -108,7 +109,7 @@
     const content = $('next-session').querySelector('.featured-content');
     if (upcoming.length) {
       const next = upcoming[0];
-      content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', next.speaker + (next.affiliation && !speakerRoster(next).length && !/,|\s+and\s+|\s*&\s*/i.test(next.speaker) ? ' · ' + next.affiliation : '')));
+      content.replaceChildren(el('p', 'featured-date', formatDate(next.date) + (next.time ? ' · ' + next.time : '')), el('h3', '', next.title), el('p', '', speakerLabel(next) + (next.affiliation && !speakerRoster(next).length && !/,|\s+and\s+|\s*&\s*/i.test(next.speaker) ? ' · ' + next.affiliation : '')));
       if (next.location) content.append(el('p', 'featured-location', next.location));
       const url = validLink(next.link);
       if (url) { const link = el('a', 'featured-link', /\bonline\b/i.test(next.location || '') ? 'Join the online meeting ↗' : 'Session details ↗'); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; content.append(link); }
