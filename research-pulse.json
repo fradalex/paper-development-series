@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-14",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Do industry–science grants change the content of academic research more than its volume?"
+      "question": "How do contractual rules on disclosure shape the timing and openness of university–industry knowledge flows?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "How do science and cluster policies interact in generating high-tech startups across regions?"
+      "question": "Do technologically complex regions create more frontier ventures, or merely attract entrepreneurs already equipped to launch them?"
     },
     {
       "topic": "Regions and policy",
-      "question": "What counts as success for transformative innovation policy when societal goals conflict across places?"
+      "question": "How do publicly funded collaborations balance open research with firms’ incentives to protect intellectual property?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-11",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Do industry–science grants change the content of academic research more than its volume?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "How do science and cluster policies interact in generating high-tech startups across regions?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "What counts as success for transformative innovation policy when societal goals conflict across places?"
+        }
+      ]
+    },
     {
       "updated": "2026-11-08",
       "questions": [
