@@ -215,3 +215,18 @@
 .behind-people h3{text-align:center;margin-bottom:4px}
 .behind-section .partners{margin-top:clamp(42px,6vw,74px)}
 @media(max-width:780px){.behind-grid{grid-template-columns:1fr}.behind-people h3{text-align:left}}
+
+/* Subtle motion for the visible navigation links. */
+.site-header .nav a{position:relative;transition:color .18s ease,transform .18s ease}
+.site-header .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;border-radius:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .22s ease;pointer-events:none}
+.site-header .nav a:focus-visible{color:#a35139}
+.site-header .nav a:focus-visible::after{transform:scaleX(1)}
+@media(hover:hover) and (pointer:fine){
+  .site-header .nav a:hover{color:#a35139;transform:translateY(-1px)}
+  .site-header .nav a:hover::after{transform:scaleX(1)}
+}
+@media(max-width:900px){.site-header .nav a::after{right:auto;width:24px;bottom:6px}}
+@media(prefers-reduced-motion:reduce){
+  .site-header .nav a,.site-header .nav a::after{transition:none}
+  .site-header .nav a:hover{transform:none}
+}
