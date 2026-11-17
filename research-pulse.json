@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-14",
+  "updated": "2026-11-17",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "How do contractual rules on disclosure shape the timing and openness of university–industry knowledge flows?"
+      "question": "When does collaboration with industry increase scientific reach, and when does it narrow researchers’ questions?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "Do technologically complex regions create more frontier ventures, or merely attract entrepreneurs already equipped to launch them?"
+      "question": "Which network behaviors turn entrepreneurial ecosystems’ resources into productive ventures rather than local buzz?"
     },
     {
       "topic": "Regions and policy",
-      "question": "How do publicly funded collaborations balance open research with firms’ incentives to protect intellectual property?"
+      "question": "Do regional science investments generate local entrepreneurship or primarily benefit firms elsewhere?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-14",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "How do contractual rules on disclosure shape the timing and openness of university–industry knowledge flows?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "Do technologically complex regions create more frontier ventures, or merely attract entrepreneurs already equipped to launch them?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "How do publicly funded collaborations balance open research with firms’ incentives to protect intellectual property?"
+        }
+      ]
+    },
     {
       "updated": "2026-11-11",
       "questions": [
