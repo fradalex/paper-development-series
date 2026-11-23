@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-23",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "How does decentralized agenda-setting in science teams affect their ability to pursue unexpected findings?"
+      "question": "Which incentives make researchers willing to engage with practitioners without compromising scientific autonomy?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "How do ecosystem configurations shape the survival and scaling of deep-tech firms beyond initial entry?"
+      "question": "When does technological novelty attract resources after venture failure, and when does it damage credibility?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Which kinds of interregional ties help places enter technological fields beyond their existing knowledge base?"
+      "question": "Can academic inventors reduce the constraining effect of regional technological relatedness on diversification?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-20",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "How does decentralized agenda-setting in science teams affect their ability to pursue unexpected findings?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "How do ecosystem configurations shape the survival and scaling of deep-tech firms beyond initial entry?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Which kinds of interregional ties help places enter technological fields beyond their existing knowledge base?"
+        }
+      ]
+    },
     {
       "updated": "2026-11-17",
       "questions": [
