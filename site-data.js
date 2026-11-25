@@ -57,8 +57,18 @@ window.PDS_DATA = {
       coauthors: ["Sebastian Losacker", "Hendrik Hansmeier"],
       location: "Online", link: "https://gssi-it.zoom.us/j/84646922971?pwd=t7h9GmT0stKrm4xXnhwYHAAk3gdrov.1" },
     
-    { date: "2026-12-09", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
-    { date: "2027-01-13", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
+    { date: "2026-12-16", reminders: true, time: "14:30 CET", speaker: "Letizia Lo Preiato", title: "Green technologies where they are needed most: Do women inventors bring green technologies to high-emission countries?", 
+      description: "Climate-change mitigation depends not only on the creation of green technologies, but also on there their underlying knowledge being subsequently recombined and developed. This study investigates whether the cumulative development of green technological trajectories extends toward higher-emission-country contexts and whether its geographical direction varies with substantial representation of women among inventors during formative stages. Using European Patent Office data, we identify 25,093 trajectories originating from unprecedented combinations of International Patent Classification codes and trace their development through subsequent patents that reuse the same technological core. Inventor’s countries of residence during a five-year Origin phase and a subsequent fifteen-year Destination phase are linked to country-level greenhouse gas emissions. The results reveal persistent continuity across emission contexts, as Origin-phase emission exposure remains positively associated with Destination-phase exposure. Conditional on initial exposure and the remaining covariates, green trajectories are associated with lower-emission contexts than comparable non-green trajectories. However, women’s representation during the formative stage significantly differentiates this pattern. Among green trajectories, reaching a one-third women threshold in at least one Origin-phase patent is associated with substantially higher subsequent emission exposure. From the complementary green versus non-green comparison, reaching this threshold reverses the otherwise negative emission gap characterizing green trajectories. These findings show that the geographical mismatch between green technological development and aggregate emissions persists throughout cumulative technological development, while the composition of inventors participating during formative stages is systematically associated with its subsequent direction.", 
+      affiliation: "PhD candidate at the University of Brescia",
+      coauthors: ["Michele Pezzoni", "Fabiana Visentin"],
+      location: "Online", link: "https://gssi-it.zoom.us/j/84646922971?pwd=t7h9GmT0stKrm4xXnhwYHAAk3gdrov.1" },
+    
+    { date: "2027-01-13", reminders: true, time: "14:30 CET", speaker: "Gabriela Fuentes", title: "Technological Positioning and Startup Innovation",
+      affiliation: "PhD candidate at Université Cote d'Azur",
+      coauthors: [],
+      description: "TBD",
+      location: "Online", link: "https://gssi-it.zoom.us/j/84646922971?pwd=t7h9GmT0stKrm4xXnhwYHAAk3gdrov.1" },
+    
     { date: "2027-02-10", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     { date: "2027-03-10", reminders: false, time: "14:30 CET", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
     { date: "2027-04-14", reminders: false, time: "14:30 CEST", speaker: "TBD", title: "Paper discussion", description: "TBD", location: "Online"},
