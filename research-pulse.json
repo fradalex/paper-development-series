@@ -1,22 +1,39 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-26",
   "mode": "curated",
   "bank_sha": "f0c197a7b26f7cef8ed0187712df4046ddbc426e0da396528501d64e053bd8e5",
   "questions": [
     {
       "topic": "Science and research",
-      "question": "Which incentives make researchers willing to engage with practitioners without compromising scientific autonomy?"
+      "question": "What forms of leadership sustain open scientific collaboration when evidence remains highly uncertain?"
     },
     {
       "topic": "Innovation and firms",
-      "question": "When does technological novelty attract resources after venture failure, and when does it damage credibility?"
+      "question": "How do visual AI measures change what entrepreneurship researchers can infer about founder teams and venture contexts?"
     },
     {
       "topic": "Regions and policy",
-      "question": "Can academic inventors reduce the constraining effect of regional technological relatedness on diversification?"
+      "question": "When do multinational subsidiaries create local knowledge spillovers, and when do they extract regional capabilities?"
     }
   ],
   "archive": [
+    {
+      "updated": "2026-11-23",
+      "questions": [
+        {
+          "topic": "Science and research",
+          "question": "Which incentives make researchers willing to engage with practitioners without compromising scientific autonomy?"
+        },
+        {
+          "topic": "Innovation and firms",
+          "question": "When does technological novelty attract resources after venture failure, and when does it damage credibility?"
+        },
+        {
+          "topic": "Regions and policy",
+          "question": "Can academic inventors reduce the constraining effect of regional technological relatedness on diversification?"
+        }
+      ]
+    },
     {
       "updated": "2026-11-20",
       "questions": [
